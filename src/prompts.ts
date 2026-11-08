@@ -32,12 +32,12 @@ export function buildSystemPrompt(persona: Dict, charter: Dict, target: Dict, ru
     const { rego: _r, ...vehicle } = profile.vehicle ?? {};
     profile.vehicle = vehicle;
     delete data.wrong_rego_to_try_first;
-    if (!canSubmit) data = Object.fromEntries(Object.entries(data).filter(([k]) => !CONTACT_FIELDS.has(k)));
   }
+  if (!canSubmit) data = Object.fromEntries(Object.entries(data).filter(([k]) => !CONTACT_FIELDS.has(k)));
   const testData = yaml(data).replaceAll("{run_id}", runId);
   let stops: string[] = target.stop_before?.length ? [...target.stop_before] : ["payment"];
   if (canSubmit) stops = stops.filter((s) => !s.includes("contact details"));
-  const envRules = prod ? PROD_RULES(canSubmit ? PROD_SUBMIT : PROD_NO_SUBMIT) : UAT_RULES;
+  const envRules = prod ? PROD_RULES(canSubmit ? PROD_SUBMIT : PROD_NO_SUBMIT) : canSubmit ? UAT_RULES : `${UAT_RULES}\n${PROD_NO_SUBMIT}`;
 
   return `You are an exploratory UAT tester for ${target.name ?? "the site"}. You use the site the way one
 specific real customer would, and report anything that is broken, confusing, inconsistent or untrustworthy.

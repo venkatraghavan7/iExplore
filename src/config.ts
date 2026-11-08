@@ -12,7 +12,7 @@ const ENV_RE = /\$\{([A-Z0-9_]+)(?::-([^}]*))?\}/g;
 
 export function expandEnv<T>(value: T): T {
   if (typeof value === "string") {
-    return value.replace(ENV_RE, (_m, name: string, def?: string) => process.env[name] ?? def ?? "") as T;
+    return value.replace(ENV_RE, (_m, name: string, def?: string) => process.env[name] || def || "") as T;
   }
   if (Array.isArray(value)) return value.map((v) => expandEnv(v)) as T;
   if (value && typeof value === "object") {
@@ -42,7 +42,9 @@ export function loadConfig(path?: string, targetName?: string): BotConfig {
   const raw = loadYaml(file);
   const name = targetName ?? raw.target ?? "prod";
   const target: Dict = { ...raw.targets[name], id: name };
-  for (const flag of ["allow_quote_submission", "tag_spa_routes"]) target[flag] = truthy(target[flag]);
+  for (const flag of ["allow_quote_submission", "tag_spa_routes", "ignore_https_errors"]) target[flag] = truthy(target[flag]);
+  // IEXPLORE_HOST may list several hosts: "uat.example.com,api.uat.example.com"
+  target.allowed_hosts = (target.allowed_hosts ?? []).flatMap((h: string) => String(h).split(",")).map((h: string) => h.trim()).filter(Boolean);
   if (process.env.IEXPLORE_START_URL && name !== "prod") target.start_url = process.env.IEXPLORE_START_URL;
   const model = raw.model ?? {};
   const provider = process.env.IEXPLORE_PROVIDER || model.provider || "anthropic";

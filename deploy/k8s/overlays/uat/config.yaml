@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: iexplore
+  namespace: iexplore
+data:
+  IEXPLORE_TARGET: uat
+  IEXPLORE_START_URL: https://<uat-host>/car-insurance/
+  IEXPLORE_HOST: <uat-host>                 # comma-separate extra hosts the journey uses
+  IEXPLORE_STATE_PREFIX: iexplore/uat-car   # separate learning from prod
+  IEXPLORE_ALLOW_SUBMISSION: "false"        # true once downstream effects of UAT quotes are understood
+  IEXPLORE_IGNORE_HTTPS_ERRORS: "false"     # true if UAT uses an internal CA
+  # UAT test plates (rego lookup is allowed on UAT); defaults are TEST001..TEST005
+  UAT_TEST_REGO_PRIYA: ""
+  UAT_TEST_REGO_GREG: ""
+  UAT_TEST_REGO_MEI: ""
+  UAT_TEST_REGO_DANIEL: ""
+  UAT_TEST_REGO_MARGARET: ""

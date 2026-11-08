@@ -42,15 +42,22 @@ targets:
     synthetic_query: { automated-test: "true" }
     tag_spa_routes: ${IEXPLORE_TAG_SPA_ROUTES:-false}
     start_url: ${IEXPLORE_START_URL:-https://uat.example.comparethemarket.com.au/car-insurance/}
+    # Comma-separated; subdomains are included. Add the quote/API hosts if the journey moves between them.
     allowed_hosts:
       - ${IEXPLORE_HOST:-uat.example.comparethemarket.com.au}
-    allow_quote_submission: true
+    # Off until blocked_request_patterns below list the real lead/CRM/insurer endpoints and you know what a
+    # UAT quote triggers downstream (emails, SMS, insurer panel calls). Then set IEXPLORE_ALLOW_SUBMISSION=true.
+    allow_quote_submission: ${IEXPLORE_ALLOW_SUBMISSION:-false}
+    boundary_steps: [applicant_details]      # only used while submission is off
+    # Internal UAT certificates signed by a private CA: Chromium won't trust them unless this is on.
+    ignore_https_errors: ${IEXPLORE_IGNORE_HTTPS_ERRORS:-false}
     basic_auth_user: ${UAT_BASIC_AUTH_USER:-}
     basic_auth_password: ${UAT_BASIC_AUTH_PASSWORD:-}
     user_agent_suffix: " CTM-PersonaBot/0.1"
     extra_headers_same_origin:
       X-Synthetic-Test: iexplore
     stop_before:
+      - submitting your name, email or phone number (contact details)
       - payment or card details
       - final purchase / "buy now" confirmation
       - handing over to an insurer's site

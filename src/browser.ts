@@ -156,6 +156,7 @@ export class BrowserSession {
     if (this.target.basic_auth_user) {
       ctx.httpCredentials = { username: this.target.basic_auth_user, password: this.target.basic_auth_password ?? "" };
     }
+    if (this.target.ignore_https_errors) ctx.ignoreHTTPSErrors = true; // internal UAT behind a private CA
     this.context = await this.browser.newContext(ctx);
     await this.context.route("**/*", (route) => this.route(route));
     if (Object.keys(this.tag).length && this.target.tag_spa_routes) {

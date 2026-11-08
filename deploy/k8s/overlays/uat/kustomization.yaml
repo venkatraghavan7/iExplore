@@ -1,0 +1,7 @@
+# UAT first: kubectl apply -k deploy/k8s/overlays/uat
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ../..
+patches:
+  - path: config.yaml

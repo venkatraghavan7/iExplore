@@ -12,6 +12,39 @@ CronJob (hourly, suspended until you're happy)
        └─ HTTPS    www.comparethemarket.com.au  (tagged ?automated-test=true)
 ```
 
+## Start on UAT (recommended)
+
+UAT sits inside the corporate network, so there's no WAF to negotiate. Use the UAT overlay instead of the base:
+
+```bash
+kubectl apply -k deploy/k8s/overlays/uat        # instead of: kubectl apply -k deploy/k8s
+```
+
+Fill in `deploy/k8s/overlays/uat/config.yaml`:
+
+| Setting | What to put |
+|---|---|
+| `IEXPLORE_START_URL` | the UAT car landing page, e.g. `https://<uat-host>/car-insurance/` |
+| `IEXPLORE_HOST` | the UAT host; comma-separate any other hosts the journey moves to (quote, API, auth) |
+| `IEXPLORE_STATE_PREFIX` | `iexplore/uat-car`, so UAT learning stays apart from prod. Don't copy the prod knowledge in |
+| `IEXPLORE_ALLOW_SUBMISSION` | leave `false` for the first runs (see below) |
+| `IEXPLORE_IGNORE_HTTPS_ERRORS` | `true` if UAT's certificate comes from an internal CA |
+| `UAT_TEST_REGO_*` | real UAT test plates; rego lookup is allowed on UAT |
+
+If UAT sits behind basic auth, add `UAT_BASIC_AUTH_USER` and `UAT_BASIC_AUTH_PASSWORD` to the `iexplore` secret.
+
+**Quote submission on UAT is off by default.** The bot explores up to the contact-details step and stops there, as on
+prod. Before turning it on, find out what a UAT quote triggers downstream (emails, SMS, insurer panel calls, CRM),
+add those endpoints to `blocked_request_patterns` under `targets.uat` in `config/bot.yaml`, rebuild, then set
+`IEXPLORE_ALLOW_SUBMISSION: "true"`. That unlocks the results page, where the price-consistency checks live.
+
+UAT-specific checks:
+
+- [ ] DNS: the pod resolves the UAT host (internal Route 53 zone or CoreDNS forwarding).
+- [ ] NetworkPolicy: the `iexplore` namespace may reach the UAT ingress, plus Bedrock and S3 endpoints.
+- [ ] If UAT runs in the same cluster, still use its normal hostname, not the Service name: the app, cookies
+      and the guardrails all expect the real host.
+
 ## 1. AWS, once
 
 ```bash
@@ -25,7 +58,8 @@ aws bedrock list-inference-profiles --region $REGION \
 aws ecr create-repository --repository-name iexplore --region $REGION
 aws s3api create-bucket --bucket $BUCKET --region $REGION --create-bucket-configuration LocationConstraint=$REGION
 
-# Seed the bucket with what the bot has already learned (2 prod sessions, 29 findings)
+# Prod only: seed the bucket with what the bot has already learned (2 prod sessions, 29 findings).
+# UAT starts empty and learns its own map.
 aws s3 sync knowledge s3://$BUCKET/iexplore/prod-car/knowledge
 aws s3 sync triage    s3://$BUCKET/iexplore/prod-car/triage
 ```
