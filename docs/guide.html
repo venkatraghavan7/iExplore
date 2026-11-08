@@ -274,24 +274,24 @@ footer { color: var(--muted); font-size: 13px; padding: 24px 0 48px; }
 
     <section id="code">
       <h2>Code map</h2>
-      <p class="lede">About 2,900 lines of TypeScript in <code>src/</code> (Node 20+, Playwright), plus YAML for personas, charters and config.</p>
+      <p class="lede">About 2,900 lines of TypeScript in <code>src/</code> (Node 20+, Playwright, the official Anthropic and Bedrock SDKs), plus YAML for personas, charters and config. It is a straight port of the Python persona-bot: same design, same knowledge files, same reports, checked side by side on the mock site and the production seed data.</p>
       <div class="tablewrap">
         <table>
           <thead><tr><th>File</th><th>Job</th><th style="text-align:right">Lines</th></tr></thead>
           <tbody>
-            <tr><td><code>knowledge.ts</code></td><td>Memory: journey map, finding ledger with dedup, impact score, hot spots, fragility, gaps, rewards, quality bar, briefs</td><td class="num">605</td></tr>
-            <tr><td><code>browser.ts</code></td><td>Playwright hands and eyes: pixel actions, guardrails, test tag, throttling, step capture, axe-core scan, telemetry</td><td class="num">580</td></tr>
-            <tr><td><code>triage.ts</code></td><td>Register (CSV), weekly cap and lanes, digest, triage pack (HTML), ADO client and Bug builder</td><td class="num">368</td></tr>
-            <tr><td><code>cli.ts</code></td><td>Commands: run, learn, coverage, evolve, triage, ado-sync, list, summarize</td><td class="num">327</td></tr>
-            <tr><td><code>agent.ts</code></td><td>The loop: screenshot, decide, act; batching, budgets, history trimming, re-checks, accessibility findings</td><td class="num">276</td></tr>
-            <tr><td><code>designer.ts</code></td><td>Strategy bandit, on-the-fly persona design with heuristic fallback, sanitising, promotion</td><td class="num">230</td></tr>
-            <tr><td><code>report.ts</code></td><td>Run report, accessibility table, JUnit, multi-run summary</td><td class="num">157</td></tr>
-            <tr><td><code>prompts.ts</code></td><td>System prompt: persona, test data, charter, learned context, quality bar, prod rules</td><td class="num">139</td></tr>
-            <tr><td><code>llm.ts</code></td><td>Provider adapter: Anthropic API / Bedrock, toolset vs legacy tool</td><td class="num">136</td></tr>
-            <tr><td><code>evolve.ts</code></td><td>Proposes permanent personas for untested branches (human review)</td><td class="num">94</td></tr>
-            <tr><td><code>tools.ts</code></td><td>Custom tools: navigate, page_signals, read_page_text, report_finding, verify_known_finding, finish_mission</td><td class="num">82</td></tr>
-            <tr><td><code>fakeModel.ts</code></td><td>Scripted model for <code>--dry-run</code> plumbing tests against <code>mock_site/</code></td><td class="num">79</td></tr>
-            <tr><td><code>config.ts</code></td><td>Loads <code>bot.yaml</code>, targets, personas, charters; env overrides</td><td class="num">77</td></tr>
+            <tr><td><code>knowledge.ts</code></td><td>Memory: journey map, finding ledger with dedup, impact score, hot spots, fragility, gaps, rewards, quality bar, briefs</td><td class="num">543</td></tr>
+            <tr><td><code>browser.ts</code></td><td>Playwright hands and eyes: pixel actions, guardrails, test tag, throttling, step capture, axe-core scan, telemetry</td><td class="num">524</td></tr>
+            <tr><td><code>triage.ts</code></td><td>Register (CSV), weekly cap and lanes, digest, triage pack (HTML), ADO client and Bug builder</td><td class="num">325</td></tr>
+            <tr><td><code>cli.ts</code></td><td>Commands: run, learn, coverage, evolve, triage, ado-sync, list, summarize</td><td class="num">274</td></tr>
+            <tr><td><code>agent.ts</code></td><td>The loop: screenshot, decide, act; batching, budgets, history trimming, re-checks, accessibility findings</td><td class="num">222</td></tr>
+            <tr><td><code>designer.ts</code></td><td>Strategy bandit, on-the-fly persona design with heuristic fallback, sanitising, promotion</td><td class="num">190</td></tr>
+            <tr><td><code>tools.ts</code></td><td>Custom tools: navigate, page_signals, read_page_text, report_finding, verify_known_finding, finish_mission</td><td class="num">183</td></tr>
+            <tr><td><code>report.ts</code></td><td>Run report, accessibility table, JUnit, multi-run summary</td><td class="num">151</td></tr>
+            <tr><td><code>llm.ts</code></td><td>Provider adapter: Anthropic API / Bedrock, toolset vs legacy tool</td><td class="num">132</td></tr>
+            <tr><td><code>prompts.ts</code></td><td>System prompt: persona, test data, charter, learned context, quality bar, prod rules</td><td class="num">131</td></tr>
+            <tr><td><code>evolve.ts</code></td><td>Proposes permanent personas for untested branches (human review)</td><td class="num">79</td></tr>
+            <tr><td><code>config.ts</code></td><td>Loads <code>bot.yaml</code>, targets, personas, charters; env overrides</td><td class="num">72</td></tr>
+            <tr><td><code>fakeModel.ts</code></td><td>Scripted model for <code>--dry-run</code> plumbing tests against <code>mock_site/</code></td><td class="num">58</td></tr>
           </tbody>
         </table>
       </div>
@@ -300,8 +300,9 @@ footer { color: var(--muted); font-size: 13px; padding: 24px 0 48px; }
         <div class="card"><h4>personas/car/</h4><p>5 fixed customers (Priya, Greg, Mei, Daniel, Margaret). Invented ones live in run folders; strong ones land in <code>proposed/</code>.</p></div>
         <div class="card"><h4>charters/car.yaml</h4><p>9 missions with oracles: happy path, lookup, resilience, results, trust, coverage sweep, hot spots, fragility, recheck.</p></div>
         <div class="card"><h4>config/bot.yaml</h4><p>Targets (prod, uat), guardrails, model, budgets, browser, impact and lanes, ADO.</p></div>
-        <div class="card"><h4>.github/workflows/</h4><p><code>iexplore.yml</code> (manual now, hourly later) and <code>ado-sync.yml</code> (manual, dry run by default).</p></div>
+        <div class="card"><h4>.github/workflows/</h4><p><code>iexplore.yml</code> (manual now, hourly later), <code>ado-sync.yml</code> (manual, dry run by default) and <code>ci.yml</code> (type check, unit tests and a mock-site dry run on every push).</p></div>
         <div class="card"><h4>knowledge/ · triage/</h4><p>Learned state, coverage heatmap, register, digest and evidence. In CI they live on the <code>bot-knowledge</code> branch.</p></div>
+        <div class="card"><h4>test/ · mock_site/</h4><p>Unit tests for the noise filters, accessibility grouping, CSV round-trip and persona sanitising (<code>npm test</code>), and a tiny Node mock site with planted defects (<code>npm run mock</code>).</p></div>
         <div class="card"><h4>seed/prod-car/</h4><p>The two live sessions so far (Mei on desktop, Jarrah on mobile) the knowledge base starts from.</p></div>
       </div>
     </section>
@@ -352,7 +353,9 @@ footer { color: var(--muted); font-size: 13px; padding: 24px 0 48px; }
       <p class="lede">The commands you'll actually use. Every run learns automatically unless you pass <code>--no-learn</code>.</p>
       <div class="code">
         <button class="copy" type="button" data-copy="cmds" id="copy-cmds">Copy</button>
-<pre id="cmds"><span class="c"># one dynamic session on prod (CI default)</span>
+<pre id="cmds"><span class="c"># set up once (then npm run build so npx iexplore works)</span>
+npm ci &amp;&amp; npx playwright install chromium &amp;&amp; npm run build
+<span class="c"># one dynamic session on prod (CI default)</span>
 npx iexplore run --dynamic
 <span class="c"># force a strategy, or pick a fixed persona/charter</span>
 npx iexplore run --dynamic --strategy fragility
@@ -384,6 +387,7 @@ npx iexplore run --target uat --dry-run</pre>
             <tr><td><code>impact.reach</code></td><td>estimates</td><td>Share of customers reaching each step; replace with funnel data</td></tr>
             <tr><td><code>impact.quality_rules</code></td><td>2 rules</td><td>Standing team rules added to the prompt</td></tr>
             <tr><td><code>model.keep_screenshots</code></td><td>3</td><td>Images kept in context: the main cost lever</td></tr>
+            <tr><td><code>IEXPLORE_BROWSER_CHANNEL</code></td><td>Playwright Chromium</td><td><code>chrome</code> uses the installed Chrome instead</td></tr>
             <tr><td><code>budgets.max_turns · max_minutes</code></td><td>60 · 15</td><td>Per-session ceilings</td></tr>
             <tr><td><code>browser.accessibility.axe</code></td><td>true</td><td>WCAG scan on every step</td></tr>
           </tbody>
@@ -393,7 +397,7 @@ npx iexplore run --target uat --dry-run</pre>
 
     <section id="next">
       <h2>Status and next</h2>
-      <p class="lede">Built, tested against a mock site, and run live twice on production by hand.</p>
+      <p class="lede">Built in TypeScript, tested against a mock site, and run live twice on production by hand.</p>
       <ul class="next">
         <li><b>To switch on:</b> add <code>ANTHROPIC_API_KEY</code> and run the <code>iexplore</code> workflow once by hand; uncomment the cron when happy.</li>
         <li><b>To connect ADO:</b> <code>ADO_PAT</code>, <code>ADO_ORG_URL</code>, <code>ADO_PROJECT</code>, then the <code>ado-sync</code> workflow as a dry run.</li>
