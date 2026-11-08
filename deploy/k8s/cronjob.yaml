@@ -1,0 +1,49 @@
+# One exploratory session per run. suspend: true keeps the hourly schedule OFF until you're happy;
+# run it by hand with:  kubectl -n iexplore create job iexplore-manual-$(date +%s) --from=cronjob/iexplore
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: iexplore
+  namespace: iexplore
+spec:
+  schedule: "17 * * * *"
+  timeZone: Australia/Brisbane
+  suspend: true
+  concurrencyPolicy: Forbid          # never two sessions at once (production rate limit)
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 5
+  jobTemplate:
+    spec:
+      backoffLimit: 0                 # a failed session is not retried; the next hour runs anyway
+      activeDeadlineSeconds: 1800
+      ttlSecondsAfterFinished: 86400
+      template:
+        metadata:
+          labels: { app: iexplore }
+        spec:
+          serviceAccountName: iexplore
+          restartPolicy: Never
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001           # pwuser in the Playwright image
+            fsGroup: 1001
+            seccompProfile: { type: RuntimeDefault }
+          containers:
+            - name: iexplore
+              image: iexplore:latest  # set by kustomization.yaml
+              imagePullPolicy: IfNotPresent
+              args: ["run"]
+              envFrom:
+                - configMapRef: { name: iexplore }
+                - secretRef: { name: iexplore, optional: true }
+              resources:
+                requests: { cpu: "1", memory: 3Gi }
+                limits: { cpu: "2", memory: 4Gi }
+              securityContext:
+                allowPrivilegeEscalation: false
+                capabilities: { drop: ["ALL"] }
+              volumeMounts:
+                - { name: dshm, mountPath: /dev/shm }   # Chromium crashes with the default 64 MB
+          volumes:
+            - name: dshm
+              emptyDir: { medium: Memory, sizeLimit: 1Gi }

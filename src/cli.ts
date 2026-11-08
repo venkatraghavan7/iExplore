@@ -222,6 +222,38 @@ async function cmdAdoSync(a: Args): Promise<number> {
   return 0;
 }
 
+/** Preflight: one tiny model call with the computer tool attached. Proves credentials, model access and tool support. */
+async function cmdCheck(a: Args): Promise<number> {
+  const { ModelClient } = await import("./llm.js");
+  const { CUSTOM_TOOLS } = await import("./tools.js");
+  const cfg = loadConfig(a.config, a.target);
+  const s = cfg.providerSettings;
+  console.log(`provider ${cfg.provider} · model ${s.model} · region ${s.region ?? "-"} · tool ${s.tool_version ?? "toolset"}`);
+  const mc = new ModelClient(cfg.provider, s, [1280, 800], 64);
+  const t0 = Date.now();
+  const turn = await mc.create("You are a connectivity check.", [{ role: "user", content: "Reply with the single word OK. Do not use any tools." }], CUSTOM_TOOLS);
+  console.log(`OK in ${Date.now() - t0} ms · reply "${turn.text.trim().slice(0, 40)}" · ${turn.usage.input_tokens} input tokens`);
+  const loc = (await import("./state.js")).stateFromEnv();
+  if (loc) {
+    const { pull } = await import("./state.js");
+    console.log(`state bucket s3://${loc.bucket}/${loc.prefix}: ${await pull(loc, ["knowledge"], "/tmp/iexplore-check")} knowledge file(s) readable`);
+  }
+  return 0;
+}
+
+/** S3-backed state for EKS: `state pull` before a run, `state push` after. Needs IEXPLORE_STATE_BUCKET. */
+async function cmdState(a: Args): Promise<number> {
+  const { pull, push, stateFromEnv } = await import("./state.js");
+  const loc = stateFromEnv();
+  if (!loc) { console.log("IEXPLORE_STATE_BUCKET is not set; nothing to do."); return 0; }
+  const [op, ...paths] = a._;
+  const where = `s3://${loc.bucket}/${loc.prefix}`;
+  if (op === "pull") { console.log(`Pulled ${await pull(loc, paths.length ? paths : ["knowledge", "triage"], a.out ?? ".")} file(s) from ${where}`); return 0; }
+  if (op === "push") { console.log(`Pushed ${await push(loc, paths.length ? paths : ["knowledge", "triage"])} file(s) to ${where}`); return 0; }
+  console.log("usage: iexplore state pull [paths...] [--out dir] | state push [paths...]");
+  return 2;
+}
+
 function cmdSummarize(a: Args): number {
   const cfg = loadConfig(a.config);
   console.log(summarize(a._[0] ?? "runs", cfg.budgets.fail_on ?? ["blocker", "major"]));
@@ -238,10 +270,10 @@ const OPTIONS: Record<string, Dict> = {
     dynamic: { type: "boolean" }, strategy: { type: "string" }, "no-learn": { type: "boolean" } },
   learn: {}, coverage: { print: { type: "boolean" } }, evolve: { n: { type: "string" } },
   triage: { runs: { type: "string", multiple: true }, "human-from": { type: "string" } },
-  "ado-sync": { apply: { type: "boolean" }, verbose: { type: "boolean" } }, list: {}, summarize: {},
+  "ado-sync": { apply: { type: "boolean" }, verbose: { type: "boolean" } }, list: {}, summarize: {}, state: {}, check: {},
 };
 const COMMANDS: Record<string, (a: Args) => number | Promise<number>> = {
-  run: cmdRun, learn: cmdLearn, coverage: cmdCoverage, evolve: cmdEvolve, triage: cmdTriage, "ado-sync": cmdAdoSync, list: cmdList, summarize: cmdSummarize,
+  run: cmdRun, learn: cmdLearn, coverage: cmdCoverage, evolve: cmdEvolve, triage: cmdTriage, "ado-sync": cmdAdoSync, list: cmdList, summarize: cmdSummarize, state: cmdState, check: cmdCheck,
 };
 const HELP = `iexplore <command> [options]
 
@@ -253,6 +285,8 @@ const HELP = `iexplore <command> [options]
   ado-sync   create ADO bugs for accepted findings (dry run unless --apply)
   list       personas and the charters they fit
   summarize  roll up a folder of runs (summarize runs/)
+  check      one tiny model call: proves credentials, model access and computer-tool support
+  state      pull | push learned state to S3 (EKS; needs IEXPLORE_STATE_BUCKET)
 
 Common: --vertical car  --target prod|uat  --config path  --knowledge dir  --out dir`;
 

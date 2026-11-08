@@ -1,0 +1,22 @@
+# Create ADO bugs for rows marked accept in the triage register (in S3).
+#   kubectl create -f deploy/k8s/ado-sync-job.yaml          dry run (prints the bugs it would create)
+# Change args to ["ado-sync", "--apply"] to create them; ticket ids are written back to the register in S3.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: iexplore-ado-sync-
+  namespace: iexplore
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 3600
+  template:
+    spec:
+      serviceAccountName: iexplore
+      restartPolicy: Never
+      containers:
+        - name: iexplore
+          image: <ACCOUNT_ID>.dkr.ecr.ap-southeast-2.amazonaws.com/iexplore:latest
+          args: ["ado-sync", "--verbose"]
+          envFrom:
+            - configMapRef: { name: iexplore }
+            - secretRef: { name: iexplore, optional: true }

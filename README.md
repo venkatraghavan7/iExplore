@@ -87,5 +87,9 @@ npx iexplore summarize runs/                      # SUMMARY.md + junit-all.xml a
   `bot-knowledge` branch. Manual for now; the hourly cron is commented out.
 - `.github/workflows/ado-sync.yml`: creates bugs for accepted rows (dry run unless `apply`).
 - `.github/workflows/ci.yml`: typecheck, unit tests and a mock-site dry run on every push.
+- `.github/workflows/image.yml`: builds the runner image and pushes it to ECR.
+
+**On EKS with Bedrock:** see [deploy/EKS.md](deploy/EKS.md). It runs as a CronJob (suspended until you switch it on),
+keeps learned state in S3, and authenticates to Bedrock with an IAM role (IRSA or Pod Identity), no keys.
 
 Secrets/vars: `ANTHROPIC_API_KEY` or `AWS_BEDROCK_ROLE_ARN` + `BEDROCK_MODEL_ID`; `ADO_PAT`, `ADO_ORG_URL`, `ADO_PROJECT`.

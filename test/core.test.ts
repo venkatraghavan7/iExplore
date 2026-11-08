@@ -81,3 +81,25 @@ test("sanitise forces fictional data and bounded interaction settings", () => {
 test("seeded Rng is reproducible", () => {
   assert.equal(new Rng(42).random(), new Rng(42).random());
 });
+
+test("S3 state: push then pull round-trips files under the prefix", async () => {
+  const { push, pull } = await import("../src/state.js");
+  const { mkdirSync, writeFileSync, readFileSync } = await import("node:fs");
+  const store = new Map<string, Uint8Array>();
+  const fake: any = { send: async (cmd: any) => {
+    const n = cmd.constructor.name, i = cmd.input;
+    if (n === "PutObjectCommand") { store.set(i.Key, new Uint8Array(i.Body)); return {}; }
+    if (n === "ListObjectsV2Command") return { Contents: [...store.keys()].filter((k) => k.startsWith(i.Prefix)).map((Key) => ({ Key })), IsTruncated: false };
+    if (n === "GetObjectCommand") return { Body: { transformToByteArray: async () => store.get(i.Key) } };
+  } };
+  const src = mkdtempSync(join(tmpdir(), "st-")), dst = mkdtempSync(join(tmpdir(), "st-"));
+  mkdirSync(join(src, "triage", "evidence"), { recursive: true });
+  writeFileSync(join(src, "triage", "prod-car.csv"), "a,b\r\n");
+  writeFileSync(join(src, "triage", "evidence", "K001.png"), "png");
+  const loc = { bucket: "b", prefix: "iexplore/prod-car" };
+  assert.equal(await push(loc, ["triage"], src, fake), 2);
+  assert.ok(store.has("iexplore/prod-car/triage/evidence/K001.png"));
+  assert.equal(await pull(loc, ["triage"], dst, fake), 2);
+  assert.equal(readFileSync(join(dst, "triage", "prod-car.csv"), "utf8"), "a,b\r\n");
+  assert.equal(await pull(loc, ["triage/prod-car.csv"], join(dst, "one"), fake), 1);
+});

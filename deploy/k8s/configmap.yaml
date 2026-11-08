@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: iexplore
+  namespace: iexplore
+data:
+  IEXPLORE_PROVIDER: bedrock
+  AWS_REGION: ap-southeast-2
+  # From: aws bedrock list-inference-profiles --region ap-southeast-2 (pick the au.* Claude Sonnet profile)
+  BEDROCK_MODEL_ID: <au-inference-profile-id-for-claude-sonnet>
+  IEXPLORE_TARGET: prod
+  IEXPLORE_VERTICAL: car
+  IEXPLORE_MODE: dynamic            # dynamic | adaptive
+  IEXPLORE_STRATEGY: ""             # blank = learned; or explore|hotspot|fragility|recheck|journey
+  IEXPLORE_ALLOW_SUBMISSION: "false"
+  IEXPLORE_STATE_BUCKET: <bucket-name>
+  IEXPLORE_STATE_PREFIX: iexplore/prod-car
+  ADO_ORG_URL: ""                   # https://dev.azure.com/<org>
+  ADO_PROJECT: ""

@@ -1,0 +1,20 @@
+# Preflight: Bedrock credentials, model access, computer-tool support and S3 state.
+#   kubectl create -f deploy/k8s/check-job.yaml
+#   kubectl -n iexplore logs job/<name printed by the create command>
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: iexplore-check-
+  namespace: iexplore
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 3600
+  template:
+    spec:
+      serviceAccountName: iexplore
+      restartPolicy: Never
+      containers:
+        - name: iexplore
+          image: <ACCOUNT_ID>.dkr.ecr.ap-southeast-2.amazonaws.com/iexplore:latest
+          args: ["check"]
+          envFrom: [{ configMapRef: { name: iexplore } }]
