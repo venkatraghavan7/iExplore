@@ -1,0 +1,22 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci && npx playwright install --with-deps chromium
+      - run: npm run typecheck && npm test
+      - name: Dry run against the mock site (no API calls)
+        env:
+          IEXPLORE_TARGET: uat
+          IEXPLORE_START_URL: http://localhost:8765/car-insurance/
+          IEXPLORE_HOST: localhost
+        run: |
+          npm run mock & sleep 2
+          npx tsx src/cli.ts run --persona first-car-priya --charter quote-happy-path --dry-run --no-learn

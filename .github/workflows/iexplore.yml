@@ -1,0 +1,117 @@
+name: iexplore
+
+on:
+  # Always-on is OFF until the first manual runs look right. To enable, uncomment:
+  # schedule:
+  #   - cron: "17 * * * *"        # hourly; the knowledge base picks the next persona/charter
+  workflow_dispatch:
+    inputs:
+      target:   { description: "prod | uat", required: false, default: prod }
+      mode:     { description: "dynamic (invent persona) | adaptive (pick from fixed personas)", required: false, default: dynamic }
+      strategy: { description: "Force a strategy for dynamic: explore|hotspot|fragility|recheck|journey (blank = learned)", required: false }
+      persona:  { description: "Fixed persona id (adaptive mode; blank = learned)", required: false }
+      charter:  { description: "Charter id (blank = adaptive)", required: false }
+      provider: { description: "anthropic | bedrock", required: false, default: bedrock }
+
+permissions:
+  id-token: write   # GitHub OIDC -> AWS role for Bedrock
+  contents: write   # push learned knowledge + triage register to the bot-knowledge branch
+
+concurrency:
+  group: iexplore
+  cancel-in-progress: false
+
+jobs:
+  run:
+    # Production is public, so ubuntu-latest works. For UAT (usually internal) use a self-hosted runner
+    # inside the network and set vars.RUNNER_LABEL.
+    runs-on: ${{ vars.RUNNER_LABEL || 'ubuntu-latest' }}
+    timeout-minutes: 30
+    env:
+      IEXPLORE_TARGET: ${{ inputs.target || vars.IEXPLORE_TARGET || 'prod' }}
+      IEXPLORE_ALLOW_SUBMISSION: ${{ vars.IEXPLORE_ALLOW_SUBMISSION || 'false' }}
+      IEXPLORE_PROVIDER: ${{ inputs.provider || vars.IEXPLORE_PROVIDER || 'bedrock' }}
+      IEXPLORE_START_URL: ${{ vars.IEXPLORE_START_URL }}
+      IEXPLORE_HOST: ${{ vars.IEXPLORE_HOST }}
+      BEDROCK_MODEL_ID: ${{ vars.BEDROCK_MODEL_ID }}
+      AWS_REGION: ap-southeast-2
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      UAT_BASIC_AUTH_USER: ${{ secrets.UAT_BASIC_AUTH_USER }}
+      UAT_BASIC_AUTH_PASSWORD: ${{ secrets.UAT_BASIC_AUTH_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # The learning state lives on its own branch so bot commits never touch main.
+      - name: Load knowledge + triage register
+        run: |
+          if git ls-remote --exit-code --heads origin bot-knowledge >/dev/null; then
+            git fetch origin bot-knowledge
+            git checkout origin/bot-knowledge -- knowledge triage || true
+          fi
+
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+
+      - run: npm ci && npx playwright install --with-deps chromium
+
+      - name: AWS credentials (OIDC, no stored keys)
+        if: env.IEXPLORE_PROVIDER == 'bedrock'
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_BEDROCK_ROLE_ARN }}
+          aws-region: ap-southeast-2
+
+      - name: Run iExplore session
+        run: |
+          MODE="${{ inputs.mode || vars.IEXPLORE_MODE || 'dynamic' }}"
+          ARGS="--vertical car --out runs --adaptive"
+          if [ "$MODE" = "dynamic" ]; then ARGS="$ARGS --dynamic"; fi
+          if [ -n "${{ inputs.strategy }}" ]; then ARGS="$ARGS --strategy ${{ inputs.strategy }}"; fi
+          if [ -n "${{ inputs.persona }}" ]; then ARGS="$ARGS --persona ${{ inputs.persona }}"; fi
+          if [ -n "${{ inputs.charter }}" ]; then ARGS="$ARGS --charter ${{ inputs.charter }}"; fi
+          npx tsx src/cli.ts run $ARGS
+
+      - name: Coverage + triage refresh
+        if: always()
+        run: |
+          npx tsx src/cli.ts coverage --vertical car --out knowledge
+          npx tsx src/cli.ts triage --vertical car --runs runs seed/prod-car
+          cat triage/digest.md >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          npx tsx src/cli.ts summarize runs >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          sed -n '1,30p' knowledge/coverage.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Save knowledge to bot-knowledge branch
+        if: always()
+        run: |
+          git config user.name "iexplore"
+          git config user.email "iexplore@users.noreply.github.com"
+          REG="triage/${IEXPLORE_TARGET}-car.csv"
+          # Pick up triage edits people made on the branch while this run was going, then save.
+          if git fetch origin bot-knowledge 2>/dev/null; then
+            git show "origin/bot-knowledge:$REG" > /tmp/latest.csv 2>/dev/null || true
+          fi
+          npx tsx src/cli.ts triage --vertical car --runs runs seed/prod-car --human-from /tmp/latest.csv >/dev/null
+          mkdir -p /tmp/out && cp -r knowledge triage /tmp/out/
+          if [ -d personas/car/proposed ]; then cp -r personas/car/proposed /tmp/out/proposed; fi
+          if git rev-parse --verify origin/bot-knowledge >/dev/null 2>&1; then
+            git checkout -B bot-knowledge origin/bot-knowledge
+          else
+            git checkout --orphan bot-knowledge && git rm -rfq .
+          fi
+          rm -rf knowledge triage && cp -r /tmp/out/knowledge /tmp/out/triage .
+          if [ -d /tmp/out/proposed ]; then mkdir -p personas-proposed && cp -r /tmp/out/proposed/* personas-proposed/; fi
+          git add knowledge triage personas-proposed 2>/dev/null || git add knowledge triage
+          git commit -m "iexplore: learn from run ${{ github.run_id }}" || echo "nothing to commit"
+          git push origin bot-knowledge
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: iexplore-run-${{ github.run_id }}
+          path: |
+            runs/
+            knowledge/coverage.html
+            triage/
+          retention-days: 30

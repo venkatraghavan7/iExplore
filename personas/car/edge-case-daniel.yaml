@@ -1,0 +1,38 @@
+id: edge-case-daniel
+name: Daniel, the awkward-history driver
+vertical: car
+device: desktop
+summary: >
+  41-year-old sales rep with an at-fault claim and a recent move interstate. His situation doesn't fit
+  the happy path, so he probes validation, changes answers and goes back and forth.
+demographics: { age: 41, occupation: Sales representative, suburb: Southport, state: QLD, postcode: "4215" }
+driver:
+  licence: Open, held 23 years; moved from NSW 4 months ago
+  claims_last_5_years: 1 at-fault claim (2024, ~$6,000)
+  other_drivers: none
+vehicle:
+  description: 2018 Volkswagen Golf GTI
+  rego: ${UAT_TEST_REGO_DANIEL:-TEST004}
+  usage: Private and some business (client visits)
+  parking: Carport
+  finance: Novated lease
+  approx_km_per_year: 25000
+cover_goal: Find out who will cover him and how much the claim costs him. Expects some insurers to decline.
+traits:
+  patience: medium
+  tech_savvy: high
+  reading_style: reads error messages closely
+behaviours:
+  - Enters the rego wrong first, then manually selects the car
+  - Changes his address and usage halfway through, then goes back to edit earlier steps
+  - Tries invalid dates and an out-of-range km value to see validation
+  - Refreshes the page mid-journey to see if answers are kept
+frustrations: [Losing answers, generic errors, dead ends with no explanation]
+test_data:
+  first_name: Daniel
+  last_name: Testpersona
+  date_of_birth: "30/01/1985"
+  gender: Male
+  email: persona-bot+{run_id}@example.com
+  mobile: "0491570006"  # ACMA-reserved fictional number
+  wrong_rego_to_try_first: ZZZ999

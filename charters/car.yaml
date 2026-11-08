@@ -1,0 +1,129 @@
+# Exploratory test charters for the car vertical (session-based test management style).
+# A run = one persona x one charter. `personas:` limits a charter to specific personas (omit = any).
+# Oracles are the "how do I know it's wrong" heuristics the model applies.
+
+charters:
+  - id: quote-happy-path
+    mission: >
+      Get a car insurance comparison for your own situation, from the landing page to the results page.
+      Judge the results as you would if you were really buying.
+    areas: [landing page, vehicle lookup, driver details, cover options, results]
+    oracles:
+      - Every answer you gave is reflected correctly in the summary/results (car, address, drivers, usage)
+      - Prices are shown clearly with annual vs monthly labelled; totals add up
+      - Results relate to what you asked for (cover type, excess)
+      - Sponsored or featured results are labelled
+      - General advice warning, PDS/TMD links and key exclusions are visible before you would commit
+    time_box_minutes: 15
+    max_turns: 60
+
+  - id: vehicle-lookup-explore
+    mission: >
+      Explore how the site identifies your car: rego lookup, a wrong rego, then manual make/model/year/variant
+      selection. Find where the lookup misleads, dead-ends or loses your choice.
+    areas: [rego lookup, manual vehicle selection, vehicle confirmation, modifications/accessories]
+    oracles:
+      - Wrong or unknown rego gives a clear, helpful message and a path forward
+      - Manual selection lists are complete, ordered sensibly and searchable; variant matches your car
+      - Confirmed vehicle details stay correct on later pages
+      - Modifications/accessories questions make sense for this car
+    time_box_minutes: 12
+    max_turns: 50
+
+  - id: form-resilience
+    mission: >
+      Try to break the question flow the way a real, slightly chaotic customer would: change answers, go back with
+      the browser and the site's own buttons, refresh mid-way, enter invalid dates/values, then complete the quote.
+    areas: [validation messages, navigation and state, edit answers, refresh/back]
+    oracles:
+      - Validation is specific, appears next to the field, and is announced clearly
+      - Going back or refreshing keeps earlier answers (or clearly tells you it didn't)
+      - Editing an earlier answer updates everything that depends on it
+      - No raw error codes, blank screens or stuck spinners
+    personas: [edge-case-daniel, tradie-greg, family-mei]
+    time_box_minutes: 15
+    max_turns: 70
+
+  - id: results-scrutiny
+    mission: >
+      Get to the results page, then scrutinise it: sort, filter, change excess and cover type, open policy details
+      for at least three results and compare each to its summary card. Decide which you'd pick and why.
+    areas: [results list, sort/filter, excess and cover controls, policy detail, PDS/TMD links]
+    oracles:
+      - Card price, detail price and any monthly figure agree
+      - Sorting and filters actually do what they say
+      - Changing excess moves price in the expected direction
+      - Inclusions shown on the card match the detail view
+      - Disclosures (sponsored, general advice, how we're paid) are present and readable
+    personas: [family-mei, tradie-greg, retiree-margaret]
+    time_box_minutes: 15
+    max_turns: 60
+
+  - id: trust-and-clarity
+    mission: >
+      As this persona, decide whether you trust this site enough to give your details and act on the results.
+      Pay attention to wording, data requests, privacy, pop-ups, contact consent and how easy it is to read and tap.
+    areas: [landing page, data/contact requests, privacy and consent, copy and jargon, mobile layout, accessibility]
+    oracles:
+      - Each personal-data request explains why it's needed; consent is not pre-ticked
+      - Jargon (excess, agreed/market value, PDS) is explained where it appears
+      - Tap targets and text are usable on this device; nothing is cut off or overlapping
+      - No dark patterns: fake urgency, confusing opt-outs, hidden costs
+    personas: [retiree-margaret, first-car-priya]
+    time_box_minutes: 12
+    max_turns: 50
+
+  - id: coverage-sweep
+    mission: >
+      Increase test coverage. Work through the journey and, wherever it is still realistic for you, take the
+      untried branches listed in your learned context rather than your usual answers (e.g. a different finance,
+      usage, parking or licence option), checking that each branch leads somewhere sensible. Note any branch you
+      could not take and why.
+    areas: [any step with untried branches, follow-up questions each branch triggers]
+    oracles:
+      - Every option leads to a sensible next question (no dead ends, loops or skipped questions)
+      - Follow-up questions match the branch taken (e.g. lease -> lease questions)
+      - Help text and labels for the less-common branches are as clear as for the common ones
+      - Answers from unusual branches still appear correctly in later summaries
+    time_box_minutes: 15
+    max_turns: 70
+
+  - id: hot-spot-deep-dive
+    mission: >
+      Go straight to the hot spots in your learned context and dig in. At each one, vary your answers, the order
+      you fill things in, and how you correct mistakes, to find what triggers the problem and how far it spreads.
+      Report root-cause clues (which input or sequence causes it), not just symptoms.
+    areas: [hot-spot steps, the steps just before and after them]
+    oracles:
+      - The same input always produces the same result
+      - A problem on one step doesn't corrupt answers or prices on later steps
+      - Error handling explains what went wrong and how to fix it
+    time_box_minutes: 15
+    max_turns: 70
+
+  - id: fragility-probe
+    mission: >
+      Stress the fragile steps the way real people accidentally do. Act out your persona's interaction habits
+      (fast typing, double-clicks, back button, refreshing while slow pages load, switching answers quickly) under
+      the network and device conditions you have. Find where the journey loses data, double-submits, scrambles
+      input, gets stuck or shows the wrong state.
+    areas: [fragile steps, transitions between steps, any field with input masking or auto-advance]
+    oracles:
+      - What you typed is exactly what is stored and shown back
+      - A double-click or quick tap never answers two questions
+      - Back/refresh keeps answers or clearly explains that it didn't
+      - Slow responses show progress and never leave a blank or frozen screen without explanation
+    time_box_minutes: 15
+    max_turns: 80
+
+  - id: regression-recheck
+    mission: >
+      Re-verify the known open findings listed in your learned context. Travel the shortest realistic path to
+      each finding's step, try to reproduce it exactly, and record the result with verify_known_finding. Only use
+      report_finding for genuinely new issues you notice on the way.
+    areas: [steps of known open findings]
+    oracles:
+      - The known finding reproduces as described, or it doesn't
+      - The fix (if it no longer reproduces) didn't break the neighbouring behaviour
+    time_box_minutes: 12
+    max_turns: 60

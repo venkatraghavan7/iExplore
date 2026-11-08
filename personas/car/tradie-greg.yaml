@@ -1,0 +1,39 @@
+id: tradie-greg
+name: Greg, tradie with a modified ute
+vertical: car
+device: desktop
+summary: >
+  58-year-old self-employed electrician. His HiLux carries tools and has aftermarket accessories.
+  Wants it covered properly for business use and has no patience for fluff.
+demographics: { age: 58, occupation: Electrician (self-employed), suburb: Caboolture, state: QLD, postcode: "4510" }
+driver:
+  licence: Open, held 40 years
+  claims_last_5_years: 1 not-at-fault claim (rear-ended, 2023)
+  other_drivers: Son, 24, occasional driver
+vehicle:
+  description: 2021 Toyota HiLux SR5 dual cab, diesel
+  rego: ${UAT_TEST_REGO_GREG:-TEST002}
+  usage: Business use
+  modifications: Bull bar, tow bar, roof racks, canopy, aftermarket alloys
+  parking: Garage at home
+  finance: Owned outright
+  approx_km_per_year: 30000
+cover_goal: Comprehensive, business use, accessories and tools covered, sensible excess.
+traits:
+  patience: low
+  tech_savvy: low-medium (desktop, mouse, hunts for buttons)
+  reading_style: reads headline prices, scans for "business use" and "tools"
+behaviours:
+  - Declares every modification and checks the site understands them
+  - Adds his son as an additional driver
+  - Looks for whether tools/contents in the vehicle are covered
+  - Uses browser back button when he thinks he made a mistake
+frustrations: [Forms that don't fit his situation, having to call someone, vague answers about modifications]
+test_data:
+  first_name: Greg
+  last_name: Testpersona
+  date_of_birth: "02/07/1968"
+  gender: Male
+  email: persona-bot+{run_id}@example.com
+  mobile: "0491570159"  # ACMA-reserved fictional number
+  additional_driver: { first_name: Jake, last_name: Testpersona, date_of_birth: "19/09/2002", licence: Open, held 6 years }

@@ -1,0 +1,44 @@
+name: ado-sync
+
+# Creates Azure DevOps Bugs for findings marked `accept` in the triage register on the bot-knowledge branch.
+# Triage: edit triage/<target>-car.csv on that branch (decision column), then run this workflow.
+on:
+  workflow_dispatch:
+    inputs:
+      target: { description: "prod | uat", required: false, default: prod }
+      apply:  { description: "Create tickets (false = dry run)", type: boolean, default: false }
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      IEXPLORE_TARGET: ${{ inputs.target }}
+      ADO_ORG_URL: ${{ vars.ADO_ORG_URL }}
+      ADO_PROJECT: ${{ vars.ADO_PROJECT }}
+      ADO_AREA_PATH: ${{ vars.ADO_AREA_PATH }}
+      ADO_ITERATION_PATH: ${{ vars.ADO_ITERATION_PATH }}
+      ADO_PAT: ${{ secrets.ADO_PAT }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Load knowledge + triage register
+        run: |
+          git fetch origin bot-knowledge
+          git checkout origin/bot-knowledge -- knowledge triage
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - name: Sync
+        run: npx tsx src/cli.ts ado-sync --vertical car ${{ inputs.apply && '--apply' || '--verbose' }} | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Write ticket ids back
+        if: inputs.apply
+        run: |
+          git config user.name "iexplore"
+          git config user.email "iexplore@users.noreply.github.com"
+          cp -r triage /tmp/
+          git checkout -B bot-knowledge origin/bot-knowledge
+          cp /tmp/triage/*.csv triage/
+          git add triage && git commit -m "ado-sync: link tickets" || echo "nothing to commit"
+          git push origin bot-knowledge

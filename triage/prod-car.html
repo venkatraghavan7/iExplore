@@ -1,0 +1,436 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>iExplore triage: Compare the Market (production) · car</title><style>
+:root{--bg:#fbfaf8;--fg:#1d1d1b;--mut:#6b6a66;--line:#e6e3dd;--card:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#191917;--fg:#ecebe7;--mut:#9a9893;--line:#33322f;--card:#222220}}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1000px;margin:0 auto;padding:28px 20px} h1{font-size:22px;margin:0} h2{font-size:16px;margin:28px 0 10px}
+.k{color:var(--mut);font-size:12px} table{width:100%;border-collapse:collapse} td,th{padding:7px 6px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+.n{font-weight:700;text-align:right;width:40px} .kpis{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.kpis div{border:1px solid var(--line);border-radius:10px;padding:8px 12px} .kpis b{font-size:18px;margin-right:6px}
+.filters button{border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:999px;padding:4px 12px;margin:0 6px 6px 0;cursor:pointer}
+.filters button.on{background:var(--fg);color:var(--bg)}
+.card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--line);border-radius:10px;padding:14px 16px;margin:12px 0}
+.sev-blocker{border-left-color:#b91c1c} .sev-major{border-left-color:#ea580c} .sev-minor{border-left-color:#ca8a04} .sev-cosmetic,.sev-observation{border-left-color:#64748b}
+.card header{display:flex;gap:10px;align-items:center;font-size:12px;color:var(--mut)} .sev{font-weight:700;text-transform:uppercase}
+.dec,.q{border:1px solid var(--line);border-radius:999px;padding:0 8px} .q-triage{font-weight:700} .imp{font-weight:600} .tk{margin-left:auto} .flag{color:#b45309;font-weight:600}
+h3{margin:6px 0 4px;font-size:15px} dl{margin:8px 0} dt{font-weight:600;font-size:12px;color:var(--mut)} dd{margin:0 0 6px}
+img{max-width:100%;border:1px solid var(--line);border-radius:6px;margin-top:6px} pre{white-space:pre-wrap;font-size:12px}
+</style></head><body><main>
+<h1>iExplore triage: Compare the Market (production) · car</h1>
+<div class="k">Triage this list in the register CSV (column <code>decision</code>), then run <code>npx iexplore ado-sync</code>.</div>
+<div class="kpis"><div><b>23</b>pending</div><div><b>0</b>accepted</div>
+<div><b>0</b>rejected</div><div><b>0</b>duplicate</div><div><b>0</b>needs info</div>
+<div><b>47%</b>branch coverage</div></div>
+<h2>This week</h2><pre class='digest'># Weekly quality digest · prod car · 2026-W45
+
+- **Needs a decision:** 6 (admitted this week 6/5)
+- **Below the line:** 17 confirmed lower-impact findings, held in the digest
+- **Waiting for a second sighting:** 6 candidates
+- **Possibly fixed** (ticketed, no longer reproduces): 0
+- **Triage acceptance rate:** no decisions yet (target 50% or higher; lower means the bot is too noisy)
+- **Sessions this week:** 2
+
+## Needs a decision (highest impact first)
+
+- **K002** · impact 27.6 · major · Year of birth scrambled when typed quickly (1991 saved as 1919) (`/car-insurance/journey/regular_driver_dob`)
+- **K001** · impact 26.4 · major · Next question's option renders under the cursor and looks pre-selected (mis-click risk on risk answers) (`/car-insurance/journey/regular_driver_claims`)
+- **K003** · impact 19.7 · major · Single checkbox bundles privacy/FSG acceptance with marketing email/SMS and partner call consent (`/car-insurance/journey/applicant_details`)
+- **K020** · impact 19.0 · minor · Accessibility: Invalid ARIA markup, so the tab state may be announced wrongly (car-insurance, WCAG 4.1.2) (`/car-insurance`)
+- **K007** · impact 13.2 · minor · Enter key doesn't submit text steps; Next only enables on blur (`/car-insurance/journey/annual_kms`)
+- **K008** · impact 12.5 · minor · DOB inputs have no labels; address page title says 'Cover Type' (`/car-insurance/journey/regular_driver_dob`)
+
+## Accessibility scan: 10 failing WCAG rule(s)
+
+- K020 · triage (reserved slot) · Accessibility: Invalid ARIA markup, so the tab state may be announced wrongly (car-insurance, WCAG 4.1.2)
+- K022 · digest · Accessibility: An ARIA value is malformed (e.g. ' true ' with spaces) (car-insurance, WCAG 4.1.2)
+- K023 · digest · Accessibility: Text too faint to read comfortably (15 steps, WCAG 1.4.3)
+- K027 · digest · Accessibility: A scrolling box can't be reached or scrolled with the keyboard (car-insurance, WCAG 2.1.1)
+- K029 · digest · Accessibility: Tap targets are too small to hit reliably (car_series, WCAG 2.5.8)
+- K026 · digest · Accessibility: A control is nested inside another, so focus and announcements break (start, WCAG 4.1.2)
+- K024 · digest · Accessibility: A form field has no name, so it's announced as just 'edit text' (car_address, WCAG 1.3.1 / 4.1.2)
+- K025 · digest · Accessibility: A link looks like plain text (colour is the only difference) (car_address, WCAG 1.4.1)
+- K028 · digest · Accessibility: A dropdown has no name; users don't know what they're choosing (car_address, WCAG 4.1.2)
+- K021 · digest · Accessibility: Tabs aren't inside a tab list, so they aren't announced as tabs (standard_options, WCAG 1.3.1)
+
+## Below the line, by category
+
+- **accessibility** (9): K022 Accessibility: An ARIA value is malformed (e.g. ' true ' with spaces) ; K023 Accessibility: Text too faint to read comfortably (15 steps, WCAG 1.4.; K027 Accessibility: A scrolling box can't be reached or scrolled with the k …
+- **content** (3): K006 Cover help text mislabels TPFT and states &lt;$20k rule that the journey ; K011 Copy: &quot;KM's&quot; and &quot;drivers licence&quot;; K009 'Car Park' and 'Parking Lot' offered as separate parking options
+- **performance** (1): K004 Every journey step shows 4-5s blank grey screen; journey/initial re-po
+- **usability** (1): K005 Two identical variants differ only by 'Release: January' vs 'May' with
+- **functional** (1): K010 'None' years offered after answering Yes to comprehensive cover in las
+- **data** (1): K013 Production journey record + marketing call created before any contact 
+- **visual** (1): K012 Empty email field shown green/valid before input
+
+## Waiting for a second sighting
+
+- K014 · major · Manual address: suburb silently pre-selected (first alphabetical) after postcode (`/car-insurance/journey/car_address`)
+- K016 · minor · Modifications help covers the whole question on mobile and doesn't say whether accessories count (`/car-insurance/journey/modifications`)
+- K017 · minor · Small inline text links need a precise tap on mobile ('click here', 'Enter it manually') (`/car-insurance/journey/car_badge`)
+- K015 · minor · Typing a whole date of birth in one go keeps only the day; the rest is silently lost (`/car-insurance/journey/youngest_driver_dob`)
+- K019 · observation · 'Yes' to unrepaired hail damage has no follow-up or explanation of impact (`/car-insurance/journey/accident_hail_damage`)
+- K018 · observation · Foreign licence branch asks nothing about country or time driving in Australia (`/car-insurance/journey/youngest_driver_licence_age`)
+
+## Quality bar the bot is following
+
+- Don't report copy or spelling nits unless they change meaning or appear on the landing page.
+- Group repeated issues of the same kind into one finding that lists every step affected.
+</pre>
+<h2>Problem areas (hot spots)</h2><table><tr><th>Score</th><th>Step</th><th>Why</th><th>Findings</th></tr><tr><td class='n'>10.5</td><td><b>What's the address where the KIA is normally kept at night?</b><div class='k'>/car-insurance/journey/car_address</div></td><td>4 open finding(s), worst major; friction (errors / slow / many actions)</td><td class='k'>K014, K024, K025, K028</td></tr><tr><td class='n'>7</td><td><b>What are the policy holder's contact details?</b><div class='k'>/car-insurance/journey/applicant_details</div></td><td>2 open finding(s), worst major; friction (errors / slow / many actions)</td><td class='k'>K003, K012</td></tr><tr><td class='n'>6</td><td><b>Compare Car Insurance Quotes</b><div class='k'>/car-insurance</div></td><td>3 open finding(s), worst minor</td><td class='k'>K020, K022, K027</td></tr><tr><td class='n'>6</td><td><b>How many motor insurance claims, regardless of fault, has the regular driver had in the last 5 years?</b><div class='k'>/car-insurance/journey/regular_driver_claims</div></td><td>1 open finding(s), worst major; friction (errors / slow / many actions)</td><td class='k'>K001</td></tr><tr><td class='n'>4</td><td><b>Select the KIA series and specifics from the list below:</b><div class='k'>/car-insurance/journey/car_series</div></td><td>2 open finding(s), worst minor</td><td class='k'>K005, K029</td></tr><tr><td class='n'>4</td><td><b>And their date of birth?</b><div class='k'>/car-insurance/journey/regular_driver_dob</div></td><td>1 open finding(s), worst minor; friction (errors / slow / many actions)</td><td class='k'>K008</td></tr><tr><td class='n'>3</td><td><b>Roughly how many kilometres is the KIA driven per year?</b><div class='k'>/car-insurance/journey/annual_kms</div></td><td>2 open finding(s), worst minor</td><td class='k'>K007, K011</td></tr><tr><td class='n'>3</td><td><b>What level of cover are you looking for?</b><div class='k'>/car-insurance/journey/cover_type</div></td><td>1 open finding(s), worst minor; friction (errors / slow / many actions)</td><td class='k'>K006</td></tr></table>
+<h2>Findings</h2>
+<div class="filters"><button data-f='triage queue'>triage queue</button><button data-f='digest'>digest</button><button data-f='all'>all</button><button data-f='pending'>pending</button><button data-f='accept'>accept</button><button data-f='reject'>reject</button><button data-f='duplicate'>duplicate</button><button data-f='needs-info'>needs-info</button></div>
+<article class='card sev-major' data-decision='pending' data-queue='triage'>
+<header><span class='sev'>major</span><span class='fp'>K002</span>
+<span class='imp'>impact 27.6</span><span class='q q-triage'>triage</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Year of birth scrambled when typed quickly (1991 saved as 1919)</h3>
+<div class='k'>/car-insurance/journey/regular_driver_dob · data · seen 1× (2026-11-08 → 2026-11-08) · family-mei</div>
+<dl><dt>Observed</dt><dd>Typing '1991' in YYYY at normal automated speed produced '1919'; typing slowly worked. Day field also silently dropped extra digits instead of advancing.</dd><dt>Expected</dt><dd>Input mask preserves keystroke order at any speed; DOB auto-advances or accepts DDMMYYYY.</dd>
+
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Year of birth scrambled when typed quickly (1991 saved as 1919)
+Severity: 2 - High · Priority: 2
+Tags: iexplore; iexplore-K002; data
+
+Step: /car-insurance/journey/regular_driver_dob
+Observed: Typing '1991' in YYYY at normal automated speed produced '1919'; typing slowly worked. Day field also silently dropped extra digits instead of advancing.
+Expected: Input mask preserves keystroke order at any speed; DOB auto-advances or accepts DDMMYYYY.</pre></details></article><article class='card sev-major' data-decision='pending' data-queue='triage'>
+<header><span class='sev'>major</span><span class='fp'>K001</span>
+<span class='imp'>impact 26.4</span><span class='q q-triage'>triage</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Next question's option renders under the cursor and looks pre-selected (mis-click risk on risk answers)</h3>
+<div class='k'>/car-insurance/journey/regular_driver_claims · usability · seen 1× (2026-11-08 → 2026-11-08) · family-mei</div>
+<dl><dt>Observed</dt><dd>After choosing 5 years insured, the '5 or more' claims option rendered under the cursor already highlighted; same pattern put 'Business Only' under the cursor after 'No' finance, and on gender, licence and currently-insured steps.</dd><dt>Expected</dt><dd>New question renders with no hover state, or a short input lock after navigation, so a double-click cannot answer two questions.</dd>
+
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Next question's option renders under the cursor and looks pre-selected (mis-click risk on risk answers)
+Severity: 2 - High · Priority: 2
+Tags: iexplore; iexplore-K001; usability
+
+Step: /car-insurance/journey/regular_driver_claims
+Observed: After choosing 5 years insured, the '5 or more' claims option rendered under the cursor already highlighted; same pattern put 'Business Only' under the cursor after 'No' finance, and on gender, licence and currently-insured steps.
+Expected: New question renders with no hover state, or a short input lock after navigation, so a double-click cannot answer two questions.</pre></details></article><article class='card sev-major' data-decision='pending' data-queue='triage'>
+<header><span class='sev'>major</span><span class='fp'>K003</span>
+<span class='imp'>impact 19.7</span><span class='q q-triage'>triage</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Single checkbox bundles privacy/FSG acceptance with marketing email/SMS and partner call consent</h3>
+<div class='k'>/car-insurance/journey/applicant_details · trust · seen 1× (2026-11-08 → 2026-11-08) · family-mei</div>
+<dl><dt>Observed</dt><dd>One required tick-box accepts the Privacy Collection Notice and FSG AND agrees to marketing email/SMS AND invites partner calls when a number is given.</dd><dt>Expected</dt><dd>Separate, optional consent for marketing and calls.</dd>
+
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Single checkbox bundles privacy/FSG acceptance with marketing email/SMS and partner call consent
+Severity: 2 - High · Priority: 2
+Tags: iexplore; iexplore-K003; trust
+
+Step: /car-insurance/journey/applicant_details
+Observed: One required tick-box accepts the Privacy Collection Notice and FSG AND agrees to marketing email/SMS AND invites partner calls when a number is given.
+Expected: Separate, optional consent for marketing and calls.</pre></details></article><article class='card sev-minor' data-decision='pending' data-queue='triage'>
+<header><span class='sev'>minor</span><span class='fp'>K020</span>
+<span class='imp'>impact 19.0</span><span class='q q-triage'>triage</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Accessibility: Invalid ARIA markup, so the tab state may be announced wrongly (car-insurance, WCAG 4.1.2)</h3>
+<div class='k'>/car-insurance · accessibility · seen 1× (2026-11-08 → 2026-11-08) · dyn-11081925-jarrah-explore</div>
+<dl><dt>Observed</dt><dd>2 element(s) fail axe rule 'aria-allowed-attr' (, axe impact critical) on 1 step(s): /car-insurance. e.g. #tab-0-tab: </dd><dt>Expected</dt><dd>Ensure an element's role supports its ARIA attributes</dd>
+<dt>Suggested fix</dt><dd>aria-selected=&quot; true &quot; is not allowed (stray spaces) See https://dequeuniversity.com/rules/axe/4.10/aria-allowed-attr</dd>
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Accessibility: Invalid ARIA markup, so the tab state may be announced wrongly (car-insurance, WCAG 4.1.2)
+Severity: 3 - Medium · Priority: 3
+Tags: iexplore; iexplore-K020; accessibility
+
+Step: /car-insurance
+Observed: 2 element(s) fail axe rule 'aria-allowed-attr' (, axe impact critical) on 1 step(s): /car-insurance. e.g. #tab-0-tab: 
+Expected: Ensure an element's role supports its ARIA attributes</pre></details></article><article class='card sev-minor' data-decision='pending' data-queue='triage'>
+<header><span class='sev'>minor</span><span class='fp'>K007</span>
+<span class='imp'>impact 13.2</span><span class='q q-triage'>triage</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Enter key doesn't submit text steps; Next only enables on blur</h3>
+<div class='k'>/car-insurance/journey/annual_kms · accessibility · seen 1× (2026-11-08 → 2026-11-08) · family-mei</div>
+<dl><dt>Observed</dt><dd>Pressing Enter after typing kilometres did nothing; DOB Next stayed disabled until focus left the year field.</dd><dt>Expected</dt><dd>Enter submits a valid step; Next enables as soon as input is valid.</dd>
+
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Enter key doesn't submit text steps; Next only enables on blur
+Severity: 3 - Medium · Priority: 3
+Tags: iexplore; iexplore-K007; accessibility
+
+Step: /car-insurance/journey/annual_kms
+Observed: Pressing Enter after typing kilometres did nothing; DOB Next stayed disabled until focus left the year field.
+Expected: Enter submits a valid step; Next enables as soon as input is valid.</pre></details></article><article class='card sev-minor' data-decision='pending' data-queue='triage'>
+<header><span class='sev'>minor</span><span class='fp'>K008</span>
+<span class='imp'>impact 12.5</span><span class='q q-triage'>triage</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>DOB inputs have no labels; address page title says 'Cover Type'</h3>
+<div class='k'>/car-insurance/journey/regular_driver_dob · accessibility · seen 1× (2026-11-08 → 2026-11-08) · family-mei</div>
+<dl><dt>Observed</dt><dd>DD/MM/YYYY inputs have no label or aria-label (placeholders only); document title on car_address was 'Cover Type - Car Quote'.</dd><dt>Expected</dt><dd>Labelled inputs; page titles match the step.</dd>
+
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] DOB inputs have no labels; address page title says 'Cover Type'
+Severity: 3 - Medium · Priority: 3
+Tags: iexplore; iexplore-K008; accessibility
+
+Step: /car-insurance/journey/regular_driver_dob
+Observed: DD/MM/YYYY inputs have no label or aria-label (placeholders only); document title on car_address was 'Cover Type - Car Quote'.
+Expected: Labelled inputs; page titles match the step.</pre></details></article><article class='card sev-minor' data-decision='pending' data-queue='digest'>
+<header><span class='sev'>minor</span><span class='fp'>K022</span>
+<span class='imp'>impact 12.0</span><span class='q q-digest'>digest</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Accessibility: An ARIA value is malformed (e.g. ' true ' with spaces) (car-insurance, WCAG 4.1.2)</h3>
+<div class='k'>/car-insurance · accessibility · seen 1× (2026-11-08 → 2026-11-08) · dyn-11081925-jarrah-explore</div>
+<dl><dt>Observed</dt><dd>2 element(s) fail axe rule 'aria-valid-attr-value' (, axe impact critical) on 1 step(s): /car-insurance. e.g. #tab-0-tab: </dd><dt>Expected</dt><dd>Ensure all ARIA attributes have valid values</dd>
+<dt>Suggested fix</dt><dd>Invalid ARIA attribute value: aria-selected=&quot; true &quot; See https://dequeuniversity.com/rules/axe/4.10/aria-valid-attr-value</dd>
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Accessibility: An ARIA value is malformed (e.g. ' true ' with spaces) (car-insurance, WCAG 4.1.2)
+Severity: 3 - Medium · Priority: 3
+Tags: iexplore; iexplore-K022; accessibility
+
+Step: /car-insurance
+Observed: 2 element(s) fail axe rule 'aria-valid-attr-value' (, axe impact critical) on 1 step(s): /car-insurance. e.g. #tab-0-tab: 
+Expected: Ensure all ARIA attributes have valid values</pre></details></article><article class='card sev-minor' data-decision='pending' data-queue='digest'>
+<header><span class='sev'>minor</span><span class='fp'>K023</span>
+<span class='imp'>impact 12.0</span><span class='q q-digest'>digest</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Accessibility: Text too faint to read comfortably (15 steps, WCAG 1.4.3)</h3>
+<div class='k'>/* · accessibility · seen 1× (2026-11-08 → 2026-11-08) · dyn-11081925-jarrah-explore</div>
+<dl><dt>Observed</dt><dd>30 element(s) fail axe rule 'color-contrast' (, axe impact serious) on 15 step(s): /car-insurance, /car-insurance/journey/start, /car-insurance/journey/standard_options, /car-insurance/journey/car_address, /car-insurance/journey/car_make, /car-insurance/journey/car_year, /car-insurance/journey/car_model, /car-insurance/journey/non_standard_accessories …. e.g. .text-greyscale-300 &gt; p: </dd><dt>Expected</dt><dd>Ensure the contrast between foreground and background colors meets WCAG 2 AA</dd>
+<dt>Suggested fix</dt><dd>Contrast 4.45 (#787573 on #fcfcfb, 12px); expected 4.5:1 See https://dequeuniversity.com/rules/axe/4.10/color-contrast</dd>
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Accessibility: Text too faint to read comfortably (15 steps, WCAG 1.4.3)
+Severity: 3 - Medium · Priority: 3
+Tags: iexplore; iexplore-K023; accessibility
+
+Step: /*
+Observed: 30 element(s) fail axe rule 'color-contrast' (, axe impact serious) on 15 step(s): /car-insurance, /car-insurance/journey/start, /car-insurance/journey/standard_options, /car-insurance/journey/car_address, /car-insurance/journey/car_make, /car-insurance/journey/car_year, /car-insurance/journey/car_model, /car-insurance/journey/non_standard_accessories …. e.g. .text-greyscale-300 &gt; p: 
+Expected: Ensure the contrast between foreground and background colors meets WCAG 2 AA</pre></details></article><article class='card sev-minor' data-decision='pending' data-queue='digest'>
+<header><span class='sev'>minor</span><span class='fp'>K027</span>
+<span class='imp'>impact 12.0</span><span class='q q-digest'>digest</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Accessibility: A scrolling box can't be reached or scrolled with the keyboard (car-insurance, WCAG 2.1.1)</h3>
+<div class='k'>/car-insurance · accessibility · seen 1× (2026-11-08 → 2026-11-08) · dyn-11081925-jarrah-explore</div>
+<dl><dt>Observed</dt><dd>2 element(s) fail axe rule 'scrollable-region-focusable' (, axe impact serious) on 1 step(s): /car-insurance. e.g. #david-koch-car-insurance-transcript: </dd><dt>Expected</dt><dd>Ensure elements that have scrollable content are accessible by keyboard</dd>
+<dt>Suggested fix</dt><dd>Element should be focusable or contain focusable content See https://dequeuniversity.com/rules/axe/4.10/scrollable-region-focusable</dd>
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Accessibility: A scrolling box can't be reached or scrolled with the keyboard (car-insurance, WCAG 2.1.1)
+Severity: 3 - Medium · Priority: 3
+Tags: iexplore; iexplore-K027; accessibility
+
+Step: /car-insurance
+Observed: 2 element(s) fail axe rule 'scrollable-region-focusable' (, axe impact serious) on 1 step(s): /car-insurance. e.g. #david-koch-car-insurance-transcript: 
+Expected: Ensure elements that have scrollable content are accessible by keyboard</pre></details></article><article class='card sev-minor' data-decision='pending' data-queue='digest'>
+<header><span class='sev'>minor</span><span class='fp'>K029</span>
+<span class='imp'>impact 10.6</span><span class='q q-digest'>digest</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Accessibility: Tap targets are too small to hit reliably (car_series, WCAG 2.5.8)</h3>
+<div class='k'>/car-insurance/journey/car_series · accessibility · seen 1× (2026-11-08 → 2026-11-08) · dyn-11081925-jarrah-explore</div>
+<dl><dt>Observed</dt><dd>9 element(s) fail axe rule 'target-size' (, axe impact serious) on 1 step(s): /car-insurance/journey/car_series. e.g. #internal-link-KIA\ 18AQ: </dd><dt>Expected</dt><dd>Ensure touch targets have sufficient size and space</dd>
+<dt>Suggested fix</dt><dd>Target partially obscured (345px by 10px); should be at least 24px by 24px See https://dequeuniversity.com/rules/axe/4.10/target-size</dd>
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Accessibility: Tap targets are too small to hit reliably (car_series, WCAG 2.5.8)
+Severity: 3 - Medium · Priority: 3
+Tags: iexplore; iexplore-K029; accessibility
+
+Step: /car-insurance/journey/car_series
+Observed: 9 element(s) fail axe rule 'target-size' (, axe impact serious) on 1 step(s): /car-insurance/journey/car_series. e.g. #internal-link-KIA\ 18AQ: 
+Expected: Ensure touch targets have sufficient size and space</pre></details></article><article class='card sev-minor' data-decision='pending' data-queue='digest'>
+<header><span class='sev'>minor</span><span class='fp'>K004</span>
+<span class='imp'>impact 10.2</span><span class='q q-digest'>digest</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Every journey step shows 4-5s blank grey screen; journey/initial re-posted on every step</h3>
+<div class='k'>/car-insurance/journey/* · performance · seen 1× (2026-11-08 → 2026-11-08) · family-mei</div>
+<dl><dt>Observed</dt><dd>Each step transition shows a blank page for ~4-5s; network shows POST api/car-journey/journey/initial plus several server_time calls per step. 1100+ console messages over the session.</dd><dt>Expected</dt><dd>Sub-second step transitions; journey initialised once.</dd>
+
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Every journey step shows 4-5s blank grey screen; journey/initial re-posted on every step
+Severity: 3 - Medium · Priority: 3
+Tags: iexplore; iexplore-K004; performance
+
+Step: /car-insurance/journey/*
+Observed: Each step transition shows a blank page for ~4-5s; network shows POST api/car-journey/journey/initial plus several server_time calls per step. 1100+ console messages over the session.
+Expected: Sub-second step transitions; journey initialised once.</pre></details></article><article class='card sev-minor' data-decision='pending' data-queue='digest'>
+<header><span class='sev'>minor</span><span class='fp'>K026</span>
+<span class='imp'>impact 10.2</span><span class='q q-digest'>digest</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Accessibility: A control is nested inside another, so focus and announcements break (start, WCAG 4.1.2)</h3>
+<div class='k'>/car-insurance/journey/start · accessibility · seen 1× (2026-11-08 → 2026-11-08) · dyn-11081925-jarrah-explore</div>
+<dl><dt>Observed</dt><dd>1 element(s) fail axe rule 'nested-interactive' (, axe impact serious) on 1 step(s): /car-insurance/journey/start. e.g. .registration_number__none__tEhej: </dd><dt>Expected</dt><dd>Ensure interactive controls are not nested</dd>
+<dt>Suggested fix</dt><dd>Element has focusable descendants See https://dequeuniversity.com/rules/axe/4.10/nested-interactive</dd>
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Accessibility: A control is nested inside another, so focus and announcements break (start, WCAG 4.1.2)
+Severity: 3 - Medium · Priority: 3
+Tags: iexplore; iexplore-K026; accessibility
+
+Step: /car-insurance/journey/start
+Observed: 1 element(s) fail axe rule 'nested-interactive' (, axe impact serious) on 1 step(s): /car-insurance/journey/start. e.g. .registration_number__none__tEhej: 
+Expected: Ensure interactive controls are not nested</pre></details></article><article class='card sev-minor' data-decision='pending' data-queue='digest'>
+<header><span class='sev'>minor</span><span class='fp'>K005</span>
+<span class='imp'>impact 9.5</span><span class='q q-digest'>digest</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Two identical variants differ only by 'Release: January' vs 'May' with no guidance</h3>
+<div class='k'>/car-insurance/journey/car_series · usability · seen 1× (2026-11-08 → 2026-11-08) · family-mei</div>
+<dl><dt>Observed</dt><dd>Both YP S variants show identical engine/transmission/power/drive/kerb mass; only release month differs.</dd><dt>Expected</dt><dd>Explain how to tell them apart or merge identical variants.</dd>
+
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Two identical variants differ only by 'Release: January' vs 'May' with no guidance
+Severity: 3 - Medium · Priority: 3
+Tags: iexplore; iexplore-K005; usability
+
+Step: /car-insurance/journey/car_series
+Observed: Both YP S variants show identical engine/transmission/power/drive/kerb mass; only release month differs.
+Expected: Explain how to tell them apart or merge identical variants.</pre></details></article><article class='card sev-minor' data-decision='pending' data-queue='digest'>
+<header><span class='sev'>minor</span><span class='fp'>K024</span>
+<span class='imp'>impact 8.9</span><span class='q q-digest'>digest</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Accessibility: A form field has no name, so it's announced as just 'edit text' (car_address, WCAG 1.3.1 / 4.1.2)</h3>
+<div class='k'>/car-insurance/journey/car_address · accessibility · seen 1× (2026-11-08 → 2026-11-08) · dyn-11081925-jarrah-explore</div>
+<dl><dt>Observed</dt><dd>1 element(s) fail axe rule 'label' (, axe impact critical) on 1 step(s): /car-insurance/journey/car_address. e.g. #coverDetail\.overnightParking\.address\.buildingName: </dd><dt>Expected</dt><dd>Ensure every form element has a label</dd>
+<dt>Suggested fix</dt><dd>Building Name input has no programmatic label See https://dequeuniversity.com/rules/axe/4.10/label</dd>
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Accessibility: A form field has no name, so it's announced as just 'edit text' (car_address, WCAG 1.3.1 / 4.1.2)
+Severity: 3 - Medium · Priority: 3
+Tags: iexplore; iexplore-K024; accessibility
+
+Step: /car-insurance/journey/car_address
+Observed: 1 element(s) fail axe rule 'label' (, axe impact critical) on 1 step(s): /car-insurance/journey/car_address. e.g. #coverDetail\.overnightParking\.address\.buildingName: 
+Expected: Ensure every form element has a label</pre></details></article><article class='card sev-minor' data-decision='pending' data-queue='digest'>
+<header><span class='sev'>minor</span><span class='fp'>K025</span>
+<span class='imp'>impact 8.9</span><span class='q q-digest'>digest</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Accessibility: A link looks like plain text (colour is the only difference) (car_address, WCAG 1.4.1)</h3>
+<div class='k'>/car-insurance/journey/car_address · accessibility · seen 1× (2026-11-08 → 2026-11-08) · dyn-11081925-jarrah-explore</div>
+<dl><dt>Observed</dt><dd>1 element(s) fail axe rule 'link-in-text-block' (, axe impact serious) on 1 step(s): /car-insurance/journey/car_address. e.g. #overnightParkingAddressToggle: </dd><dt>Expected</dt><dd>Ensure links are distinguished from surrounding text without relying on color</dd>
+<dt>Suggested fix</dt><dd>Link contrast 1.3:1 with surrounding text and no underline See https://dequeuniversity.com/rules/axe/4.10/link-in-text-block</dd>
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Accessibility: A link looks like plain text (colour is the only difference) (car_address, WCAG 1.4.1)
+Severity: 3 - Medium · Priority: 3
+Tags: iexplore; iexplore-K025; accessibility
+
+Step: /car-insurance/journey/car_address
+Observed: 1 element(s) fail axe rule 'link-in-text-block' (, axe impact serious) on 1 step(s): /car-insurance/journey/car_address. e.g. #overnightParkingAddressToggle: 
+Expected: Ensure links are distinguished from surrounding text without relying on color</pre></details></article><article class='card sev-minor' data-decision='pending' data-queue='digest'>
+<header><span class='sev'>minor</span><span class='fp'>K028</span>
+<span class='imp'>impact 8.9</span><span class='q q-digest'>digest</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Accessibility: A dropdown has no name; users don't know what they're choosing (car_address, WCAG 4.1.2)</h3>
+<div class='k'>/car-insurance/journey/car_address · accessibility · seen 1× (2026-11-08 → 2026-11-08) · dyn-11081925-jarrah-explore</div>
+<dl><dt>Observed</dt><dd>2 element(s) fail axe rule 'select-name' (, axe impact critical) on 1 step(s): /car-insurance/journey/car_address. e.g. #coverDetail\.overnightParking\.address\.unitType: </dd><dt>Expected</dt><dd>Ensure select element has an accessible name</dd>
+<dt>Suggested fix</dt><dd>Unit type and Suburb selects have no accessible name See https://dequeuniversity.com/rules/axe/4.10/select-name</dd>
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Accessibility: A dropdown has no name; users don't know what they're choosing (car_address, WCAG 4.1.2)
+Severity: 3 - Medium · Priority: 3
+Tags: iexplore; iexplore-K028; accessibility
+
+Step: /car-insurance/journey/car_address
+Observed: 2 element(s) fail axe rule 'select-name' (, axe impact critical) on 1 step(s): /car-insurance/journey/car_address. e.g. #coverDetail\.overnightParking\.address\.unitType: 
+Expected: Ensure select element has an accessible name</pre></details></article><article class='card sev-minor' data-decision='pending' data-queue='digest'>
+<header><span class='sev'>minor</span><span class='fp'>K006</span>
+<span class='imp'>impact 6.7</span><span class='q q-digest'>digest</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Cover help text mislabels TPFT and states &lt;$20k rule that the journey doesn't apply</h3>
+<div class='k'>/car-insurance/journey/cover_type · content · seen 1× (2026-11-08 → 2026-11-08) · family-mei</div>
+<dl><dt>Observed</dt><dd>Help calls it 'Third party property, fire and theft' vs button 'Third Party Fire and Theft'; says TPFT only for cars under $20,000 but offers it for a 2019 Carnival. Comprehensive wording reads as if own-car damage only covered when at fault. Popover covers the heading and third option.</dd><dt>Expected</dt><dd>Consistent names, accurate eligibility, help that doesn't obscure options.</dd>
+
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Cover help text mislabels TPFT and states &lt;$20k rule that the journey doesn't apply
+Severity: 3 - Medium · Priority: 3
+Tags: iexplore; iexplore-K006; content
+
+Step: /car-insurance/journey/cover_type
+Observed: Help calls it 'Third party property, fire and theft' vs button 'Third Party Fire and Theft'; says TPFT only for cars under $20,000 but offers it for a 2019 Carnival. Comprehensive wording reads as if own-car damage only covered when at fault. Popover covers the heading and third option.
+Expected: Consistent names, accurate eligibility, help that doesn't obscure options.</pre></details></article><article class='card sev-minor' data-decision='pending' data-queue='digest'>
+<header><span class='sev'>minor</span><span class='fp'>K021</span>
+<span class='imp'>impact 5.5</span><span class='q q-digest'>digest</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Accessibility: Tabs aren't inside a tab list, so they aren't announced as tabs (standard_options, WCAG 1.3.1)</h3>
+<div class='k'>/car-insurance/journey/standard_options · accessibility · seen 1× (2026-11-08 → 2026-11-08) · dyn-11081925-jarrah-explore</div>
+<dl><dt>Observed</dt><dd>2 element(s) fail axe rule 'aria-required-parent' (, axe impact critical) on 1 step(s): /car-insurance/journey/standard_options. e.g. #factory: </dd><dt>Expected</dt><dd>Ensure elements with an ARIA role that require parent roles are contained by them</dd>
+<dt>Suggested fix</dt><dd>Required ARIA parent role not present: tablist See https://dequeuniversity.com/rules/axe/4.10/aria-required-parent</dd>
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Accessibility: Tabs aren't inside a tab list, so they aren't announced as tabs (standard_options, WCAG 1.3.1)
+Severity: 3 - Medium · Priority: 3
+Tags: iexplore; iexplore-K021; accessibility
+
+Step: /car-insurance/journey/standard_options
+Observed: 2 element(s) fail axe rule 'aria-required-parent' (, axe impact critical) on 1 step(s): /car-insurance/journey/standard_options. e.g. #factory: 
+Expected: Ensure elements with an ARIA role that require parent roles are contained by them</pre></details></article><article class='card sev-cosmetic' data-decision='pending' data-queue='digest'>
+<header><span class='sev'>cosmetic</span><span class='fp'>K010</span>
+<span class='imp'>impact 4.5</span><span class='q q-digest'>digest</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>'None' years offered after answering Yes to comprehensive cover in last 12 months</h3>
+<div class='k'>/car-insurance/journey/regular_driver_comprehensive_insured_years · functional · seen 1× (2026-11-08 → 2026-11-08) · family-mei</div>
+<dl><dt>Observed</dt><dd>Follow-up allows 'None' full years despite prior Yes.</dd><dt>Expected</dt><dd>Options consistent with previous answer.</dd>
+
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] 'None' years offered after answering Yes to comprehensive cover in last 12 months
+Severity: 4 - Low · Priority: 4
+Tags: iexplore; iexplore-K010; functional
+
+Step: /car-insurance/journey/regular_driver_comprehensive_insured_years
+Observed: Follow-up allows 'None' full years despite prior Yes.
+Expected: Options consistent with previous answer.</pre></details></article><article class='card sev-cosmetic' data-decision='pending' data-queue='digest'>
+<header><span class='sev'>cosmetic</span><span class='fp'>K011</span>
+<span class='imp'>impact 3.3</span><span class='q q-digest'>digest</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Copy: &quot;KM's&quot; and &quot;drivers licence&quot;</h3>
+<div class='k'>/car-insurance/journey/annual_kms · content · seen 1× (2026-11-08 → 2026-11-08) · family-mei</div>
+<dl><dt>Observed</dt><dd>'KM's travelled per year', '290 KM's per week', 'their drivers licence'.</dd><dt>Expected</dt><dd>'km', 'driver's licence'.</dd>
+
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Copy: &quot;KM's&quot; and &quot;drivers licence&quot;
+Severity: 4 - Low · Priority: 4
+Tags: iexplore; iexplore-K011; content
+
+Step: /car-insurance/journey/annual_kms
+Observed: 'KM's travelled per year', '290 KM's per week', 'their drivers licence'.
+Expected: 'km', 'driver's licence'.</pre></details></article><article class='card sev-cosmetic' data-decision='pending' data-queue='digest'>
+<header><span class='sev'>cosmetic</span><span class='fp'>K009</span>
+<span class='imp'>impact 2.9</span><span class='q q-digest'>digest</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>'Car Park' and 'Parking Lot' offered as separate parking options</h3>
+<div class='k'>/car-insurance/journey/overnight_parking_type · content · seen 1× (2026-11-08 → 2026-11-08) · family-mei</div>
+<dl><dt>Observed</dt><dd>Both options shown with no explanation of difference.</dd><dt>Expected</dt><dd>One option or a clear distinction.</dd>
+
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] 'Car Park' and 'Parking Lot' offered as separate parking options
+Severity: 4 - Low · Priority: 4
+Tags: iexplore; iexplore-K009; content
+
+Step: /car-insurance/journey/overnight_parking_type
+Observed: Both options shown with no explanation of difference.
+Expected: One option or a clear distinction.</pre></details></article><article class='card sev-observation' data-decision='pending' data-queue='digest'>
+<header><span class='sev'>observation</span><span class='fp'>K013</span>
+<span class='imp'>impact 2.6</span><span class='q q-digest'>digest</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Production journey record + marketing call created before any contact details</h3>
+<div class='k'>/car-insurance/journey/driver_option · data · seen 1× (2026-11-08 → 2026-11-08) · family-mei</div>
+<dl><dt>Observed</dt><dd>Network shows journey id created and POST .../journey/{id}/marketings during the anonymous journey.</dd><dt>Expected</dt><dd>Synthetic sessions tagged and excluded downstream before scheduled prod runs.</dd>
+
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Production journey record + marketing call created before any contact details
+Severity: 4 - Low · Priority: 4
+Tags: iexplore; iexplore-K013; data
+
+Step: /car-insurance/journey/driver_option
+Observed: Network shows journey id created and POST .../journey/{id}/marketings during the anonymous journey.
+Expected: Synthetic sessions tagged and excluded downstream before scheduled prod runs.</pre></details></article><article class='card sev-cosmetic' data-decision='pending' data-queue='digest'>
+<header><span class='sev'>cosmetic</span><span class='fp'>K012</span>
+<span class='imp'>impact 1.2</span><span class='q q-digest'>digest</span>
+<span class='dec'>pending</span><span class='tk'>no ticket yet</span></header>
+<h3>Empty email field shown green/valid before input</h3>
+<div class='k'>/car-insurance/journey/applicant_details · visual · seen 1× (2026-11-08 → 2026-11-08) · family-mei</div>
+<dl><dt>Observed</dt><dd>Email field has a green 'valid' border while empty.</dd><dt>Expected</dt><dd>Neutral until validated.</dd>
+
+</dl>
+<details><summary>Proposed ADO bug</summary><pre>[iExplore] Empty email field shown green/valid before input
+Severity: 4 - Low · Priority: 4
+Tags: iexplore; iexplore-K012; visual
+
+Step: /car-insurance/journey/applicant_details
+Observed: Email field has a green 'valid' border while empty.
+Expected: Neutral until validated.</pre></details></article>
+<script>
+document.querySelectorAll('.filters button').forEach(b => b.onclick = () => {
+  document.querySelectorAll('.filters button').forEach(x => x.classList.toggle('on', x === b));
+  const f = b.dataset.f;
+  document.querySelectorAll('.card').forEach(c => c.style.display = (f === 'all' || c.dataset.decision === f
+    || (f === 'triage queue' && c.dataset.queue === 'triage') || (f === 'digest' && c.dataset.queue === 'digest')) ? '' : 'none');
+});
+document.querySelector(".filters button[data-f='triage queue']").click();
+</script></main></body></html>

@@ -1,0 +1,127 @@
+# Persona bot configuration. ${VAR:-default} values are read from the environment.
+
+# Which target block to use: prod | uat (override with IEXPLORE_TARGET or --target).
+target: ${IEXPLORE_TARGET:-prod}
+
+targets:
+  prod:
+    name: Compare the Market (production)
+    mode: production            # production = real customers, real partners: stricter rules
+    start_url: https://www.comparethemarket.com.au/car-insurance/
+    # Subdomains are included, so the quote journey host is covered.
+    allowed_hosts: [comparethemarket.com.au]
+    # Production default: explore up to the point of handing over contact details / creating a real quote.
+    # Set IEXPLORE_ALLOW_SUBMISSION=true only once the business has agreed how synthetic quotes are handled
+    # (excluded from CRM/sales follow-up, partner hand-off, reporting and analytics).
+    allow_quote_submission: ${IEXPLORE_ALLOW_SUBMISSION:-false}
+    # Agreed synthetic-traffic marker (Nathan Handy, Nov 2026): analytics/commercial reporting filter out URLs
+    # carrying ?automated-test=true. Added to every page the bot loads; untagged full-page navigations are
+    # redirected to the tagged URL. Shared pattern across the test kits.
+    synthetic_query: { automated-test: "true" }
+    # Also keep the tag on client-side route changes (history.pushState). Turn on if analytics reads the tag
+    # from the current URL on every route rather than from the landing page/session.
+    tag_spa_routes: ${IEXPLORE_TAG_SPA_ROUTES:-false}
+    # UA tag as a secondary marker (no custom headers on prod: they would trigger CORS preflights against API subdomains).
+    user_agent_suffix: " CTM-PersonaBot/0.1"
+    stop_before:
+      - submitting your name, email or phone number (contact details)
+      - payment or card details
+      - final purchase / "buy now" confirmation
+      - handing over to an insurer's site
+    stop_url_patterns: [/payment, /checkout, /purchase]
+    blocked_request_patterns:
+      - { method: POST, url: "/(purchase|payment|buy)" }
+    # Steps the bot must stop at while submission is off; excluded from coverage gaps.
+    boundary_steps: [applicant_details]
+    # Cap how often production is hit, whatever the scheduler does.
+    min_minutes_between_runs: 60
+
+  uat:
+    name: Compare the Market (UAT)
+    mode: test
+    synthetic_query: { automated-test: "true" }
+    tag_spa_routes: ${IEXPLORE_TAG_SPA_ROUTES:-false}
+    start_url: ${IEXPLORE_START_URL:-https://uat.example.comparethemarket.com.au/car-insurance/}
+    allowed_hosts:
+      - ${IEXPLORE_HOST:-uat.example.comparethemarket.com.au}
+    allow_quote_submission: true
+    basic_auth_user: ${UAT_BASIC_AUTH_USER:-}
+    basic_auth_password: ${UAT_BASIC_AUTH_PASSWORD:-}
+    user_agent_suffix: " CTM-PersonaBot/0.1"
+    extra_headers_same_origin:
+      X-Synthetic-Test: iexplore
+    stop_before:
+      - payment or card details
+      - final purchase / "buy now" confirmation
+      - handing over to an insurer's site
+    stop_url_patterns: [/payment, /checkout, /purchase]
+    # Fill in the real UAT endpoints.
+    blocked_request_patterns:
+      - { method: POST, url: "/api/.*/(purchase|payment|buy)" }
+      - { method: POST, url: "/api/.*/lead(s)?/submit" }
+
+model:
+  provider: ${IEXPLORE_PROVIDER:-anthropic}   # anthropic | bedrock
+  max_tokens: 4096
+  keep_screenshots: 3          # older screenshots are dropped from context to control cost
+  anthropic:
+    model: ${IEXPLORE_MODEL:-claude-sonnet-5-5}
+    tool_version: toolset       # computer_toolset_20260801 (GA)
+  bedrock:
+    # Use the AU cross-region inference profile ID or model ARN enabled in your account.
+    model: ${BEDROCK_MODEL_ID:-set-your-bedrock-inference-profile-id}
+    region: ${AWS_REGION:-ap-southeast-2}
+    tool_version: legacy        # computer_20251124 + computer-use-2025-11-24 beta header
+    # tool_version: toolset     # the toolset is beta on Bedrock; set its header here if you switch
+    # betas: []
+
+budgets:
+  max_turns: 60
+  max_minutes: 15
+  max_input_tokens: 2000000
+  fail_on: [blocker, major]    # junit failure / --strict exit code
+
+browser:
+  headless: true
+  channel: ${IEXPLORE_BROWSER_CHANNEL:-}   # "" = Playwright Chromium, "chrome" = installed Chrome
+  locale: en-AU
+  timezone: Australia/Brisbane
+  slow_request_ms: 3000
+  accessibility:
+    axe: true                 # deterministic WCAG scan (axe-core 4.14, vendored) once per journey step
+    tags: [wcag2a, wcag2aa, wcag21a, wcag21aa, wcag22aa]
+    disable_rules: []         # e.g. [color-contrast] if handled elsewhere
+  settle_ms: 2500
+  type_delay_ms: 25
+  devices:
+    desktop: { width: 1280, height: 800 }
+    mobile:
+      width: 390
+      height: 844
+      mobile: true
+      user_agent: "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1"
+
+# Azure DevOps: where accepted findings become Bugs (npx iexplore ado-sync). PAT comes from env ADO_PAT
+# (Work Items: Read & Write scope). Leave org_url/project empty until ready.
+ado:
+  org_url: ${ADO_ORG_URL:-}          # e.g. https://dev.azure.com/<org>
+  project: ${ADO_PROJECT:-}
+  area_path: ${ADO_AREA_PATH:-}      # default; a row's area_path overrides
+  iteration_path: ${ADO_ITERATION_PATH:-}
+  tags: [synthetic-uat]
+
+# Keeping it impactful, not noisy (see DESIGN.md "Signal over noise").
+impact:
+  weekly_cap: 5               # new findings admitted to the triage queue per ISO week (blockers bypass)
+  reserved_lanes:             # extra weekly slots for categories that otherwise always rank below the cap
+    accessibility: 1
+  # Share of customers reaching a step (0-1). Estimates until funnel data from analytics replaces them;
+  # unlisted steps are estimated from journey position (100% at entry -> 40% at the last step).
+  reach:
+    "^/car-insurance$": 1.0
+    "journey/start$": 0.85
+    "journey/applicant_details$": 0.45
+  # Standing rules the team wants the bot to follow, on top of rules it learns from rejected findings.
+  quality_rules:
+    - Don't report copy or spelling nits unless they change meaning or appear on the landing page.
+    - Group repeated issues of the same kind into one finding that lists every step affected.

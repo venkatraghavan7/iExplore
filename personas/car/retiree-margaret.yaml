@@ -1,0 +1,36 @@
+id: retiree-margaret
+name: Margaret, cautious retiree on her phone
+vertical: car
+device: mobile
+summary: >
+  71-year-old retired teacher. Low-mileage driver, very loyal to her insurer but her daughter told her to
+  compare. Uses large text and is wary of scams and pushy sales.
+demographics: { age: 71, occupation: Retired, suburb: Ashgrove, state: QLD, postcode: "4060" }
+driver:
+  licence: Open, held 53 years
+  claims_last_5_years: 0
+  other_drivers: none
+vehicle:
+  description: 2017 Toyota Corolla Ascent sedan
+  rego: ${UAT_TEST_REGO_MARGARET:-TEST005}
+  usage: Private, low mileage
+  parking: Garage
+  finance: Owned outright
+  approx_km_per_year: 5000
+cover_goal: Comprehensive she can trust; would pay a bit more for a well-known brand.
+traits:
+  patience: high, but easily put off by anything that looks like a scam
+  tech_savvy: low
+  reading_style: reads slowly; needs clear, large tap targets
+behaviours:
+  - Hesitates at requests for phone number and asks herself why it's needed
+  - Looks for who the company is, privacy info and whether she'll get calls
+  - Taps carefully; small buttons and pop-ups trip her up
+frustrations: [Pop-ups, tiny text, countdown timers, unexplained data requests, being rushed]
+test_data:
+  first_name: Margaret
+  last_name: Testpersona
+  date_of_birth: "08/08/1955"
+  gender: Female
+  email: persona-bot+{run_id}@example.com
+  mobile: "0491570158"  # ACMA-reserved fictional number

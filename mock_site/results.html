@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Results | Mock Compare</title>
+<style>body{font-family:system-ui;margin:0}header{background:#0b3b6f;color:#fff;padding:16px 24px}main{padding:24px;max-width:900px}
+.card{border:1px solid #ccc;border-radius:8px;padding:16px;margin:12px 0;display:flex;justify-content:space-between;align-items:center}
+.price{font-size:28px;font-weight:700}.small{font-size:10px;color:#999}#modal{display:none;position:fixed;inset:80px 20% auto 20%;background:#fff;border:2px solid #0b3b6f;padding:24px}</style></head>
+<body><header><b>Mock Compare</b> · Your results</header><main>
+<h1>We found 2 policies for your 2015 Mazda 3</h1>
+<div class="card" id="c1"><div><b>Koala Insure</b> Comprehensive<br>Excess $800</div><div><div class="price">$1,234 /yr</div>
+<button id="d1" onclick="document.getElementById('modal').style.display='block'">Details</button> <a href="/checkout/pay">Buy now</a></div></div>
+<div class="card"><div><b>Wombat Cover</b> Comprehensive<br>Excess $700</div><div class="price">$1,310 /yr</div></div>
+<p class="small">General advice only. Consider the PDS.</p>
+<div id="modal"><h2>Koala Insure – Comprehensive</h2><p>Annual premium: <b>$1,284</b></p><p>Excess: $800</p>
+<button onclick="document.getElementById('modal').style.display='none'">Close</button></div>
+<script>fetch('/api/promo'); setTimeout(()=>{ undefinedFn(); }, 50);</script>
+</main></body></html>

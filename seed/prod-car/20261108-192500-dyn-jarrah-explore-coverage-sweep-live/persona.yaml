@@ -1,0 +1,42 @@
+{
+ "id": "dyn-11081925-jarrah-explore",
+ "name": "Jarrah, used-car buyer on his phone",
+ "vertical": "car",
+ "origin": "dynamic",
+ "strategy": "explore",
+ "device": "mobile",
+ "summary": "31, self-employed, renting in Indooroopilly. Just bought a used 2018 Kia Sorento diesel on a car loan: unrepaired hail damage, tow bar fitted, not insured yet. Keeps his old car until it sells. His partner (26, NZ licence) drives it sometimes. Unsure of the exact badge. New-build address the lookup won't find.",
+ "traits": {
+  "patience": "medium",
+  "tech_savvy": "high on phone",
+  "reading_style": "skims, taps fast"
+ },
+ "behaviours": [
+  "types fast with thumbs",
+  "takes the 'unsure' route when he doesn't know an answer",
+  "enters address manually"
+ ],
+ "interaction": {
+  "typing_speed": "fast",
+  "network": "none",
+  "cpu_slowdown": 1,
+  "habits": [
+   "fast thumb typing",
+   "taps without zooming"
+  ]
+ },
+ "focus": [
+  "untested branches: unrepaired damage Yes, finance, not insured, no home, younger driver, foreign licence",
+  "manual address entry",
+  "badge 'unsure' path",
+  "TPFT cover"
+ ],
+ "test_data": {
+  "first_name": "Jarrah",
+  "last_name": "Testpersona",
+  "date_of_birth": "12/04/1995",
+  "gender": "Male",
+  "email": "persona-bot+{run_id}@example.com",
+  "mobile": "0491570110"
+ }
+}

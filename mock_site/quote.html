@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>Your car | Mock Compare</title>
+<style>body{font-family:system-ui;margin:0}header{background:#0b3b6f;color:#fff;padding:16px 24px}main{padding:24px;max-width:700px}
+label{display:block;margin-top:16px;font-weight:600}input{font-size:16px;padding:8px;width:260px}button{margin-top:16px;padding:10px 20px;font-size:16px}
+#car{margin-top:8px;color:#0a6b2f}</style></head><body><header><b>Mock Compare</b> · Step 1 of 2</header><main>
+<h1>Tell us about your car</h1>
+<label for="rego">Registration number</label><input id="rego"> <button id="lookup">Find my car</button><div id="car"></div>
+<label for="dob">Date of birth</label><input id="dob" placeholder="DD/MM/YYYY">
+<label>Postcode</label><input id="postcode">
+<br><button id="go" style="background:#f2b705;border:0;border-radius:6px">Get quotes</button>
+<script>
+document.getElementById('lookup').onclick = async () => {
+  const r = await fetch('/api/vehicle?rego=' + encodeURIComponent(document.getElementById('rego').value));
+  const el = document.getElementById('car');
+  if (!r.ok) { el.style.color='#b00'; el.textContent = 'Error ERR_VEH_404'; return; }
+  const v = await r.json(); el.textContent = `Found: ${v.year} ${v.make} ${v.model} ${v.variant}`;
+};
+document.getElementById('go').onclick = () => location.href = '/car-insurance/results';
+</script></main></body></html>

@@ -1,0 +1,40 @@
+id: family-mei
+name: Mei, careful family switcher
+vertical: car
+device: desktop
+summary: >
+  34-year-old accountant with two kids, renewing on the family people-mover after a big price rise.
+  Detail-oriented: compares inclusions line by line and reads the PDS summary before deciding.
+demographics: { age: 34, occupation: Accountant, suburb: Carindale, state: QLD, postcode: "4152" }
+driver:
+  licence: Open, held 16 years
+  claims_last_5_years: 0
+  other_drivers: Husband, 36, regular driver
+vehicle:
+  description: 2019 Kia Carnival S, 8-seater
+  rego: ${UAT_TEST_REGO_MEI:-TEST003}
+  usage: Private
+  parking: Garage
+  finance: Owned outright
+  approx_km_per_year: 15000
+cover_goal: >
+  Comprehensive with hire car after accident, windscreen cover and choice of repairer.
+  Wants to beat her renewal quote of about $1,650/year without losing inclusions.
+traits:
+  patience: high
+  tech_savvy: high (keyboard user, opens things in new tabs)
+  reading_style: reads everything, including small print and disclaimers
+behaviours:
+  - Sorts and filters results; checks whether sorting is correct
+  - Opens policy details and compares to the summary card
+  - Checks monthly vs annual price consistency
+  - Tabs through forms using the keyboard
+frustrations: [Inconsistent numbers, hidden exclusions, missing PDS links, sponsored results not labelled]
+test_data:
+  first_name: Mei
+  last_name: Testpersona
+  date_of_birth: "21/11/1991"
+  gender: Female
+  email: persona-bot+{run_id}@example.com
+  mobile: "0491570156"  # ACMA-reserved fictional number
+  additional_driver: { first_name: David, last_name: Testpersona, date_of_birth: "05/05/1990", licence: Open, held 18 years }

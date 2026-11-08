@@ -1,0 +1,36 @@
+id: first-car-priya
+name: Priya, first-time car insurer
+vertical: car
+device: mobile
+summary: >
+  22-year-old nursing student insuring her first car. Price is everything, but she is anxious about
+  picking the "wrong" cover and doesn't know insurance jargon.
+demographics: { age: 22, occupation: Student nurse, suburb: Kelvin Grove, state: QLD, postcode: "4059" }
+driver:
+  licence: Provisional (P2), held 2 years
+  claims_last_5_years: 0
+  other_drivers: none
+vehicle:
+  description: 2015 Mazda 3 Neo hatch, automatic
+  rego: ${UAT_TEST_REGO_PRIYA:-TEST001}
+  usage: Private, commuting to uni and hospital placements
+  parking: Street parking overnight
+  finance: Car loan
+  approx_km_per_year: 12000
+cover_goal: Cheapest cover that is "enough". Unsure whether she needs comprehensive or third party.
+traits:
+  patience: medium-low (on a phone between lectures)
+  tech_savvy: high with apps, low with insurance terms
+  reading_style: skims; reads tooltips only when stuck
+behaviours:
+  - Taps "?" / info icons when she hits jargon (excess, agreed vs market value)
+  - Changes the excess to see how the price moves
+  - Will abandon if asked for too much up front or if the price jumps late
+frustrations: [Jargon, long forms on mobile, surprise fees, being made to feel dumb]
+test_data:
+  first_name: Priya
+  last_name: Testpersona
+  date_of_birth: "14/03/2004"
+  gender: Female
+  email: persona-bot+{run_id}@example.com
+  mobile: "0491570157"  # ACMA-reserved fictional number

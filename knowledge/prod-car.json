@@ -1,0 +1,4346 @@
+{
+ "edges": {
+  "/car-insurance/journey/accident_hail_damage>>/car-insurance/journey/finance": {
+   "n": 2,
+   "via": {
+    "No": 1,
+    "Yes": 1
+   }
+  },
+  "/car-insurance/journey/annual_kms>>/car-insurance/journey/car_address": {
+   "n": 2,
+   "via": {
+    "Next": 2
+   }
+  },
+  "/car-insurance/journey/car_address>>/car-insurance/journey/overnight_parking_type": {
+   "n": 2,
+   "via": {
+    "Next": 2
+   }
+  },
+  "/car-insurance/journey/car_badge>>/car-insurance/journey/car_series": {
+   "n": 2,
+   "via": {
+    "S": 1,
+    "click here": 1
+   }
+  },
+  "/car-insurance/journey/car_body>>/car-insurance/journey/car_badge": {
+   "n": 2,
+   "via": {}
+  },
+  "/car-insurance/journey/car_colour>>/car-insurance/journey/cover_type": {
+   "n": 2,
+   "via": {
+    "Silver": 1,
+    "White": 1
+   }
+  },
+  "/car-insurance/journey/car_fuel>>/car-insurance/journey/car_body": {
+   "n": 2,
+   "via": {
+    "Diesel": 1,
+    "Petrol": 1
+   }
+  },
+  "/car-insurance/journey/car_make>>/car-insurance/journey/car_year": {
+   "n": 2,
+   "via": {
+    "KIA": 2
+   }
+  },
+  "/car-insurance/journey/car_model>>/car-insurance/journey/car_fuel": {
+   "n": 2,
+   "via": {
+    "CARNIVAL": 1,
+    "SORENTO": 1
+   }
+  },
+  "/car-insurance/journey/car_series>>/car-insurance/journey/car_colour": {
+   "n": 2,
+   "via": {
+    "Series: UM | Badge: Si": 1,
+    "Series: YP | Badge: S (Release: January)": 1
+   }
+  },
+  "/car-insurance/journey/car_year>>/car-insurance/journey/car_model": {
+   "n": 2,
+   "via": {
+    "2018": 1,
+    "2019": 1
+   }
+  },
+  "/car-insurance/journey/cover_type>>/car-insurance/journey/factory_options": {
+   "n": 2,
+   "via": {
+    "Comprehensive": 1,
+    "Third Party Fire and Theft": 1
+   }
+  },
+  "/car-insurance/journey/currently_insured>>/car-insurance/journey/annual_kms": {
+   "n": 1,
+   "via": {
+    "No": 1
+   }
+  },
+  "/car-insurance/journey/currently_insured>>/car-insurance/journey/previous_insurer": {
+   "n": 1,
+   "via": {
+    "Yes": 1
+   }
+  },
+  "/car-insurance/journey/driver_option>>/car-insurance/journey/applicant_details": {
+   "n": 2,
+   "via": {
+    "Yes, all drivers will be 25 & over": 1,
+    "Yes, all drivers will be 30 & over": 1
+   }
+  },
+  "/car-insurance/journey/factory_options>>/car-insurance/journey/modifications": {
+   "n": 1,
+   "via": {
+    "No": 1
+   }
+  },
+  "/car-insurance/journey/factory_options>>/car-insurance/journey/standard_options": {
+   "n": 1,
+   "via": {
+    "Yes": 1
+   }
+  },
+  "/car-insurance/journey/finance>>/car-insurance/journey/use_type": {
+   "n": 2,
+   "via": {
+    "No": 1,
+    "Yes, Finance / Hire Purchase": 1
+   }
+  },
+  "/car-insurance/journey/goods_payment>>/car-insurance/journey/currently_insured": {
+   "n": 1,
+   "via": {
+    "No": 1
+   }
+  },
+  "/car-insurance/journey/modifications>>/car-insurance/journey/accident_hail_damage": {
+   "n": 2,
+   "via": {
+    "No": 2
+   }
+  },
+  "/car-insurance/journey/non_standard_accessories>>/car-insurance/journey/modifications": {
+   "n": 1,
+   "via": {
+    "Next": 1
+   }
+  },
+  "/car-insurance/journey/overnight_parking_type>>/car-insurance/journey/regular_driver_gender": {
+   "n": 2,
+   "via": {
+    "Car Park": 1,
+    "Garaged": 1
+   }
+  },
+  "/car-insurance/journey/passengers_payment>>/car-insurance/journey/goods_payment": {
+   "n": 1,
+   "via": {
+    "No": 1
+   }
+  },
+  "/car-insurance/journey/previous_insurer>>/car-insurance/journey/annual_kms": {
+   "n": 1,
+   "via": {
+    "Next Step": 1
+   }
+  },
+  "/car-insurance/journey/regular_driver_claims>>/car-insurance/journey/regular_driver_owns_another_car": {
+   "n": 2,
+   "via": {
+    "Next": 2
+   }
+  },
+  "/car-insurance/journey/regular_driver_comprehensive_insured>>/car-insurance/journey/regular_driver_comprehensive_insured_years": {
+   "n": 2,
+   "via": {
+    "No": 1,
+    "Yes": 1
+   }
+  },
+  "/car-insurance/journey/regular_driver_comprehensive_insured_years>>/car-insurance/journey/regular_driver_claims": {
+   "n": 2,
+   "via": {
+    "2": 1,
+    "5": 1
+   }
+  },
+  "/car-insurance/journey/regular_driver_dob>>/car-insurance/journey/regular_driver_employment": {
+   "n": 2,
+   "via": {
+    "Next": 2
+   }
+  },
+  "/car-insurance/journey/regular_driver_employment>>/car-insurance/journey/regular_driver_licence_type": {
+   "n": 2,
+   "via": {
+    "Employed full-time": 1,
+    "Self employed": 1
+   }
+  },
+  "/car-insurance/journey/regular_driver_gender>>/car-insurance/journey/regular_driver_dob": {
+   "n": 2,
+   "via": {
+    "Female": 1,
+    "Male": 1
+   }
+  },
+  "/car-insurance/journey/regular_driver_licence_age>>/car-insurance/journey/regular_driver_comprehensive_insured": {
+   "n": 2,
+   "via": {
+    "Next": 2
+   }
+  },
+  "/car-insurance/journey/regular_driver_licence_type>>/car-insurance/journey/regular_driver_licence_age": {
+   "n": 2,
+   "via": {
+    "Full / Open Licence": 2
+   }
+  },
+  "/car-insurance/journey/regular_driver_owns_another_car>>/car-insurance/journey/regular_driver_owns_home": {
+   "n": 2,
+   "via": {
+    "No": 1,
+    "Yes": 1
+   }
+  },
+  "/car-insurance/journey/regular_driver_owns_home>>/car-insurance/journey/youngest_driver": {
+   "n": 2,
+   "via": {
+    "No": 1,
+    "Yes": 1
+   }
+  },
+  "/car-insurance/journey/standard_options>>/car-insurance/journey/non_standard_accessories": {
+   "n": 1,
+   "via": {
+    "No Factory options": 1
+   }
+  },
+  "/car-insurance/journey/start>>/car-insurance/journey/car_make": {
+   "n": 2,
+   "via": {
+    "click here": 2
+   }
+  },
+  "/car-insurance/journey/use_type>>/car-insurance/journey/currently_insured": {
+   "n": 1,
+   "via": {
+    "Private and/or commuting to work only": 1
+   }
+  },
+  "/car-insurance/journey/use_type>>/car-insurance/journey/passengers_payment": {
+   "n": 1,
+   "via": {
+    "Private and Occasional Business": 1
+   }
+  },
+  "/car-insurance/journey/youngest_driver>>/car-insurance/journey/driver_option": {
+   "n": 1,
+   "via": {
+    "No": 1
+   }
+  },
+  "/car-insurance/journey/youngest_driver>>/car-insurance/journey/youngest_driver_gender": {
+   "n": 1,
+   "via": {
+    "Yes": 1
+   }
+  },
+  "/car-insurance/journey/youngest_driver_dob>>/car-insurance/journey/youngest_driver_licence_type": {
+   "n": 1,
+   "via": {
+    "Next": 1
+   }
+  },
+  "/car-insurance/journey/youngest_driver_gender>>/car-insurance/journey/youngest_driver_dob": {
+   "n": 1,
+   "via": {
+    "Female": 1
+   }
+  },
+  "/car-insurance/journey/youngest_driver_licence_age>>/car-insurance/journey/driver_option": {
+   "n": 1,
+   "via": {
+    "Next": 1
+   }
+  },
+  "/car-insurance/journey/youngest_driver_licence_type>>/car-insurance/journey/youngest_driver_licence_age": {
+   "n": 1,
+   "via": {
+    "Foreign Licence": 1
+   }
+  },
+  "/car-insurance>>/car-insurance/journey/start": {
+   "n": 2,
+   "via": {
+    "Compare now": 2
+   }
+  }
+ },
+ "findings": {
+  "K001": {
+   "category": "usability",
+   "confidence": 0.85,
+   "dedup_key": null,
+   "expected": "New question renders with no hover state, or a short input lock after navigation, so a double-click cannot answer two questions.",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "After choosing 5 years insured, the '5 or more' claims option rendered under the cursor already highlighted; same pattern put 'Business Only' under the cursor after 'No' finance, and on gender, licence and currently-insured steps.",
+   "occurrences": 1,
+   "personas": [
+    "family-mei"
+   ],
+   "rechecks": [],
+   "repro_steps": [],
+   "runs": [
+    "20261106-180900-family-mei-quote-happy-path-live"
+   ],
+   "screenshot": null,
+   "severity": "major",
+   "source": "agent",
+   "status": "open",
+   "step": "/car-insurance/journey/regular_driver_claims",
+   "suggested_fix": null,
+   "title": "Next question's option renders under the cursor and looks pre-selected (mis-click risk on risk answers)",
+   "tokens": [
+    "after",
+    "already",
+    "answers",
+    "business",
+    "choosing",
+    "claims",
+    "click",
+    "currently",
+    "cursor",
+    "finance",
+    "gender",
+    "highlighted",
+    "insured",
+    "licence",
+    "looks",
+    "mis",
+    "more",
+    "next",
+    "only",
+    "option",
+    "pattern",
+    "pre",
+    "put",
+    "question",
+    "rendered",
+    "renders",
+    "risk",
+    "same",
+    "selected",
+    "steps",
+    "under",
+    "years"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K002": {
+   "category": "data",
+   "confidence": 0.6,
+   "dedup_key": null,
+   "expected": "Input mask preserves keystroke order at any speed; DOB auto-advances or accepts DDMMYYYY.",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "Typing '1991' in YYYY at normal automated speed produced '1919'; typing slowly worked. Day field also silently dropped extra digits instead of advancing.",
+   "occurrences": 1,
+   "personas": [
+    "family-mei"
+   ],
+   "rechecks": [
+    {
+     "fingerprint": "K002",
+     "note": "Fast typing 1995 in YYYY stored correctly on mobile. Digit-dropping on one-go entry reproduced (see new finding).",
+     "run": "20261108-192500-dyn-jarrah-explore-coverage-sweep-live",
+     "status": "not_reproduced",
+     "t": 1794131660.5
+    }
+   ],
+   "repro_steps": [],
+   "runs": [
+    "20261106-180900-family-mei-quote-happy-path-live"
+   ],
+   "screenshot": null,
+   "severity": "major",
+   "source": "agent",
+   "status": "not_reproduced",
+   "step": "/car-insurance/journey/regular_driver_dob",
+   "suggested_fix": null,
+   "title": "Year of birth scrambled when typed quickly (1991 saved as 1919)",
+   "tokens": [
+    "advancing",
+    "also",
+    "automated",
+    "birth",
+    "day",
+    "digits",
+    "dropped",
+    "extra",
+    "field",
+    "instead",
+    "normal",
+    "produced",
+    "quickly",
+    "saved",
+    "scrambled",
+    "silently",
+    "slowly",
+    "speed",
+    "typed",
+    "typing",
+    "worked",
+    "year",
+    "yyyy"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K003": {
+   "category": "trust",
+   "confidence": 0.75,
+   "dedup_key": null,
+   "expected": "Separate, optional consent for marketing and calls.",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "One required tick-box accepts the Privacy Collection Notice and FSG AND agrees to marketing email/SMS AND invites partner calls when a number is given.",
+   "occurrences": 1,
+   "personas": [
+    "family-mei"
+   ],
+   "rechecks": [
+    {
+     "fingerprint": "K003",
+     "note": "Bundled consent checkbox unchanged on mobile.",
+     "run": "20261108-192500-dyn-jarrah-explore-coverage-sweep-live",
+     "status": "still_present",
+     "t": 1794131660.5
+    }
+   ],
+   "repro_steps": [],
+   "runs": [
+    "20261106-180900-family-mei-quote-happy-path-live"
+   ],
+   "screenshot": null,
+   "severity": "major",
+   "source": "agent",
+   "status": "open",
+   "step": "/car-insurance/journey/applicant_details",
+   "suggested_fix": null,
+   "title": "Single checkbox bundles privacy/FSG acceptance with marketing email/SMS and partner call consent",
+   "tokens": [
+    "acceptance",
+    "accepts",
+    "agrees",
+    "box",
+    "bundles",
+    "call",
+    "calls",
+    "checkbox",
+    "collection",
+    "consent",
+    "email",
+    "fsg",
+    "given",
+    "invites",
+    "marketing",
+    "notice",
+    "number",
+    "one",
+    "partner",
+    "privacy",
+    "required",
+    "single",
+    "sms",
+    "tick"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K004": {
+   "category": "performance",
+   "confidence": 0.7,
+   "dedup_key": null,
+   "expected": "Sub-second step transitions; journey initialised once.",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "Each step transition shows a blank page for ~4-5s; network shows POST api/car-journey/journey/initial plus several server_time calls per step. 1100+ console messages over the session.",
+   "occurrences": 1,
+   "personas": [
+    "family-mei"
+   ],
+   "rechecks": [
+    {
+     "fingerprint": "K004",
+     "note": "~4-6s blank or faded screen per step on mobile; 7,296 console messages over the session.",
+     "run": "20261108-192500-dyn-jarrah-explore-coverage-sweep-live",
+     "status": "still_present",
+     "t": 1794131660.5
+    }
+   ],
+   "repro_steps": [],
+   "runs": [
+    "20261106-180900-family-mei-quote-happy-path-live"
+   ],
+   "screenshot": null,
+   "severity": "minor",
+   "source": "agent",
+   "status": "open",
+   "step": "/car-insurance/journey/*",
+   "suggested_fix": null,
+   "title": "Every journey step shows 4-5s blank grey screen; journey/initial re-posted on every step",
+   "tokens": [
+    "api",
+    "blank",
+    "calls",
+    "car",
+    "console",
+    "each",
+    "every",
+    "grey",
+    "initial",
+    "journey",
+    "messages",
+    "network",
+    "over",
+    "page",
+    "per",
+    "plus",
+    "post",
+    "posted",
+    "screen",
+    "server",
+    "session",
+    "several",
+    "shows",
+    "step",
+    "time",
+    "transition"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K005": {
+   "category": "usability",
+   "confidence": 0.8,
+   "dedup_key": null,
+   "expected": "Explain how to tell them apart or merge identical variants.",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "Both YP S variants show identical engine/transmission/power/drive/kerb mass; only release month differs.",
+   "occurrences": 1,
+   "personas": [
+    "family-mei"
+   ],
+   "rechecks": [
+    {
+     "fingerprint": "K005",
+     "note": "Badge 'unsure' list for 2018 Sorento: four UM variants with identical specs; only the badge differs.",
+     "run": "20261108-192500-dyn-jarrah-explore-coverage-sweep-live",
+     "status": "still_present",
+     "t": 1794131660.5
+    }
+   ],
+   "repro_steps": [],
+   "runs": [
+    "20261106-180900-family-mei-quote-happy-path-live"
+   ],
+   "screenshot": null,
+   "severity": "minor",
+   "source": "agent",
+   "status": "open",
+   "step": "/car-insurance/journey/car_series",
+   "suggested_fix": null,
+   "title": "Two identical variants differ only by 'Release: January' vs 'May' with no guidance",
+   "tokens": [
+    "both",
+    "differ",
+    "differs",
+    "drive",
+    "engine",
+    "guidance",
+    "identical",
+    "january",
+    "kerb",
+    "mass",
+    "may",
+    "month",
+    "only",
+    "power",
+    "release",
+    "show",
+    "transmission",
+    "two",
+    "variants"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K006": {
+   "category": "content",
+   "confidence": 0.75,
+   "dedup_key": null,
+   "expected": "Consistent names, accurate eligibility, help that doesn't obscure options.",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "Help calls it 'Third party property, fire and theft' vs button 'Third Party Fire and Theft'; says TPFT only for cars under $20,000 but offers it for a 2019 Carnival. Comprehensive wording reads as if own-car damage only covered when at fault. Popover covers the heading and third option.",
+   "occurrences": 1,
+   "personas": [
+    "family-mei"
+   ],
+   "rechecks": [
+    {
+     "fingerprint": "K006",
+     "note": "TPFT offered and accepted for a 2018 Sorento with no market-value check; help popovers cover options on mobile.",
+     "run": "20261108-192500-dyn-jarrah-explore-coverage-sweep-live",
+     "status": "still_present",
+     "t": 1794131660.5
+    }
+   ],
+   "repro_steps": [],
+   "runs": [
+    "20261106-180900-family-mei-quote-happy-path-live"
+   ],
+   "screenshot": null,
+   "severity": "minor",
+   "source": "agent",
+   "status": "open",
+   "step": "/car-insurance/journey/cover_type",
+   "suggested_fix": null,
+   "title": "Cover help text mislabels TPFT and states <$20k rule that the journey doesn't apply",
+   "tokens": [
+    "apply",
+    "but",
+    "button",
+    "calls",
+    "car",
+    "carnival",
+    "cars",
+    "comprehensive",
+    "cover",
+    "covered",
+    "covers",
+    "damage",
+    "doesn",
+    "fault",
+    "fire",
+    "heading",
+    "help",
+    "journey",
+    "mislabels",
+    "offers",
+    "only",
+    "option",
+    "own",
+    "party",
+    "popover",
+    "property",
+    "reads",
+    "rule",
+    "says",
+    "states",
+    "text",
+    "theft",
+    "third",
+    "tpft",
+    "under",
+    "wording"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K007": {
+   "category": "accessibility",
+   "confidence": 0.85,
+   "dedup_key": null,
+   "expected": "Enter submits a valid step; Next enables as soon as input is valid.",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "Pressing Enter after typing kilometres did nothing; DOB Next stayed disabled until focus left the year field.",
+   "occurrences": 1,
+   "personas": [
+    "family-mei"
+   ],
+   "rechecks": [
+    {
+     "fingerprint": "K007",
+     "note": "DOB Next looks disabled with a valid date; tapping it works (visual only).",
+     "run": "20261108-192500-dyn-jarrah-explore-coverage-sweep-live",
+     "status": "still_present",
+     "t": 1794131660.5
+    }
+   ],
+   "repro_steps": [],
+   "runs": [
+    "20261106-180900-family-mei-quote-happy-path-live"
+   ],
+   "screenshot": null,
+   "severity": "minor",
+   "source": "agent",
+   "status": "open",
+   "step": "/car-insurance/journey/annual_kms",
+   "suggested_fix": null,
+   "title": "Enter key doesn't submit text steps; Next only enables on blur",
+   "tokens": [
+    "after",
+    "blur",
+    "did",
+    "disabled",
+    "dob",
+    "doesn",
+    "enables",
+    "enter",
+    "field",
+    "focus",
+    "key",
+    "kilometres",
+    "left",
+    "next",
+    "nothing",
+    "only",
+    "pressing",
+    "stayed",
+    "steps",
+    "submit",
+    "text",
+    "typing",
+    "until",
+    "year"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K008": {
+   "category": "accessibility",
+   "confidence": 0.9,
+   "dedup_key": null,
+   "expected": "Labelled inputs; page titles match the step.",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "DD/MM/YYYY inputs have no label or aria-label (placeholders only); document title on car_address was 'Cover Type - Car Quote'.",
+   "occurrences": 1,
+   "personas": [
+    "family-mei"
+   ],
+   "rechecks": [
+    {
+     "fingerprint": "K008",
+     "note": "Address page title still 'Cover Type - Car Quote'.",
+     "run": "20261108-192500-dyn-jarrah-explore-coverage-sweep-live",
+     "status": "still_present",
+     "t": 1794131660.5
+    }
+   ],
+   "repro_steps": [],
+   "runs": [
+    "20261106-180900-family-mei-quote-happy-path-live"
+   ],
+   "screenshot": null,
+   "severity": "minor",
+   "source": "agent",
+   "status": "open",
+   "step": "/car-insurance/journey/regular_driver_dob",
+   "suggested_fix": null,
+   "title": "DOB inputs have no labels; address page title says 'Cover Type'",
+   "tokens": [
+    "address",
+    "aria",
+    "car",
+    "cover",
+    "dob",
+    "document",
+    "have",
+    "inputs",
+    "label",
+    "labels",
+    "only",
+    "page",
+    "placeholders",
+    "quote",
+    "says",
+    "title",
+    "type",
+    "was",
+    "yyyy"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K009": {
+   "category": "content",
+   "confidence": 0.8,
+   "dedup_key": null,
+   "expected": "One option or a clear distinction.",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "Both options shown with no explanation of difference.",
+   "occurrences": 1,
+   "personas": [
+    "family-mei"
+   ],
+   "rechecks": [
+    {
+     "fingerprint": "K009",
+     "note": "Car Park and Parking Lot both offered.",
+     "run": "20261108-192500-dyn-jarrah-explore-coverage-sweep-live",
+     "status": "still_present",
+     "t": 1794131660.5
+    }
+   ],
+   "repro_steps": [],
+   "runs": [
+    "20261106-180900-family-mei-quote-happy-path-live"
+   ],
+   "screenshot": null,
+   "severity": "cosmetic",
+   "source": "agent",
+   "status": "open",
+   "step": "/car-insurance/journey/overnight_parking_type",
+   "suggested_fix": null,
+   "title": "'Car Park' and 'Parking Lot' offered as separate parking options",
+   "tokens": [
+    "both",
+    "car",
+    "difference",
+    "explanation",
+    "lot",
+    "offered",
+    "options",
+    "park",
+    "parking",
+    "separate",
+    "shown"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K010": {
+   "category": "functional",
+   "confidence": 0.6,
+   "dedup_key": null,
+   "expected": "Options consistent with previous answer.",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "Follow-up allows 'None' full years despite prior Yes.",
+   "occurrences": 1,
+   "personas": [
+    "family-mei"
+   ],
+   "rechecks": [
+    {
+     "fingerprint": "K010",
+     "note": "Likely a false positive: 'None' full years is valid after Yes (insured under 12 months). After No, the 5-year option is correctly removed.",
+     "run": "20261108-192500-dyn-jarrah-explore-coverage-sweep-live",
+     "status": "not_reproduced",
+     "t": 1794131660.5
+    }
+   ],
+   "repro_steps": [],
+   "runs": [
+    "20261106-180900-family-mei-quote-happy-path-live"
+   ],
+   "screenshot": null,
+   "severity": "cosmetic",
+   "source": "agent",
+   "status": "not_reproduced",
+   "step": "/car-insurance/journey/regular_driver_comprehensive_insured_years",
+   "suggested_fix": null,
+   "title": "'None' years offered after answering Yes to comprehensive cover in last 12 months",
+   "tokens": [
+    "after",
+    "allows",
+    "answering",
+    "comprehensive",
+    "cover",
+    "despite",
+    "follow",
+    "full",
+    "last",
+    "months",
+    "none",
+    "offered",
+    "prior",
+    "years",
+    "yes"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K011": {
+   "category": "content",
+   "confidence": 0.95,
+   "dedup_key": null,
+   "expected": "'km', 'driver's licence'.",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "'KM's travelled per year', '290 KM's per week', 'their drivers licence'.",
+   "occurrences": 1,
+   "personas": [
+    "family-mei"
+   ],
+   "rechecks": [],
+   "repro_steps": [],
+   "runs": [
+    "20261106-180900-family-mei-quote-happy-path-live"
+   ],
+   "screenshot": null,
+   "severity": "cosmetic",
+   "source": "agent",
+   "status": "open",
+   "step": "/car-insurance/journey/annual_kms",
+   "suggested_fix": null,
+   "title": "Copy: \"KM's\" and \"drivers licence\"",
+   "tokens": [
+    "copy",
+    "drivers",
+    "licence",
+    "per",
+    "their",
+    "travelled",
+    "week",
+    "year"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K012": {
+   "category": "visual",
+   "confidence": 0.8,
+   "dedup_key": null,
+   "expected": "Neutral until validated.",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "Email field has a green 'valid' border while empty.",
+   "occurrences": 1,
+   "personas": [
+    "family-mei"
+   ],
+   "rechecks": [
+    {
+     "fingerprint": "K012",
+     "note": "Empty email field shown green.",
+     "run": "20261108-192500-dyn-jarrah-explore-coverage-sweep-live",
+     "status": "still_present",
+     "t": 1794131660.5
+    }
+   ],
+   "repro_steps": [],
+   "runs": [
+    "20261106-180900-family-mei-quote-happy-path-live"
+   ],
+   "screenshot": null,
+   "severity": "cosmetic",
+   "source": "agent",
+   "status": "open",
+   "step": "/car-insurance/journey/applicant_details",
+   "suggested_fix": null,
+   "title": "Empty email field shown green/valid before input",
+   "tokens": [
+    "before",
+    "border",
+    "email",
+    "empty",
+    "field",
+    "green",
+    "has",
+    "input",
+    "shown",
+    "valid",
+    "while"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K013": {
+   "category": "data",
+   "confidence": 0.9,
+   "dedup_key": null,
+   "expected": "Synthetic sessions tagged and excluded downstream before scheduled prod runs.",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "Network shows journey id created and POST .../journey/{id}/marketings during the anonymous journey.",
+   "occurrences": 1,
+   "personas": [
+    "family-mei"
+   ],
+   "rechecks": [],
+   "repro_steps": [],
+   "runs": [
+    "20261106-180900-family-mei-quote-happy-path-live"
+   ],
+   "screenshot": null,
+   "severity": "observation",
+   "source": "agent",
+   "status": "open",
+   "step": "/car-insurance/journey/driver_option",
+   "suggested_fix": null,
+   "title": "Production journey record + marketing call created before any contact details",
+   "tokens": [
+    "anonymous",
+    "any",
+    "before",
+    "call",
+    "contact",
+    "created",
+    "details",
+    "during",
+    "journey",
+    "marketing",
+    "marketings",
+    "network",
+    "post",
+    "production",
+    "record",
+    "shows"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K014": {
+   "category": "data",
+   "confidence": 0.9,
+   "dedup_key": null,
+   "expected": "No default when a postcode has several suburbs; require an explicit choice (auto-select only a single-suburb postcode).",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "Manual address entry, postcode 4068: the Suburb dropdown auto-selected 'Chelmer' (first of Chelmer / Indooroopilly / Taringa), showed it green as valid and enabled Next. The field sits below the fold on mobile.",
+   "occurrences": 1,
+   "personas": [
+    "dyn-11081925-jarrah-explore"
+   ],
+   "rechecks": [],
+   "repro_steps": [
+    "Address step",
+    "Enter it manually",
+    "Street 322 Moggill Road",
+    "Postcode 4068",
+    "Suburb shows Chelmer"
+   ],
+   "runs": [
+    "20261108-192500-dyn-jarrah-explore-coverage-sweep-live"
+   ],
+   "screenshot": "20261108-192500-dyn-jarrah-explore-coverage-sweep-live/shots/005-suburb-preselected.png",
+   "severity": "major",
+   "source": "agent",
+   "status": "candidate",
+   "step": "/car-insurance/journey/car_address",
+   "suggested_fix": "Default the suburb select to an empty 'Select suburb' option and validate it as required when there are multiple suburbs.",
+   "title": "Manual address: suburb silently pre-selected (first alphabetical) after postcode",
+   "tokens": [
+    "address",
+    "after",
+    "alphabetical",
+    "auto",
+    "below",
+    "chelmer",
+    "dropdown",
+    "enabled",
+    "entry",
+    "field",
+    "first",
+    "fold",
+    "green",
+    "indooroopilly",
+    "manual",
+    "mobile",
+    "next",
+    "postcode",
+    "pre",
+    "selected",
+    "showed",
+    "silently",
+    "sits",
+    "suburb",
+    "taringa",
+    "valid"
+   ],
+   "triage": "pending"
+  },
+  "K015": {
+   "category": "data",
+   "confidence": 0.9,
+   "dedup_key": null,
+   "expected": "Auto-advance between DD/MM/YYYY, or accept a full date pasted or typed into the first box.",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "Typing 01011980 into DD kept '01' and left MM and YYYY empty; no auto-advance, no message. Same on the regular-driver DOB in the 6 Nov run.",
+   "occurrences": 1,
+   "personas": [
+    "dyn-11081925-jarrah-explore"
+   ],
+   "rechecks": [],
+   "repro_steps": [],
+   "runs": [
+    "20261108-192500-dyn-jarrah-explore-coverage-sweep-live"
+   ],
+   "screenshot": null,
+   "severity": "minor",
+   "source": "agent",
+   "status": "candidate",
+   "step": "/car-insurance/journey/youngest_driver_dob",
+   "suggested_fix": "Auto-advance focus when a segment is full and distribute pasted/typed overflow across the fields.",
+   "title": "Typing a whole date of birth in one go keeps only the day; the rest is silently lost",
+   "tokens": [
+    "advance",
+    "auto",
+    "birth",
+    "date",
+    "day",
+    "dob",
+    "driver",
+    "empty",
+    "into",
+    "keeps",
+    "kept",
+    "left",
+    "lost",
+    "message",
+    "nov",
+    "one",
+    "only",
+    "regular",
+    "rest",
+    "run",
+    "same",
+    "silently",
+    "typing",
+    "whole",
+    "yyyy"
+   ],
+   "triage": "pending"
+  },
+  "K016": {
+   "category": "usability",
+   "confidence": 0.8,
+   "dedup_key": null,
+   "expected": "Help that doesn't hide the answers; a line on accessories vs modifications.",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "On a 375px phone the '?' popover covers the question and both answers. It defines modifications but not whether an accessory already declared (tow bar) counts.",
+   "occurrences": 1,
+   "personas": [
+    "dyn-11081925-jarrah-explore"
+   ],
+   "rechecks": [],
+   "repro_steps": [],
+   "runs": [
+    "20261108-192500-dyn-jarrah-explore-coverage-sweep-live"
+   ],
+   "screenshot": "20261108-192500-dyn-jarrah-explore-coverage-sweep-live/shots/004-modifications-help.png",
+   "severity": "minor",
+   "source": "agent",
+   "status": "candidate",
+   "step": "/car-insurance/journey/modifications",
+   "suggested_fix": "Render help inline below the question on small screens; add 'Accessories you declared on the previous step are not modifications'.",
+   "title": "Modifications help covers the whole question on mobile and doesn't say whether accessories count",
+   "tokens": [
+    "accessories",
+    "accessory",
+    "already",
+    "answers",
+    "bar",
+    "both",
+    "but",
+    "count",
+    "counts",
+    "covers",
+    "declared",
+    "defines",
+    "doesn",
+    "help",
+    "mobile",
+    "modifications",
+    "phone",
+    "popover",
+    "question",
+    "say",
+    "tow",
+    "whether",
+    "whole"
+   ],
+   "triage": "pending"
+  },
+  "K017": {
+   "category": "usability",
+   "confidence": 0.6,
+   "dedup_key": null,
+   "expected": "Touch targets at least 24x24px (WCAG 2.5.8), ideally 44px.",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "Thumb taps on 'click here' (badge unsure) and 'Enter it manually' missed and did nothing; both worked only with an exact tap. axe target-size also fails on the series list.",
+   "occurrences": 1,
+   "personas": [
+    "dyn-11081925-jarrah-explore"
+   ],
+   "rechecks": [],
+   "repro_steps": [],
+   "runs": [
+    "20261108-192500-dyn-jarrah-explore-coverage-sweep-live"
+   ],
+   "screenshot": null,
+   "severity": "minor",
+   "source": "agent",
+   "status": "candidate",
+   "step": "/car-insurance/journey/car_badge",
+   "suggested_fix": "Make these links buttons or add padding so the tap area is at least 44px tall.",
+   "title": "Small inline text links need a precise tap on mobile ('click here', 'Enter it manually')",
+   "tokens": [
+    "also",
+    "axe",
+    "badge",
+    "both",
+    "click",
+    "did",
+    "enter",
+    "exact",
+    "fails",
+    "here",
+    "inline",
+    "links",
+    "list",
+    "manually",
+    "missed",
+    "mobile",
+    "need",
+    "nothing",
+    "only",
+    "precise",
+    "series",
+    "size",
+    "small",
+    "tap",
+    "taps",
+    "target",
+    "text",
+    "thumb",
+    "unsure",
+    "worked"
+   ],
+   "triage": "pending"
+  },
+  "K018": {
+   "category": "functional",
+   "confidence": 0.5,
+   "dedup_key": null,
+   "expected": "Confirm with product whether insurers on the panel need this; if so, ask it here rather than at the insurer.",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "Choosing Foreign Licence goes straight to 'age licence received'; no country, conversion or years-in-Australia question.",
+   "occurrences": 1,
+   "personas": [
+    "dyn-11081925-jarrah-explore"
+   ],
+   "rechecks": [],
+   "repro_steps": [],
+   "runs": [
+    "20261108-192500-dyn-jarrah-explore-coverage-sweep-live"
+   ],
+   "screenshot": null,
+   "severity": "observation",
+   "source": "agent",
+   "status": "candidate",
+   "step": "/car-insurance/journey/youngest_driver_licence_age",
+   "suggested_fix": null,
+   "title": "Foreign licence branch asks nothing about country or time driving in Australia",
+   "tokens": [
+    "about",
+    "age",
+    "asks",
+    "australia",
+    "branch",
+    "choosing",
+    "conversion",
+    "country",
+    "driving",
+    "foreign",
+    "goes",
+    "licence",
+    "nothing",
+    "question",
+    "received",
+    "straight",
+    "time",
+    "years"
+   ],
+   "triage": "pending"
+  },
+  "K019": {
+   "category": "trust",
+   "confidence": 0.5,
+   "dedup_key": null,
+   "expected": "A short note on what happens next, or a follow-up if insurers need detail.",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "After Yes the journey moves straight on; no question about extent and no note that some insurers may exclude or decline.",
+   "occurrences": 1,
+   "personas": [
+    "dyn-11081925-jarrah-explore"
+   ],
+   "rechecks": [],
+   "repro_steps": [],
+   "runs": [
+    "20261108-192500-dyn-jarrah-explore-coverage-sweep-live"
+   ],
+   "screenshot": null,
+   "severity": "observation",
+   "source": "agent",
+   "status": "candidate",
+   "step": "/car-insurance/journey/accident_hail_damage",
+   "suggested_fix": null,
+   "title": "'Yes' to unrepaired hail damage has no follow-up or explanation of impact",
+   "tokens": [
+    "about",
+    "after",
+    "damage",
+    "decline",
+    "exclude",
+    "explanation",
+    "extent",
+    "follow",
+    "hail",
+    "has",
+    "impact",
+    "insurers",
+    "journey",
+    "may",
+    "moves",
+    "note",
+    "question",
+    "some",
+    "straight",
+    "unrepaired",
+    "yes"
+   ],
+   "triage": "pending"
+  },
+  "K020": {
+   "category": "accessibility",
+   "confidence": 1,
+   "dedup_key": "axe:aria-allowed-attr",
+   "expected": "Ensure an element's role supports its ARIA attributes",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "2 element(s) fail axe rule 'aria-allowed-attr' (, axe impact critical) on 1 step(s): /car-insurance. e.g. #tab-0-tab: ",
+   "occurrences": 1,
+   "personas": [
+    "dyn-11081925-jarrah-explore"
+   ],
+   "rechecks": [],
+   "repro_steps": [],
+   "runs": [
+    "20261108-192500-dyn-jarrah-explore-coverage-sweep-live"
+   ],
+   "screenshot": null,
+   "severity": "minor",
+   "source": "axe",
+   "status": "open",
+   "step": "/car-insurance",
+   "suggested_fix": "aria-selected=\" true \" is not allowed (stray spaces) See https://dequeuniversity.com/rules/axe/4.10/aria-allowed-attr",
+   "title": "Accessibility: Invalid ARIA markup, so the tab state may be announced wrongly (car-insurance, WCAG 4.1.2)",
+   "tokens": [
+    "accessibility",
+    "allowed",
+    "announced",
+    "aria",
+    "attr",
+    "axe",
+    "car",
+    "critical",
+    "element",
+    "fail",
+    "impact",
+    "insurance",
+    "invalid",
+    "markup",
+    "may",
+    "rule",
+    "state",
+    "step",
+    "tab",
+    "wcag",
+    "wrongly"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K021": {
+   "category": "accessibility",
+   "confidence": 1,
+   "dedup_key": "axe:aria-required-parent",
+   "expected": "Ensure elements with an ARIA role that require parent roles are contained by them",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "2 element(s) fail axe rule 'aria-required-parent' (, axe impact critical) on 1 step(s): /car-insurance/journey/standard_options. e.g. #factory: ",
+   "occurrences": 1,
+   "personas": [
+    "dyn-11081925-jarrah-explore"
+   ],
+   "rechecks": [],
+   "repro_steps": [],
+   "runs": [
+    "20261108-192500-dyn-jarrah-explore-coverage-sweep-live"
+   ],
+   "screenshot": null,
+   "severity": "minor",
+   "source": "axe",
+   "status": "open",
+   "step": "/car-insurance/journey/standard_options",
+   "suggested_fix": "Required ARIA parent role not present: tablist See https://dequeuniversity.com/rules/axe/4.10/aria-required-parent",
+   "title": "Accessibility: Tabs aren't inside a tab list, so they aren't announced as tabs (standard_options, WCAG 1.3.1)",
+   "tokens": [
+    "accessibility",
+    "announced",
+    "aren",
+    "aria",
+    "axe",
+    "car",
+    "critical",
+    "element",
+    "factory",
+    "fail",
+    "impact",
+    "inside",
+    "insurance",
+    "journey",
+    "list",
+    "options",
+    "parent",
+    "required",
+    "rule",
+    "standard",
+    "step",
+    "tab",
+    "tabs",
+    "they",
+    "wcag"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K022": {
+   "category": "accessibility",
+   "confidence": 1,
+   "dedup_key": "axe:aria-valid-attr-value",
+   "expected": "Ensure all ARIA attributes have valid values",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "2 element(s) fail axe rule 'aria-valid-attr-value' (, axe impact critical) on 1 step(s): /car-insurance. e.g. #tab-0-tab: ",
+   "occurrences": 1,
+   "personas": [
+    "dyn-11081925-jarrah-explore"
+   ],
+   "rechecks": [],
+   "repro_steps": [],
+   "runs": [
+    "20261108-192500-dyn-jarrah-explore-coverage-sweep-live"
+   ],
+   "screenshot": null,
+   "severity": "minor",
+   "source": "axe",
+   "status": "open",
+   "step": "/car-insurance",
+   "suggested_fix": "Invalid ARIA attribute value: aria-selected=\" true \" See https://dequeuniversity.com/rules/axe/4.10/aria-valid-attr-value",
+   "title": "Accessibility: An ARIA value is malformed (e.g. ' true ' with spaces) (car-insurance, WCAG 4.1.2)",
+   "tokens": [
+    "accessibility",
+    "aria",
+    "attr",
+    "axe",
+    "car",
+    "critical",
+    "element",
+    "fail",
+    "impact",
+    "insurance",
+    "malformed",
+    "rule",
+    "spaces",
+    "step",
+    "tab",
+    "true",
+    "valid",
+    "value",
+    "wcag"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K023": {
+   "category": "accessibility",
+   "confidence": 1,
+   "dedup_key": "axe:color-contrast",
+   "expected": "Ensure the contrast between foreground and background colors meets WCAG 2 AA",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "30 element(s) fail axe rule 'color-contrast' (, axe impact serious) on 15 step(s): /car-insurance, /car-insurance/journey/start, /car-insurance/journey/standard_options, /car-insurance/journey/car_address, /car-insurance/journey/car_make, /car-insurance/journey/car_year, /car-insurance/journey/car_model, /car-insurance/journey/non_standard_accessories …. e.g. .text-greyscale-300 > p: ",
+   "occurrences": 1,
+   "personas": [
+    "dyn-11081925-jarrah-explore"
+   ],
+   "rechecks": [],
+   "repro_steps": [],
+   "runs": [
+    "20261108-192500-dyn-jarrah-explore-coverage-sweep-live"
+   ],
+   "screenshot": null,
+   "severity": "minor",
+   "source": "axe",
+   "status": "open",
+   "step": "/*",
+   "suggested_fix": "Contrast 4.45 (#787573 on #fcfcfb, 12px); expected 4.5:1 See https://dequeuniversity.com/rules/axe/4.10/color-contrast",
+   "title": "Accessibility: Text too faint to read comfortably (15 steps, WCAG 1.4.3)",
+   "tokens": [
+    "accessibility",
+    "accessories",
+    "address",
+    "axe",
+    "car",
+    "color",
+    "comfortably",
+    "contrast",
+    "element",
+    "fail",
+    "faint",
+    "greyscale",
+    "impact",
+    "insurance",
+    "journey",
+    "make",
+    "model",
+    "non",
+    "options",
+    "read",
+    "rule",
+    "serious",
+    "standard",
+    "start",
+    "step",
+    "steps",
+    "text",
+    "too",
+    "wcag",
+    "year"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K024": {
+   "category": "accessibility",
+   "confidence": 1,
+   "dedup_key": "axe:label",
+   "expected": "Ensure every form element has a label",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "1 element(s) fail axe rule 'label' (, axe impact critical) on 1 step(s): /car-insurance/journey/car_address. e.g. #coverDetail\\.overnightParking\\.address\\.buildingName: ",
+   "occurrences": 1,
+   "personas": [
+    "dyn-11081925-jarrah-explore"
+   ],
+   "rechecks": [],
+   "repro_steps": [],
+   "runs": [
+    "20261108-192500-dyn-jarrah-explore-coverage-sweep-live"
+   ],
+   "screenshot": null,
+   "severity": "minor",
+   "source": "axe",
+   "status": "open",
+   "step": "/car-insurance/journey/car_address",
+   "suggested_fix": "Building Name input has no programmatic label See https://dequeuniversity.com/rules/axe/4.10/label",
+   "title": "Accessibility: A form field has no name, so it's announced as just 'edit text' (car_address, WCAG 1.3.1 / 4.1.2)",
+   "tokens": [
+    "accessibility",
+    "address",
+    "announced",
+    "axe",
+    "buildingname",
+    "car",
+    "coverdetail",
+    "critical",
+    "edit",
+    "element",
+    "fail",
+    "field",
+    "form",
+    "has",
+    "impact",
+    "insurance",
+    "journey",
+    "just",
+    "label",
+    "name",
+    "overnightparking",
+    "rule",
+    "step",
+    "text",
+    "wcag"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K025": {
+   "category": "accessibility",
+   "confidence": 1,
+   "dedup_key": "axe:link-in-text-block",
+   "expected": "Ensure links are distinguished from surrounding text without relying on color",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "1 element(s) fail axe rule 'link-in-text-block' (, axe impact serious) on 1 step(s): /car-insurance/journey/car_address. e.g. #overnightParkingAddressToggle: ",
+   "occurrences": 1,
+   "personas": [
+    "dyn-11081925-jarrah-explore"
+   ],
+   "rechecks": [],
+   "repro_steps": [],
+   "runs": [
+    "20261108-192500-dyn-jarrah-explore-coverage-sweep-live"
+   ],
+   "screenshot": null,
+   "severity": "minor",
+   "source": "axe",
+   "status": "open",
+   "step": "/car-insurance/journey/car_address",
+   "suggested_fix": "Link contrast 1.3:1 with surrounding text and no underline See https://dequeuniversity.com/rules/axe/4.10/link-in-text-block",
+   "title": "Accessibility: A link looks like plain text (colour is the only difference) (car_address, WCAG 1.4.1)",
+   "tokens": [
+    "accessibility",
+    "address",
+    "axe",
+    "block",
+    "car",
+    "colour",
+    "difference",
+    "element",
+    "fail",
+    "impact",
+    "insurance",
+    "journey",
+    "like",
+    "link",
+    "looks",
+    "only",
+    "overnightparkingaddresstoggle",
+    "plain",
+    "rule",
+    "serious",
+    "step",
+    "text",
+    "wcag"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K026": {
+   "category": "accessibility",
+   "confidence": 1,
+   "dedup_key": "axe:nested-interactive",
+   "expected": "Ensure interactive controls are not nested",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "1 element(s) fail axe rule 'nested-interactive' (, axe impact serious) on 1 step(s): /car-insurance/journey/start. e.g. .registration_number__none__tEhej: ",
+   "occurrences": 1,
+   "personas": [
+    "dyn-11081925-jarrah-explore"
+   ],
+   "rechecks": [],
+   "repro_steps": [],
+   "runs": [
+    "20261108-192500-dyn-jarrah-explore-coverage-sweep-live"
+   ],
+   "screenshot": null,
+   "severity": "minor",
+   "source": "axe",
+   "status": "open",
+   "step": "/car-insurance/journey/start",
+   "suggested_fix": "Element has focusable descendants See https://dequeuniversity.com/rules/axe/4.10/nested-interactive",
+   "title": "Accessibility: A control is nested inside another, so focus and announcements break (start, WCAG 4.1.2)",
+   "tokens": [
+    "accessibility",
+    "announcements",
+    "another",
+    "axe",
+    "break",
+    "car",
+    "control",
+    "element",
+    "fail",
+    "focus",
+    "impact",
+    "inside",
+    "insurance",
+    "interactive",
+    "journey",
+    "nested",
+    "none",
+    "number",
+    "registration",
+    "rule",
+    "serious",
+    "start",
+    "step",
+    "tehej",
+    "wcag"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K027": {
+   "category": "accessibility",
+   "confidence": 1,
+   "dedup_key": "axe:scrollable-region-focusable",
+   "expected": "Ensure elements that have scrollable content are accessible by keyboard",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "2 element(s) fail axe rule 'scrollable-region-focusable' (, axe impact serious) on 1 step(s): /car-insurance. e.g. #david-koch-car-insurance-transcript: ",
+   "occurrences": 1,
+   "personas": [
+    "dyn-11081925-jarrah-explore"
+   ],
+   "rechecks": [],
+   "repro_steps": [],
+   "runs": [
+    "20261108-192500-dyn-jarrah-explore-coverage-sweep-live"
+   ],
+   "screenshot": null,
+   "severity": "minor",
+   "source": "axe",
+   "status": "open",
+   "step": "/car-insurance",
+   "suggested_fix": "Element should be focusable or contain focusable content See https://dequeuniversity.com/rules/axe/4.10/scrollable-region-focusable",
+   "title": "Accessibility: A scrolling box can't be reached or scrolled with the keyboard (car-insurance, WCAG 2.1.1)",
+   "tokens": [
+    "accessibility",
+    "axe",
+    "box",
+    "can",
+    "car",
+    "david",
+    "element",
+    "fail",
+    "focusable",
+    "impact",
+    "insurance",
+    "keyboard",
+    "koch",
+    "reached",
+    "region",
+    "rule",
+    "scrollable",
+    "scrolled",
+    "scrolling",
+    "serious",
+    "step",
+    "transcript",
+    "wcag"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K028": {
+   "category": "accessibility",
+   "confidence": 1,
+   "dedup_key": "axe:select-name",
+   "expected": "Ensure select element has an accessible name",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "2 element(s) fail axe rule 'select-name' (, axe impact critical) on 1 step(s): /car-insurance/journey/car_address. e.g. #coverDetail\\.overnightParking\\.address\\.unitType: ",
+   "occurrences": 1,
+   "personas": [
+    "dyn-11081925-jarrah-explore"
+   ],
+   "rechecks": [],
+   "repro_steps": [],
+   "runs": [
+    "20261108-192500-dyn-jarrah-explore-coverage-sweep-live"
+   ],
+   "screenshot": null,
+   "severity": "minor",
+   "source": "axe",
+   "status": "open",
+   "step": "/car-insurance/journey/car_address",
+   "suggested_fix": "Unit type and Suburb selects have no accessible name See https://dequeuniversity.com/rules/axe/4.10/select-name",
+   "title": "Accessibility: A dropdown has no name; users don't know what they're choosing (car_address, WCAG 4.1.2)",
+   "tokens": [
+    "accessibility",
+    "address",
+    "axe",
+    "car",
+    "choosing",
+    "coverdetail",
+    "critical",
+    "don",
+    "dropdown",
+    "element",
+    "fail",
+    "has",
+    "impact",
+    "insurance",
+    "journey",
+    "know",
+    "name",
+    "overnightparking",
+    "rule",
+    "select",
+    "step",
+    "they",
+    "unittype",
+    "users",
+    "wcag",
+    "what"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  },
+  "K029": {
+   "category": "accessibility",
+   "confidence": 1,
+   "dedup_key": "axe:target-size",
+   "expected": "Ensure touch targets have sufficient size and space",
+   "first_seen": 1794131660.5,
+   "last_seen": 1794131660.5,
+   "observed": "9 element(s) fail axe rule 'target-size' (, axe impact serious) on 1 step(s): /car-insurance/journey/car_series. e.g. #internal-link-KIA\\ 18AQ: ",
+   "occurrences": 1,
+   "personas": [
+    "dyn-11081925-jarrah-explore"
+   ],
+   "rechecks": [],
+   "repro_steps": [],
+   "runs": [
+    "20261108-192500-dyn-jarrah-explore-coverage-sweep-live"
+   ],
+   "screenshot": null,
+   "severity": "minor",
+   "source": "axe",
+   "status": "open",
+   "step": "/car-insurance/journey/car_series",
+   "suggested_fix": "Target partially obscured (345px by 10px); should be at least 24px by 24px See https://dequeuniversity.com/rules/axe/4.10/target-size",
+   "title": "Accessibility: Tap targets are too small to hit reliably (car_series, WCAG 2.5.8)",
+   "tokens": [
+    "accessibility",
+    "axe",
+    "car",
+    "element",
+    "fail",
+    "hit",
+    "impact",
+    "insurance",
+    "internal",
+    "journey",
+    "kia",
+    "link",
+    "reliably",
+    "rule",
+    "series",
+    "serious",
+    "size",
+    "small",
+    "step",
+    "tap",
+    "target",
+    "targets",
+    "too",
+    "wcag"
+   ],
+   "triage": "pending",
+   "triage_note": ""
+  }
+ },
+ "ingested": [
+  "20261106-180900-family-mei-quote-happy-path-live",
+  "20261108-192500-dyn-jarrah-explore-coverage-sweep-live"
+ ],
+ "persona_library": {
+  "dyn-11081925-jarrah-explore": {
+   "device": "mobile",
+   "interaction": {
+    "cpu_slowdown": 1,
+    "habits": [
+     "fast thumb typing",
+     "taps without zooming"
+    ],
+    "network": "none",
+    "typing_speed": "fast"
+   },
+   "profile": {
+    "behaviours": [
+     "types fast with thumbs",
+     "takes the 'unsure' route when he doesn't know an answer",
+     "enters address manually"
+    ],
+    "device": "mobile",
+    "focus": [
+     "untested branches: unrepaired damage Yes, finance, not insured, no home, younger driver, foreign licence",
+     "manual address entry",
+     "badge 'unsure' path",
+     "TPFT cover"
+    ],
+    "id": "dyn-11081925-jarrah-explore",
+    "interaction": {
+     "cpu_slowdown": 1,
+     "habits": [
+      "fast thumb typing",
+      "taps without zooming"
+     ],
+     "network": "none",
+     "typing_speed": "fast"
+    },
+    "name": "Jarrah, used-car buyer on his phone",
+    "origin": "dynamic",
+    "strategy": "explore",
+    "summary": "31, self-employed, renting in Indooroopilly. Just bought a used 2018 Kia Sorento diesel on a car loan: unrepaired hail damage, tow bar fitted, not insured yet. Keeps his old car until it sells. His partner (26, NZ licence) drives it sometimes. Unsure of the exact badge. New-build address the lookup won't find.",
+    "test_data": {
+     "date_of_birth": "12/04/1995",
+     "email": "persona-bot+{run_id}@example.com",
+     "first_name": "Jarrah",
+     "gender": "Male",
+     "last_name": "Testpersona",
+     "mobile": "0491570110"
+    },
+    "traits": {
+     "patience": "medium",
+     "reading_style": "skims, taps fast",
+     "tech_savvy": "high on phone"
+    },
+    "vertical": "car"
+   },
+   "reward": 64.9,
+   "run": "20261108-192500-dyn-jarrah-explore-coverage-sweep-live",
+   "strategy": "explore",
+   "summary": "31, self-employed, renting in Indooroopilly. Just bought a used 2018 Kia Sorento diesel on a car loan: unrepaired hail damage, tow bar fitted, not insured yet. Keeps his old car until it sells. His partner (26, NZ licence) drives it sometimes. Unsure of the exact badge. New-build address the lookup ",
+   "t": 1794131660.5
+  }
+ },
+ "runs": [
+  {
+   "charter": "quote-happy-path",
+   "device": "desktop",
+   "findings": 13,
+   "furthest": "/car-insurance/journey/applicant_details",
+   "new_branches": 43,
+   "new_findings": 13,
+   "new_steps": 34,
+   "outcome": "stopped_by_guardrail",
+   "persona": "family-mei",
+   "persona_origin": "static",
+   "reward": 85,
+   "run_id": "20261106-180900-family-mei-quote-happy-path-live",
+   "steps": 34,
+   "strategy": "manual",
+   "t": 1794131660.5,
+   "would_continue": false
+  },
+  {
+   "charter": "coverage-sweep",
+   "device": "mobile",
+   "findings": 16,
+   "furthest": "/car-insurance/journey/applicant_details",
+   "new_branches": 43,
+   "new_findings": 16,
+   "new_steps": 8,
+   "outcome": "stopped_by_guardrail",
+   "persona": "dyn-11081925-jarrah-explore",
+   "persona_origin": "dynamic",
+   "reward": 64.9,
+   "run_id": "20261108-192500-dyn-jarrah-explore-coverage-sweep-live",
+   "steps": 41,
+   "strategy": "explore",
+   "t": 1794131660.5,
+   "would_continue": true
+  }
+ ],
+ "steps": {
+  "/car-insurance": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    20,
+    15
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "Compare Car Insurance Quotes"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Compare now": {
+     "chosen": 2,
+     "seen": 2
+    },
+    "Menu": {
+     "chosen": 0,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/accident_hail_damage": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    11,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "What about any unrepaired accident or hail damage to the KIA?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "?": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "No": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Yes": {
+     "chosen": 1,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/annual_kms": {
+   "actions": [
+    2,
+    2
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    22,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "Roughly how many kilometres is the KIA driven per year?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "?": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Next": {
+     "chosen": 2,
+     "seen": 2
+    },
+    "field:KM's travelled per year": {
+     "chosen": 2,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/applicant_details": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    30,
+    20
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "What are the policy holder's contact details?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Financial Services Guide": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Next": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Other number?": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Privacy Collection Notice": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Trusted Partners": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "field:Email address": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "field:First name": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "field:Last name": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "field:Mobile number (Optional)": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "opening hours": {
+     "chosen": 0,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/car_address": {
+   "actions": [
+    4,
+    5
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    25,
+    60
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "What's the address where the KIA is normally kept at night?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "1151 Creek Rd, Carindale, QLD, 4152": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Enter it manually": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Next": {
+     "chosen": 2,
+     "seen": 2
+    },
+    "Try searching for your address again": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "field:Address": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "field:E.g. Sample Street": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "field:Postcode": {
+     "chosen": 2,
+     "seen": 2
+    },
+    "field:St. #": {
+     "chosen": 1,
+     "seen": 1
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/car_badge": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    10,
+    25
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "Select the badge of the KIA"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "AO Edition": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "GT-Line": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "Platinum": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "S": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "SLi": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Si": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Sport": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "click here": {
+     "chosen": 1,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/car_body": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    1,
+    1
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "(auto-skipped: single body type)"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {},
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/car_colour": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    10,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "Select the colour of the KIA."
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Beige": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Black": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Blue": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Brown": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Gold": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Green": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Grey": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Maroon": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Orange": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Other": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Purple": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Red": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Silver": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Turquoise": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "White": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Yellow": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "click here": {
+     "chosen": 0,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/car_fuel": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    10,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "And the fuel type?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Diesel": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Petrol": {
+     "chosen": 1,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/car_make": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    11,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "What is the make of the car?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "AUDI": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "BMW": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "FORD": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "HOLDEN": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "HONDA": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "HYUNDAI": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "JEEP": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "KIA": {
+     "chosen": 2,
+     "seen": 2
+    },
+    "MAZDA": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "MERCEDES-BENZ": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "MITSUBISHI": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "NISSAN": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Next": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "SUBARU": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "SUZUKI": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "TOYOTA": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "VOLKSWAGEN": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "field:Start typing your make...": {
+     "chosen": 0,
+     "seen": 1
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/car_model": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    10,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "And the model of the KIA?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "CARNIVAL": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "CERATO": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Next": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "OPTIMA": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "PICANTO": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "RIO": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "RONDO": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "SELTOS": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "SORENTO": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "SOUL": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "SPORTAGE": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "STINGER": {
+     "chosen": 0,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/car_series": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    15,
+    15
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "Select the KIA series and specifics from the list below:"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Series: UM | Badge: GT-Line": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "Series: UM | Badge: SLi": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "Series: UM | Badge: Si": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "Series: UM | Badge: Sport": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "Series: YP | Badge: S (Release: January)": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "Series: YP | Badge: S (Release: May)": {
+     "chosen": 0,
+     "seen": 1
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/car_year": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    10,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "What year was the KIA manufactured?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "2007": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "2008": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "2009": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "2010": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "2011": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "2012": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "2013": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "2014": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "2015": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "2016": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "2017": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "2018": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "2019": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "2020": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "2021": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "2022": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "2023": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "2024": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "2025": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "2026": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Next": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "field:Start typing your year...": {
+     "chosen": 0,
+     "seen": 1
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/cover_type": {
+   "actions": [
+    2,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    40,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "What level of cover are you looking for?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "?": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Comprehensive": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Third Party Fire and Theft": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Third Party Property Damage": {
+     "chosen": 0,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/currently_insured": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    12,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "Is the KIA currently insured?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "No": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Yes": {
+     "chosen": 1,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/driver_option": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    15,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "Do you want to exclude any drivers on the policy?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "No restrictions": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Yes, all drivers will be 21 & over": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Yes, all drivers will be 25 & over": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Yes, all drivers will be 30 & over": {
+     "chosen": 1,
+     "seen": 1
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/factory_options": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    10,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "Are there any factory/dealer options or non-standard accessories fitted?",
+    "Are there any factory/dealer options or non-standard accessories fitted to the KIA?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "?": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "No": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Unsure": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Yes": {
+     "chosen": 1,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/finance": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    11,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "Is there any finance on the KIA?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "?": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "No": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Yes, Finance / Hire Purchase": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Yes, Lease": {
+     "chosen": 0,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/goods_payment": {
+   "actions": [
+    1
+   ],
+   "devices": {
+    "mobile": 1
+   },
+   "dwell": [
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "Will the KIA be used for making deliveries or carrying goods for payment ...?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "?": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "Back": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "No": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "Yes": {
+     "chosen": 0,
+     "seen": 1
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 1
+  },
+  "/car-insurance/journey/modifications": {
+   "actions": [
+    1,
+    2
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    10,
+    25
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "Has the KIA been modified?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "?": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "No": {
+     "chosen": 2,
+     "seen": 2
+    },
+    "Yes": {
+     "chosen": 0,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/non_standard_accessories": {
+   "actions": [
+    3
+   ],
+   "devices": {
+    "mobile": 1
+   },
+   "dwell": [
+    20
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "Please add any non-standard accessories fitted to the KIA."
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "Next": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "No non-standard accessories": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "Tow Bar / Tow Pack": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "field:Start typing...": {
+     "chosen": 1,
+     "seen": 1
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 1
+  },
+  "/car-insurance/journey/overnight_parking_type": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    11,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "And where at Creek Rd is the KIA usually parked?",
+    "And where at Moggill Road is the KIA usually parked?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "?": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Car Park": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Carport": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Driveway": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Garaged": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Locked Compound": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "On Private Property": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Parking Lot": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Street": {
+     "chosen": 0,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/passengers_payment": {
+   "actions": [
+    1
+   ],
+   "devices": {
+    "mobile": 1
+   },
+   "dwell": [
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "Will the KIA be used for carrying passengers for payment ...?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "No": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "Yes": {
+     "chosen": 0,
+     "seen": 1
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 1
+  },
+  "/car-insurance/journey/previous_insurer": {
+   "actions": [
+    3
+   ],
+   "devices": {
+    "desktop": 1
+   },
+   "dwell": [
+    27
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "With which insurer?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "Next Step": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "RACQ": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "field:Start typing...": {
+     "chosen": 1,
+     "seen": 1
+    }
+   },
+   "personas": {
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 1
+  },
+  "/car-insurance/journey/regular_driver_claims": {
+   "actions": [
+    2,
+    4
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    18,
+    25
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "How many motor insurance claims, regardless of fault, has the regular driver had in the last 5 years?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "1": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "2": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "3": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "4": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "5 or more": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Next": {
+     "chosen": 2,
+     "seen": 2
+    },
+    "No": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "None": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Within the last 3 years": {
+     "chosen": 1,
+     "seen": 1
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/regular_driver_comprehensive_insured": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    12,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "Has the regular driver held comprehensive car insurance in the last 12 months?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "?": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "No": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Yes": {
+     "chosen": 1,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/regular_driver_comprehensive_insured_years": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    11,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "How many full years of comprehensive car insurance has the regular driver held in the last 5 years?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "1": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "2": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "3": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "4": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "5": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "?": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "None": {
+     "chosen": 0,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/regular_driver_dob": {
+   "actions": [
+    3,
+    4
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    64,
+    20
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "And their date of birth?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Next": {
+     "chosen": 2,
+     "seen": 2
+    },
+    "field:DD": {
+     "chosen": 2,
+     "seen": 2
+    },
+    "field:MM": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "field:YYYY": {
+     "chosen": 2,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/regular_driver_employment": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    10,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "What about their employment status?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "?": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Employed full-time": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Employed part-time": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Home duties": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Retired": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Self employed": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Student": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Unemployed": {
+     "chosen": 0,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/regular_driver_gender": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    10,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "What's the regular driver's gender?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Female": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Male": {
+     "chosen": 1,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/regular_driver_licence_age": {
+   "actions": [
+    2,
+    2
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    22,
+    18
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "At what age did the regular driver obtain their drivers licence?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Next": {
+     "chosen": 2,
+     "seen": 2
+    },
+    "field:Age licence received": {
+     "chosen": 2,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/regular_driver_licence_type": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    11,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "What type of licence does the regular driver hold?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Foreign Licence": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Full / Open Licence": {
+     "chosen": 2,
+     "seen": 2
+    },
+    "Learners": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Provisional 1 (Red)": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Provisional 2 (Green)": {
+     "chosen": 0,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/regular_driver_owns_another_car": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    11,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "Does the regular driver own another car?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "No": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Yes": {
+     "chosen": 1,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/regular_driver_owns_home": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    11,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "Does the regular driver or their spouse/partner (if any) own a home?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "?": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "No": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Yes": {
+     "chosen": 1,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/standard_options": {
+   "actions": [
+    1
+   ],
+   "devices": {
+    "mobile": 1
+   },
+   "dwell": [
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "We've found the following factory/dealer options for you to choose from."
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "Factory Options": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "No Factory options": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "Paint - Premium": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "Paint - standard": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "What is fitted as standard?": {
+     "chosen": 0,
+     "seen": 1
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 1
+  },
+  "/car-insurance/journey/start": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    12,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "Do you know the rego of the car?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Next": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "click here": {
+     "chosen": 2,
+     "seen": 2
+    },
+    "field:rego": {
+     "chosen": 0,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/use_type": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    11,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "How is the KIA used?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "?": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Business Only": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Private and Business": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "Private and Occasional Business": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Private and/or commuting to work only": {
+     "chosen": 1,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/youngest_driver": {
+   "actions": [
+    1,
+    1
+   ],
+   "devices": {
+    "desktop": 1,
+    "mobile": 1
+   },
+   "dwell": [
+    11,
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "Will anyone younger be driving the KIA?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 2
+    },
+    "No": {
+     "chosen": 1,
+     "seen": 2
+    },
+    "Yes": {
+     "chosen": 1,
+     "seen": 2
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1,
+    "family-mei": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 2
+  },
+  "/car-insurance/journey/youngest_driver_dob": {
+   "actions": [
+    4
+   ],
+   "devices": {
+    "mobile": 1
+   },
+   "dwell": [
+    40
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "And their date of birth?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "Next": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "field:DD": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "field:MM": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "field:YYYY": {
+     "chosen": 1,
+     "seen": 1
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 1
+  },
+  "/car-insurance/journey/youngest_driver_gender": {
+   "actions": [
+    1
+   ],
+   "devices": {
+    "mobile": 1
+   },
+   "dwell": [
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "What's the youngest driver's gender?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "Female": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "Male": {
+     "chosen": 0,
+     "seen": 1
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 1
+  },
+  "/car-insurance/journey/youngest_driver_licence_age": {
+   "actions": [
+    2
+   ],
+   "devices": {
+    "mobile": 1
+   },
+   "dwell": [
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "How old were they when they received their drivers licence?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "Next": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "field:Age licence received": {
+     "chosen": 1,
+     "seen": 1
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 1
+  },
+  "/car-insurance/journey/youngest_driver_licence_type": {
+   "actions": [
+    1
+   ],
+   "devices": {
+    "mobile": 1
+   },
+   "dwell": [
+    12
+   ],
+   "errors": 0,
+   "first_seen": 1794131660.5,
+   "headings": [
+    "What type of licence does the youngest driver hold?"
+   ],
+   "last_seen": 1794131660.5,
+   "options": {
+    "Back": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "Foreign Licence": {
+     "chosen": 1,
+     "seen": 1
+    },
+    "Full / Open Licence": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "Learners": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "Provisional 1 (Red)": {
+     "chosen": 0,
+     "seen": 1
+    },
+    "Provisional 2 (Green)": {
+     "chosen": 0,
+     "seen": 1
+    }
+   },
+   "personas": {
+    "dyn-11081925-jarrah-explore": 1
+   },
+   "signals": {
+    "console": 0,
+    "failed": 0,
+    "slow": 0
+   },
+   "visits": 1
+  }
+ },
+ "strategies": {
+  "explore": {
+   "best": 64.9,
+   "n": 1,
+   "reward": 64.9
+  },
+  "manual": {
+   "best": 85,
+   "n": 1,
+   "reward": 85
+  }
+ },
+ "target": "prod",
+ "updated": 1794138485.2,
+ "version": 1,
+ "vertical": "car"
+}

@@ -1,0 +1,392 @@
+{
+  "run_id": "20261108-192500-dyn-jarrah-explore-coverage-sweep-live",
+  "persona": "dyn-11081925-jarrah-explore",
+  "persona_name": "Jarrah, used-car buyer on his phone",
+  "charter": "coverage-sweep",
+  "device": "mobile",
+  "stop_reason": "finished",
+  "turns": 0,
+  "actions": 0,
+  "usage": {
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 0
+  },
+  "strategy": "explore",
+  "persona_origin": "dynamic",
+  "persona_profile": {
+    "id": "dyn-11081925-jarrah-explore",
+    "name": "Jarrah, used-car buyer on his phone",
+    "vertical": "car",
+    "origin": "dynamic",
+    "strategy": "explore",
+    "device": "mobile",
+    "summary": "31, self-employed, renting in Indooroopilly. Just bought a used 2018 Kia Sorento diesel on a car loan: unrepaired hail damage, tow bar fitted, not insured yet. Keeps his old car until it sells. His partner (26, NZ licence) drives it sometimes. Unsure of the exact badge. New-build address the lookup won't find.",
+    "traits": {
+      "patience": "medium",
+      "tech_savvy": "high on phone",
+      "reading_style": "skims, taps fast"
+    },
+    "behaviours": [
+      "types fast with thumbs",
+      "takes the 'unsure' route when he doesn't know an answer",
+      "enters address manually"
+    ],
+    "interaction": {
+      "typing_speed": "fast",
+      "network": "none",
+      "cpu_slowdown": 1,
+      "habits": [
+        "fast thumb typing",
+        "taps without zooming"
+      ]
+    },
+    "focus": [
+      "untested branches: unrepaired damage Yes, finance, not insured, no home, younger driver, foreign licence",
+      "manual address entry",
+      "badge 'unsure' path",
+      "TPFT cover"
+    ],
+    "test_data": {
+      "first_name": "Jarrah",
+      "last_name": "Testpersona",
+      "date_of_birth": "12/04/1995",
+      "gender": "Male",
+      "email": "persona-bot+{run_id}@example.com",
+      "mobile": "0491570110"
+    }
+  },
+  "result": {
+    "outcome": "stopped_by_guardrail",
+    "furthest_step": "contact details",
+    "would_persona_continue": true,
+    "summary": "Mobile run through 40 steps of the live car journey, taking untested branches: Diesel, badge 'unsure', TPFT, accessories (tow bar), unrepaired damage, finance, occasional business, not insured, manual address, car park, self-employed, no comprehensive in 12 months, 1 claim, second car, renting, younger driver with a foreign licence, 25+ restriction. Stopped at contact details.",
+    "persona_verdict": "Mostly easy on my phone, but it quietly put my address in the wrong suburb, and I had to stab at a couple of tiny links.",
+    "coverage_notes": "Found 4 steps not seen before (standard_options, non_standard_accessories, passengers_payment, goods_payment) plus 4 younger-driver steps. Not covered: rego lookup (prod rule), results, Lease finance, Business Only, Learners/Provisional licences, desktop."
+  },
+  "findings": [
+    {
+      "repro_steps": [
+        "Address step",
+        "Enter it manually",
+        "Street 322 Moggill Road",
+        "Postcode 4068",
+        "Suburb shows Chelmer"
+      ],
+      "source": "agent",
+      "id": "F01",
+      "title": "Manual address: suburb silently pre-selected (first alphabetical) after postcode",
+      "severity": "major",
+      "category": "data",
+      "step": "address",
+      "step_key": "/car-insurance/journey/car_address",
+      "observed": "Manual address entry, postcode 4068: the Suburb dropdown auto-selected 'Chelmer' (first of Chelmer / Indooroopilly / Taringa), showed it green as valid and enabled Next. The field sits below the fold on mobile.",
+      "expected": "No default when a postcode has several suburbs; require an explicit choice (auto-select only a single-suburb postcode).",
+      "persona_impact": "Quote and policy priced for the wrong suburb without the customer noticing.",
+      "suggested_fix": "Default the suburb select to an empty 'Select suburb' option and validate it as required when there are multiple suburbs.",
+      "confidence": 0.9,
+      "screenshot": "shots/005-suburb-preselected.png",
+      "url": "https://www.comparethemarket.com.au/car-insurance/journey/car_address"
+    },
+    {
+      "repro_steps": [],
+      "source": "agent",
+      "id": "F02",
+      "title": "Typing a whole date of birth in one go keeps only the day; the rest is silently lost",
+      "severity": "minor",
+      "category": "data",
+      "step": "youngest driver DOB",
+      "step_key": "/car-insurance/journey/youngest_driver_dob",
+      "observed": "Typing 01011980 into DD kept '01' and left MM and YYYY empty; no auto-advance, no message. Same on the regular-driver DOB in the 6 Nov run.",
+      "expected": "Auto-advance between DD/MM/YYYY, or accept a full date pasted or typed into the first box.",
+      "suggested_fix": "Auto-advance focus when a segment is full and distribute pasted/typed overflow across the fields.",
+      "confidence": 0.9,
+      "url": "https://www.comparethemarket.com.au/car-insurance/journey/youngest_driver_dob"
+    },
+    {
+      "repro_steps": [],
+      "source": "agent",
+      "id": "F03",
+      "title": "Modifications help covers the whole question on mobile and doesn't say whether accessories count",
+      "severity": "minor",
+      "category": "usability",
+      "step": "modifications",
+      "step_key": "/car-insurance/journey/modifications",
+      "observed": "On a 375px phone the '?' popover covers the question and both answers. It defines modifications but not whether an accessory already declared (tow bar) counts.",
+      "expected": "Help that doesn't hide the answers; a line on accessories vs modifications.",
+      "persona_impact": "Unsure customers guess; a wrong answer can affect a claim.",
+      "suggested_fix": "Render help inline below the question on small screens; add 'Accessories you declared on the previous step are not modifications'.",
+      "confidence": 0.8,
+      "screenshot": "shots/004-modifications-help.png",
+      "url": "https://www.comparethemarket.com.au/car-insurance/journey/modifications"
+    },
+    {
+      "repro_steps": [],
+      "source": "agent",
+      "id": "F04",
+      "title": "Small inline text links need a precise tap on mobile ('click here', 'Enter it manually')",
+      "severity": "minor",
+      "category": "usability",
+      "step": "badge / address",
+      "step_key": "/car-insurance/journey/car_badge",
+      "observed": "Thumb taps on 'click here' (badge unsure) and 'Enter it manually' missed and did nothing; both worked only with an exact tap. axe target-size also fails on the series list.",
+      "expected": "Touch targets at least 24x24px (WCAG 2.5.8), ideally 44px.",
+      "suggested_fix": "Make these links buttons or add padding so the tap area is at least 44px tall.",
+      "confidence": 0.6,
+      "url": "https://www.comparethemarket.com.au/car-insurance/journey/car_badge"
+    },
+    {
+      "repro_steps": [],
+      "source": "agent",
+      "id": "F05",
+      "title": "Foreign licence branch asks nothing about country or time driving in Australia",
+      "severity": "observation",
+      "category": "functional",
+      "step": "youngest driver licence",
+      "step_key": "/car-insurance/journey/youngest_driver_licence_age",
+      "observed": "Choosing Foreign Licence goes straight to 'age licence received'; no country, conversion or years-in-Australia question.",
+      "expected": "Confirm with product whether insurers on the panel need this; if so, ask it here rather than at the insurer.",
+      "confidence": 0.5,
+      "url": "https://www.comparethemarket.com.au/car-insurance/journey/youngest_driver_licence_age"
+    },
+    {
+      "repro_steps": [],
+      "source": "agent",
+      "id": "F06",
+      "title": "'Yes' to unrepaired hail damage has no follow-up or explanation of impact",
+      "severity": "observation",
+      "category": "trust",
+      "step": "unrepaired damage",
+      "step_key": "/car-insurance/journey/accident_hail_damage",
+      "observed": "After Yes the journey moves straight on; no question about extent and no note that some insurers may exclude or decline.",
+      "expected": "A short note on what happens next, or a follow-up if insurers need detail.",
+      "confidence": 0.5,
+      "url": "https://www.comparethemarket.com.au/car-insurance/journey/accident_hail_damage"
+    },
+    {
+      "id": "A01",
+      "source": "axe",
+      "dedup_key": "axe:aria-allowed-attr",
+      "title": "Accessibility: Invalid ARIA markup, so the tab state may be announced wrongly (car-insurance, WCAG 4.1.2)",
+      "severity": "minor",
+      "category": "accessibility",
+      "step": "/car-insurance",
+      "step_key": "/car-insurance",
+      "url": "https://www.comparethemarket.com.au/car-insurance",
+      "observed": "2 element(s) fail axe rule 'aria-allowed-attr' (, axe impact critical) on 1 step(s): /car-insurance. e.g. #tab-0-tab: ",
+      "expected": "Ensure an element's role supports its ARIA attributes",
+      "confidence": 1.0,
+      "suggested_fix": "aria-selected=\" true \" is not allowed (stray spaces) See https://dequeuniversity.com/rules/axe/4.10/aria-allowed-attr",
+      "screenshot": null
+    },
+    {
+      "id": "A02",
+      "source": "axe",
+      "dedup_key": "axe:aria-required-parent",
+      "title": "Accessibility: Tabs aren't inside a tab list, so they aren't announced as tabs (standard_options, WCAG 1.3.1)",
+      "severity": "minor",
+      "category": "accessibility",
+      "step": "/car-insurance/journey/standard_options",
+      "step_key": "/car-insurance/journey/standard_options",
+      "url": "https://www.comparethemarket.com.au/car-insurance/journey/standard_options",
+      "observed": "2 element(s) fail axe rule 'aria-required-parent' (, axe impact critical) on 1 step(s): /car-insurance/journey/standard_options. e.g. #factory: ",
+      "expected": "Ensure elements with an ARIA role that require parent roles are contained by them",
+      "confidence": 1.0,
+      "suggested_fix": "Required ARIA parent role not present: tablist See https://dequeuniversity.com/rules/axe/4.10/aria-required-parent",
+      "screenshot": null
+    },
+    {
+      "id": "A03",
+      "source": "axe",
+      "dedup_key": "axe:aria-valid-attr-value",
+      "title": "Accessibility: An ARIA value is malformed (e.g. ' true ' with spaces) (car-insurance, WCAG 4.1.2)",
+      "severity": "minor",
+      "category": "accessibility",
+      "step": "/car-insurance",
+      "step_key": "/car-insurance",
+      "url": "https://www.comparethemarket.com.au/car-insurance",
+      "observed": "2 element(s) fail axe rule 'aria-valid-attr-value' (, axe impact critical) on 1 step(s): /car-insurance. e.g. #tab-0-tab: ",
+      "expected": "Ensure all ARIA attributes have valid values",
+      "confidence": 1.0,
+      "suggested_fix": "Invalid ARIA attribute value: aria-selected=\" true \" See https://dequeuniversity.com/rules/axe/4.10/aria-valid-attr-value",
+      "screenshot": null
+    },
+    {
+      "id": "A04",
+      "source": "axe",
+      "dedup_key": "axe:color-contrast",
+      "title": "Accessibility: Text too faint to read comfortably (15 steps, WCAG 1.4.3)",
+      "severity": "minor",
+      "category": "accessibility",
+      "step": "/*",
+      "step_key": "/*",
+      "url": "https://www.comparethemarket.com.au/car-insurance",
+      "observed": "30 element(s) fail axe rule 'color-contrast' (, axe impact serious) on 15 step(s): /car-insurance, /car-insurance/journey/start, /car-insurance/journey/standard_options, /car-insurance/journey/car_address, /car-insurance/journey/car_make, /car-insurance/journey/car_year, /car-insurance/journey/car_model, /car-insurance/journey/non_standard_accessories \u2026. e.g. .text-greyscale-300 > p: ",
+      "expected": "Ensure the contrast between foreground and background colors meets WCAG 2 AA",
+      "confidence": 1.0,
+      "suggested_fix": "Contrast 4.45 (#787573 on #fcfcfb, 12px); expected 4.5:1 See https://dequeuniversity.com/rules/axe/4.10/color-contrast",
+      "screenshot": null
+    },
+    {
+      "id": "A05",
+      "source": "axe",
+      "dedup_key": "axe:label",
+      "title": "Accessibility: A form field has no name, so it's announced as just 'edit text' (car_address, WCAG 1.3.1 / 4.1.2)",
+      "severity": "minor",
+      "category": "accessibility",
+      "step": "/car-insurance/journey/car_address",
+      "step_key": "/car-insurance/journey/car_address",
+      "url": "https://www.comparethemarket.com.au/car-insurance/journey/car_address",
+      "observed": "1 element(s) fail axe rule 'label' (, axe impact critical) on 1 step(s): /car-insurance/journey/car_address. e.g. #coverDetail\\.overnightParking\\.address\\.buildingName: ",
+      "expected": "Ensure every form element has a label",
+      "confidence": 1.0,
+      "suggested_fix": "Building Name input has no programmatic label See https://dequeuniversity.com/rules/axe/4.10/label",
+      "screenshot": null
+    },
+    {
+      "id": "A06",
+      "source": "axe",
+      "dedup_key": "axe:link-in-text-block",
+      "title": "Accessibility: A link looks like plain text (colour is the only difference) (car_address, WCAG 1.4.1)",
+      "severity": "minor",
+      "category": "accessibility",
+      "step": "/car-insurance/journey/car_address",
+      "step_key": "/car-insurance/journey/car_address",
+      "url": "https://www.comparethemarket.com.au/car-insurance/journey/car_address",
+      "observed": "1 element(s) fail axe rule 'link-in-text-block' (, axe impact serious) on 1 step(s): /car-insurance/journey/car_address. e.g. #overnightParkingAddressToggle: ",
+      "expected": "Ensure links are distinguished from surrounding text without relying on color",
+      "confidence": 1.0,
+      "suggested_fix": "Link contrast 1.3:1 with surrounding text and no underline See https://dequeuniversity.com/rules/axe/4.10/link-in-text-block",
+      "screenshot": null
+    },
+    {
+      "id": "A07",
+      "source": "axe",
+      "dedup_key": "axe:nested-interactive",
+      "title": "Accessibility: A control is nested inside another, so focus and announcements break (start, WCAG 4.1.2)",
+      "severity": "minor",
+      "category": "accessibility",
+      "step": "/car-insurance/journey/start",
+      "step_key": "/car-insurance/journey/start",
+      "url": "https://www.comparethemarket.com.au/car-insurance/journey/start",
+      "observed": "1 element(s) fail axe rule 'nested-interactive' (, axe impact serious) on 1 step(s): /car-insurance/journey/start. e.g. .registration_number__none__tEhej: ",
+      "expected": "Ensure interactive controls are not nested",
+      "confidence": 1.0,
+      "suggested_fix": "Element has focusable descendants See https://dequeuniversity.com/rules/axe/4.10/nested-interactive",
+      "screenshot": null
+    },
+    {
+      "id": "A08",
+      "source": "axe",
+      "dedup_key": "axe:scrollable-region-focusable",
+      "title": "Accessibility: A scrolling box can't be reached or scrolled with the keyboard (car-insurance, WCAG 2.1.1)",
+      "severity": "minor",
+      "category": "accessibility",
+      "step": "/car-insurance",
+      "step_key": "/car-insurance",
+      "url": "https://www.comparethemarket.com.au/car-insurance",
+      "observed": "2 element(s) fail axe rule 'scrollable-region-focusable' (, axe impact serious) on 1 step(s): /car-insurance. e.g. #david-koch-car-insurance-transcript: ",
+      "expected": "Ensure elements that have scrollable content are accessible by keyboard",
+      "confidence": 1.0,
+      "suggested_fix": "Element should be focusable or contain focusable content See https://dequeuniversity.com/rules/axe/4.10/scrollable-region-focusable",
+      "screenshot": null
+    },
+    {
+      "id": "A09",
+      "source": "axe",
+      "dedup_key": "axe:select-name",
+      "title": "Accessibility: A dropdown has no name; users don't know what they're choosing (car_address, WCAG 4.1.2)",
+      "severity": "minor",
+      "category": "accessibility",
+      "step": "/car-insurance/journey/car_address",
+      "step_key": "/car-insurance/journey/car_address",
+      "url": "https://www.comparethemarket.com.au/car-insurance/journey/car_address",
+      "observed": "2 element(s) fail axe rule 'select-name' (, axe impact critical) on 1 step(s): /car-insurance/journey/car_address. e.g. #coverDetail\\.overnightParking\\.address\\.unitType: ",
+      "expected": "Ensure select element has an accessible name",
+      "confidence": 1.0,
+      "suggested_fix": "Unit type and Suburb selects have no accessible name See https://dequeuniversity.com/rules/axe/4.10/select-name",
+      "screenshot": null
+    },
+    {
+      "id": "A10",
+      "source": "axe",
+      "dedup_key": "axe:target-size",
+      "title": "Accessibility: Tap targets are too small to hit reliably (car_series, WCAG 2.5.8)",
+      "severity": "minor",
+      "category": "accessibility",
+      "step": "/car-insurance/journey/car_series",
+      "step_key": "/car-insurance/journey/car_series",
+      "url": "https://www.comparethemarket.com.au/car-insurance/journey/car_series",
+      "observed": "9 element(s) fail axe rule 'target-size' (, axe impact serious) on 1 step(s): /car-insurance/journey/car_series. e.g. #internal-link-KIA\\ 18AQ: ",
+      "expected": "Ensure touch targets have sufficient size and space",
+      "confidence": 1.0,
+      "suggested_fix": "Target partially obscured (345px by 10px); should be at least 24px by 24px See https://dequeuniversity.com/rules/axe/4.10/target-size",
+      "screenshot": null
+    }
+  ],
+  "rechecks": [
+    {
+      "fingerprint": "K003",
+      "status": "still_present",
+      "note": "Bundled consent checkbox unchanged on mobile."
+    },
+    {
+      "fingerprint": "K005",
+      "status": "still_present",
+      "note": "Badge 'unsure' list for 2018 Sorento: four UM variants with identical specs; only the badge differs."
+    },
+    {
+      "fingerprint": "K006",
+      "status": "still_present",
+      "note": "TPFT offered and accepted for a 2018 Sorento with no market-value check; help popovers cover options on mobile."
+    },
+    {
+      "fingerprint": "K007",
+      "status": "still_present",
+      "note": "DOB Next looks disabled with a valid date; tapping it works (visual only)."
+    },
+    {
+      "fingerprint": "K008",
+      "status": "still_present",
+      "note": "Address page title still 'Cover Type - Car Quote'."
+    },
+    {
+      "fingerprint": "K009",
+      "status": "still_present",
+      "note": "Car Park and Parking Lot both offered."
+    },
+    {
+      "fingerprint": "K012",
+      "status": "still_present",
+      "note": "Empty email field shown green."
+    },
+    {
+      "fingerprint": "K004",
+      "status": "still_present",
+      "note": "~4-6s blank or faded screen per step on mobile; 7,296 console messages over the session."
+    },
+    {
+      "fingerprint": "K002",
+      "status": "not_reproduced",
+      "note": "Fast typing 1995 in YYYY stored correctly on mobile. Digit-dropping on one-go entry reproduced (see new finding)."
+    },
+    {
+      "fingerprint": "K010",
+      "status": "not_reproduced",
+      "note": "Likely a false positive: 'None' full years is valid after Yes (insured under 12 months). After No, the 5-year option is correctly removed."
+    }
+  ],
+  "telemetry": {
+    "console_errors": [],
+    "failed_requests": [],
+    "slow_requests": [],
+    "guardrail_events": [],
+    "synthetic_tag": {
+      "automated-test": "true"
+    },
+    "untagged_steps": [],
+    "synthetic_tag_note": "Landing URL carried ?automated-test=true; the site set cookie automated-test=true, present on all 38 journey steps (verified per step).",
+    "console_messages": 7296
+  }
+}
