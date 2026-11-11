@@ -118,6 +118,20 @@ td code { white-space: nowrap; }
 .guard li { background: var(--panel); border: 1px solid var(--line); border-left: 4px solid var(--ok); border-radius: 10px; padding: 10px 14px; font-size: 14.5px; }
 .guard b { display: block; font-size: 15px; }
 
+.mk { font: 600 12px/1 var(--mono); padding: 3px 7px; border-radius: 999px; white-space: nowrap; }
+.mk.y { background: color-mix(in srgb, var(--ok) 18%, transparent); color: var(--ok); }
+.mk.p { background: color-mix(in srgb, var(--minor) 20%, transparent); color: var(--accent-ink); }
+.mk.n { background: var(--code-bg); color: var(--muted); }
+td small { display: block; color: var(--muted); font-size: 12.5px; margin-top: 3px; }
+td.us { background: color-mix(in srgb, var(--accent) 7%, transparent); }
+table.cmp { min-width: 820px; }
+table.cmp td:first-child { font-weight: 600; min-width: 190px; }
+.borrow { counter-reset: b; list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.borrow li { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; font-size: 14.5px; display: flex; gap: 10px; align-items: baseline; }
+.borrow li .pill { flex: none; }
+.sources { font-size: 13.5px; color: var(--muted); }
+.sources a { color: var(--muted); }
+
 .next li { margin: 6px 0; }
 footer { color: var(--muted); font-size: 13px; padding: 24px 0 48px; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
@@ -153,6 +167,7 @@ footer { color: var(--muted); font-size: 13px; padding: 24px 0 48px; }
       <li><a href="#guardrails">Guardrails</a></li>
       <li><a href="#run">Run it</a></li>
       <li><a href="#config">Knobs</a></li>
+      <li><a href="#market">How it compares</a></li>
       <li><a href="#next">Status and next</a></li>
     </ol>
   </nav>
@@ -395,6 +410,64 @@ npx iexplore run --target uat --dry-run</pre>
       </div>
     </section>
 
+    <section id="market">
+      <h2>How it compares</h2>
+      <p class="lede">Nobody else combines personas invented from what the bot has learned, a strategy that learns where to look, and guardrails safe enough for production. The market is ahead on turning findings into regression tests, native mobile apps, and the polish you get from a vendor.</p>
+
+      <h3>Capabilities side by side</h3>
+      <div class="tablewrap">
+        <table class="cmp">
+          <thead><tr><th>Capability</th><th>iExplore</th><th>AI QA agents</th><th>Synthetic-user UX tools</th><th>Accessibility agents</th><th>DIY persona swarms</th></tr></thead>
+          <tbody>
+            <tr><td>Explores a live site without scripts</td><td class="us"><span class="mk y">Yes</span><small>computer use on screenshots</small></td><td><span class="mk y">Yes</span></td><td><span class="mk y">Yes</span><small>mostly prototypes, simple flows</small></td><td><span class="mk p">Partial</span><small>page audits</small></td><td><span class="mk y">Yes</span></td></tr>
+            <tr><td>Persona-driven behaviour</td><td class="us"><span class="mk y">Yes</span><small>5 fixed + invented per run</small></td><td><span class="mk p">Partial</span><small>role or user setups</small></td><td><span class="mk y">Yes</span><small>core feature</small></td><td><span class="mk n">No</span></td><td><span class="mk y">Yes</span><small>fixed archetypes</small></td></tr>
+            <tr><td>Personas invented from what it learned</td><td class="us"><span class="mk y">Yes</span></td><td><span class="mk n">No</span></td><td><span class="mk p">Partial</span><small>from research data</small></td><td><span class="mk n">No</span></td><td><span class="mk n">No</span></td></tr>
+            <tr><td>Learns where to look next</td><td class="us"><span class="mk y">Yes</span><small>UCB1 bandit over 5 strategies</small></td><td><span class="mk p">Partial</span><small>knowledge graph, rules</small></td><td><span class="mk n">No</span></td><td><span class="mk n">No</span></td><td><span class="mk n">No</span></td></tr>
+            <tr><td>Journey map and branch coverage</td><td class="us"><span class="mk y">Yes</span><small>options shown vs taken</small></td><td><span class="mk y">Yes</span><small>app maps</small></td><td><span class="mk p">Partial</span><small>path, drop-off reports</small></td><td><span class="mk n">No</span></td><td><span class="mk n">No</span></td></tr>
+            <tr><td>Fragility probing</td><td class="us"><span class="mk y">Yes</span><small>slow network, CPU, fast typing, double-click</small></td><td><span class="mk p">Partial</span></td><td><span class="mk n">No</span></td><td><span class="mk n">No</span></td><td><span class="mk p">Partial</span><small>impatient-user style</small></td></tr>
+            <tr><td>Technical signals</td><td class="us"><span class="mk y">Yes</span><small>console, failed and slow calls</small></td><td><span class="mk y">Yes</span></td><td><span class="mk n">No</span></td><td><span class="mk n">No</span></td><td><span class="mk p">Partial</span></td></tr>
+            <tr><td>Deterministic WCAG scan</td><td class="us"><span class="mk y">Yes</span><small>axe-core on every step, grouped per rule</small></td><td><span class="mk p">Partial</span></td><td><span class="mk n">No</span></td><td><span class="mk y">Yes</span></td><td><span class="mk n">No</span></td></tr>
+            <tr><td>Noise control</td><td class="us"><span class="mk y">Yes</span><small>impact score, second sighting, weekly cap, quality bar</small></td><td><span class="mk p">Partial</span><small>dedup, rules</small></td><td><span class="mk n">No</span></td><td><span class="mk p">Partial</span><small>prioritised issues</small></td><td><span class="mk n">No</span></td></tr>
+            <tr><td>Triage list to tickets</td><td class="us"><span class="mk y">Yes</span><small>CSV/HTML to ADO Bugs</small></td><td><span class="mk p">Partial</span><small>Jira, Slack</small></td><td><span class="mk n">No</span></td><td><span class="mk p">Partial</span><small>remediation tasks</small></td><td><span class="mk n">No</span></td></tr>
+            <tr><td>Safe on production</td><td class="us"><span class="mk y">Yes</span><small>stop pages, blocked APIs, <code>?automated-test=true</code></small></td><td><span class="mk p">Partial</span><small>mostly staging</small></td><td><span class="mk n">n/a</span></td><td><span class="mk n">n/a</span></td><td><span class="mk n">No</span></td></tr>
+            <tr><td>Runs in our own accounts</td><td class="us"><span class="mk y">Yes</span><small>Bedrock AU, EKS or GitHub runners</small></td><td><span class="mk n">No</span><small>SaaS</small></td><td><span class="mk n">No</span><small>SaaS</small></td><td><span class="mk p">Partial</span><small>MCP servers</small></td><td><span class="mk y">Yes</span></td></tr>
+            <tr><td>Findings become regression tests</td><td class="us"><span class="mk n">No</span><small>planned</small></td><td><span class="mk y">Yes</span><small>core feature</small></td><td><span class="mk n">No</span></td><td><span class="mk n">No</span></td><td><span class="mk n">No</span></td></tr>
+            <tr><td>Native mobile apps</td><td class="us"><span class="mk n">No</span><small>mobile web only</small></td><td><span class="mk y">Yes</span><small>several</small></td><td><span class="mk p">Partial</span></td><td><span class="mk p">Partial</span><small>some</small></td><td><span class="mk n">No</span></td></tr>
+            <tr><td>Dashboards, support, maintenance</td><td class="us"><span class="mk p">Partial</span><small>HTML reports and heatmap; we maintain it</small></td><td><span class="mk y">Yes</span></td><td><span class="mk y">Yes</span></td><td><span class="mk y">Yes</span></td><td><span class="mk n">No</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="sources" style="margin-top:8px">Market columns reflect what vendors advertise, not hands-on trials. iExplore column reflects what is built today.</p>
+
+      <h3>Who's out there, and what we took</h3>
+      <div class="grid">
+        <div class="card"><h4><a href="https://www.parse.gl/brands/qa-tech">QA.tech</a> <span class="pill ok">built</span></h4><p><b>AI QA agent.</b> Agents run full journeys like real users, with a product knowledge graph and standing team rules.</p><p style="margin-top:6px"><b>Borrow:</b> Team rules the agent always follows</p></div>
+        <div class="card"><h4><a href="https://www.testmuai.com/blog/ai-agent-explores-web-app/">LambdaTest KaneAI</a> <span class="pill hot">next</span></h4><p><b>AI QA agent.</b> Exploration agent maps the app, flags problems and turns the map into tests for review.</p><p style="margin-top:6px"><b>Borrow:</b> Confirmed findings become regression tests</p></div>
+        <div class="card"><h4><a href="https://hashnode.com/blog/ai-testing-tools-2026">Testers.AI</a> <span class="pill ok">built</span></h4><p><b>AI QA agent.</b> Vision agents discover, write and run tests; flag functional, accessibility and UX issues.</p><p style="margin-top:6px"><b>Borrow:</b> Three lenses in one run</p></div>
+        <div class="card"><h4><a href="https://tap4-ai-webui.pages.dev/ai/testdriver-ai">TestDriver</a> <span class="pill hot">next</span></h4><p><b>AI QA agent.</b> Computer-use agents across web, mobile and desktop; selectorless tests.</p><p style="margin-top:6px"><b>Borrow:</b> Session replay for every finding</p></div>
+        <div class="card"><h4><a href="https://hashnode.com/blog/ai-testing-tools-2026">Autify, Mabl, SmartBear, Ranger</a> <span class="pill hot">next</span></h4><p><b>AI QA agents.</b> Autonomous or AI-assisted end-to-end testing, often per pull request.</p><p style="margin-top:6px"><b>Borrow:</b> Runs triggered by each deploy</p></div>
+        <div class="card"><h4><a href="https://aimultiple.com/synthetic-users">Brox.ai, Versive, Uxia, Synthers</a> <span class="pill">later</span></h4><p><b>Synthetic users.</b> AI personas walk sites or Figma prototypes and report friction.</p><p style="margin-top:6px"><b>Borrow:</b> Personas on designs before build</p></div>
+        <div class="card"><h4><a href="https://ai.testmu.ai/ai-agent-autonomous-accessibility-testing-wcag-fixes">Siteimprove, TestMu</a> <span class="pill ok">built</span></h4><p><b>Accessibility agents.</b> WCAG audits with suggested or code-level fixes, some as MCP servers.</p><p style="margin-top:6px"><b>Borrow:</b> axe on every step, fix on every ticket</p></div>
+        <div class="card"><h4><a href="https://awesome.ecosyste.ms/projects/github.com%2Ftestomatio%2Fexplorbot">Explorbot, persona swarms</a> <span class="pill">later</span></h4><p><b>Open source / DIY.</b> Point at a URL; archetypes like Impatient or Adversarial explore.</p><p style="margin-top:6px"><b>Borrow:</b> Short persona runs on pull requests</p></div>
+        <div class="card"><h4><a href="https://playwright.dev/docs/test-agents">Playwright Test Agents</a> <span class="pill hot">next</span></h4><p><b>Framework.</b> Agents that plan, generate and repair Playwright tests.</p><p style="margin-top:6px"><b>Borrow:</b> Hand-off target for accepted findings</p></div>
+      </div>
+
+      <h3>Ideas borrowed, in order</h3>
+      <ol class="borrow">
+        <li><span class="pill ok">built</span><span><b>Impact score, second sighting, weekly cap.</b> Our answer to noise: severity × reach × business risk × confidence × recurrence, only reproduced findings, at most 5 a week.</span></li>
+        <li><span class="pill ok">built</span><span><b>Team quality bar</b> (QA.tech). Rejected findings and their reasons go back into the prompt, so noise falls run by run.</span></li>
+        <li><span class="pill ok">built</span><span><b>Deterministic accessibility scan</b> (Siteimprove, TestMu). axe-core on every step under the AI's judgement, with a plain-English fix on each ticket.</span></li>
+        <li><span class="pill hot">next</span><span><b>Findings to regression tests</b> (KaneAI, Playwright Test Agents). Accepted findings become reviewed Playwright tests in the agentic harness.</span></li>
+        <li><span class="pill hot">next</span><span><b>Deploy-triggered runs</b> (PR-level agents). Run on each UAT deploy against the changed steps; alert only on new or returning issues.</span></li>
+        <li><span class="pill hot">next</span><span><b>Session replay per finding</b> (TestDriver). A short recording, not just a screenshot.</span></li>
+        <li><span class="pill">later</span><span><b>Personas on Figma before build</b> (synthetic-user tools).</span></li>
+      </ol>
+
+      <h3>Build or buy</h3>
+      <p>Buying gets dashboards, support and native-app coverage sooner. Building keeps the parts that matter most for CTM: production-safe rules tuned to our journeys, traffic tagging that analytics already filters, data and model calls inside our AWS accounts on Bedrock AU, tickets straight into ADO, and the adaptive core no vendor offers. The running cost is model tokens plus a small pod, and the code is ours to extend to pet, home and health.</p>
+      <p class="sources">Sources: vendor pages and reviews found by web search on 7 Nov 2026. <a href="https://claude.ai/artifact/RnqGiSJP4yhvzA5efPhuSF">Full comparison with links</a>.</p>
+    </section>
+
     <section id="next">
       <h2>Status and next</h2>
       <p class="lede">Built in TypeScript, tested against a mock site, and run live twice on production by hand.</p>
@@ -402,7 +475,8 @@ npx iexplore run --target uat --dry-run</pre>
         <li><b>To switch on:</b> add <code>ANTHROPIC_API_KEY</code> and run the <code>iexplore</code> workflow once by hand; uncomment the cron when happy.</li>
         <li><b>To connect ADO:</b> <code>ADO_PAT</code>, <code>ADO_ORG_URL</code>, <code>ADO_PROJECT</code>, then the <code>ado-sync</code> workflow as a dry run.</li>
         <li><b>Next to build:</b> deploy-triggered UAT runs focused on changed steps, accepted findings turned into Playwright regression tests, session replays per finding.</li>
-        <li><b>Later:</b> move the runner to EKS and the model to Bedrock AU; add pet, home and health verticals by adding personas and charters only.</li>
+        <li><b>EKS and Bedrock:</b> ready to deploy; start on UAT with <code>deploy/k8s/overlays/uat</code> (see <code>deploy/EKS.md</code>).</li>
+        <li><b>Later:</b> add pet, home and health verticals by adding personas and charters only.</li>
       </ul>
     </section>
   </main>
